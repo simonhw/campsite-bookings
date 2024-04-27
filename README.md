@@ -84,6 +84,21 @@ The website is comprised of three pages visible to the site user: a homepage, bo
 
 ![Camping favicon](static/images/readme/favicon-camping.png)
 
+* A header with a title and nav bar or menu dropdown for page links
+
+![Website Header]()
+
+* A footer with contact information and social media links
+
+![Website Footer]()
+
+## Responsiveness
+On small screen sizes, namely mobiles, the website is displayed with content in a scrollable single column. This design was chosen as it is a comfortable and familiar experience for mobile users.
+
+On tablet-sized screens, content is display in multiple columns to make user of the larger space. Reviews are now displayed four at a time with the use of previous and next buttons to view the paginated list.
+
+On large screen sizes, multiple columns are again used, with empty space on the outermost columns to focus the user's attention in the middle of the page. This is more aesthetically pleasing than having content spread aross a wide screen.
+
 ### Create
 * Site users may **create** by posting reviews on the website after their stay.
 * Admin users may **create** by adding information about the campsite to the homepage
