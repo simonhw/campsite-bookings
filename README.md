@@ -61,11 +61,43 @@ The Sedan font was chosen from the Google Fonts library because it evoked feelin
 ```
 
 ### Imagery
-Images were chosen that show an attractive campsite and surroundings. 
+Images were chosen that show an attractive campsite and surroundings. Bright images showing tents near a lake and tabled areas for rent for larger groups were selected to give a sense of an inclusive type of campsite. Images of people helping each other set up a tent were used for the "helpful staff" part of the information page.
 
+### Wireframes
+Wireframes were created in Balsamiq for the initial front-end design of the website. The mobile layout was designed first and the tablet and desktop were adapted from this.
+
+**Home Page**
+![Homepage Wireframe - Mobile](static/images/readme/wireframe-mobile-1.png)
+
+**Booking Page**
+![Booking Wireframe - Mobile](static/images/readme/wireframe-mobile-2.png)
+
+**Reviews Page**
+![Reviews Wireframe - Mobile](static/images/readme/wireframe-mobile-3.png)
 
 ## Features
 The website was designed to be as simple as possible, with little to no distracting content. A mobile-first design process was undertaken from the start.
+The website is comprised of three pages visible to the site user: a homepage, booking page, and a reviews page. An admin page is also visible to superusers once logged in.
+
+**All pages on the website have:**
+* A favicon of a tent next to a tree with a cloud.
+
+![Camping favicon](static/images/readme/favicon-camping.png)
+
+### Create
+* Site users may **create** by posting reviews on the website after their stay.
+* Admin users may **create** by adding information about the campsite to the homepage
+
+### Read
+* Site users may **read** by viewing the camping information page and reviews page
+* Admin user may **read** by viewing the camping information page and reviews page
+
+### Update
+* Admin user may **update** by amending the camping information page and added new photos.
+
+### Delete
+* Site users may **delete** by removing their reviews if desired.
+* Admin users may **delete** by removing information, photos, or reviews.
 
 ### Features to be Implemented
 
@@ -124,6 +156,14 @@ All documentation on the testing of this application can be found in the [TESTIN
 
 ## Credits
 ### Media
+
+https://www.pexels.com/photo/camping-chair-near-table-on-river-shore-6271625/
+https://www.pexels.com/photo/camping-chairs-and-tent-near-calm-lake-6271654/
+https://www.pexels.com/photo/tent-and-portable-chair-on-river-shore-in-summer-6271612/
+https://www.pexels.com/photo/brown-wooden-table-under-a-tent-4994126/
+https://www.pexels.com/photo/cheerful-traveling-couple-with-tent-near-lake-6271557/
+https://www.pexels.com/photo/white-tents-in-the-middle-of-the-woods-4993954/
+https://www.pexels.com/photo/tent-on-roof-of-car-on-lakeside-6271725/
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
