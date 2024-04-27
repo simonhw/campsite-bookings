@@ -1,5 +1,7 @@
 # Campsite Bookings
 
+This responsive website is designed to be viewed on a variety of screen sizes. Its purpose is to allow a visiting user to view information about and make a booking to stay at a campsite, and to allow an administrator to view all bookings and related information.
+
 Deployed program on Heroku: [Campsite Bookings]()
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/simonhw/campsite-bookings)
@@ -28,13 +30,42 @@ Deployed program on Heroku: [Campsite Bookings]()
 
 ## User Experience
 ### Initial Discussion
+The [NAME] Campsite is a website that facilitates bookings for small and large groups for one night or more of camping. The goal of the site is to encourage business by showcasing the campsite information and offering a user-friendly booking system to users. The website will show reviews left by former customers which can be managed by the website administrators.
 
 ### User Stories
-See Kanban board on [GitHub]()
+The user stories for this project can be viewed on this [Kanban board]() on the GitHub repository.
 
 ## Design
+### Colour Scheme
+A palette of green colours was chosen to reflect the calming and relaxing environment of the campsite, being surround by greenery and nature away from the hustle and bustle of the cities.
+
+![Coolors colour palette](static/images/readme/campsite-colours-v1.png)
+
+### Typography
+The Sedan font was chosen from the Google Fonts library because it evoked feelings of a professional but fun business.
+
+![Sedan Font](static/images/readme/sedan-font.png)
+
+```
+.sedan-regular {
+  font-family: "Sedan", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sedan-regular-italic {
+  font-family: "Sedan", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+```
+
+### Imagery
+Images were chosen that show an attractive campsite and surroundings. 
+
 
 ## Features
+The website was designed to be as simple as possible, with little to no distracting content. A mobile-first design process was undertaken from the start.
 
 ### Features to be Implemented
 
