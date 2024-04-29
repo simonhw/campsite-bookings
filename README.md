@@ -79,12 +79,14 @@ Wireframes were created in Balsamiq for the initial front-end design of the webs
 
 ![Booking Wireframe - Tablet](static/images/readme/wireframe-tablet-2.png)
 
+![Booking Wireframe - Desktop](static/images/readme/wireframe-desktop-2.png)
 
 **Reviews Page**
 ![Reviews Wireframe - Mobile](static/images/readme/wireframe-mobile-3.png)
 
-![Reviews Wireframe - Mobile](static/images/readme/wireframe-tablet-3.png)
+![Reviews Wireframe - Tablet](static/images/readme/wireframe-tablet-3.png)
 
+![Reviews Wireframe - Desktop](static/images/readme/wireframe-desktop-3.png)
 
 ## Features
 The website was designed to be as simple as possible, with little to no distracting content. A mobile-first design process was undertaken from the start.
