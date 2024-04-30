@@ -88,6 +88,10 @@ Wireframes were created in Balsamiq for the initial front-end design of the webs
 
 ![Reviews Wireframe - Desktop](static/images/readme/wireframe-desktop-3.png)
 
+### Entity Relationship Diagrams
+
+![ERDs](static/images/readme/erd-v1.png)
+
 ## Features
 The website was designed to be as simple as possible, with little to no distracting content. A mobile-first design process was undertaken from the start.
 The website is comprised of three pages visible to the site user: a homepage, booking page, and a reviews page. An admin page is also visible to superusers once logged in.
