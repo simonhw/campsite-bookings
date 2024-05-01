@@ -117,6 +117,7 @@ On tablet-sized screens, content is display in multiple columns to make user of 
 On large screen sizes, multiple columns are again used, with empty space on the outermost columns to focus the user's attention in the middle of the page. This is more aesthetically pleasing than having content spread aross a wide screen.
 
 ### Create
+* Site users may **create** by creating a booking.
 * Site users may **create** by posting reviews on the website after their stay.
 * Admin users may **create** by adding information about the campsite to the homepage
 
@@ -125,9 +126,11 @@ On large screen sizes, multiple columns are again used, with empty space on the 
 * Admin user may **read** by viewing the camping information page and reviews page
 
 ### Update
-* Admin user may **update** by amending the camping information page and added new photos.
+* Site users may **update** by amending their booking information.
+* Admin user may **update** by amending the camping information page and adding new photos.
 
 ### Delete
+* Site users may **delete** by cancelling their booking.
 * Site users may **delete** by removing their reviews if desired.
 * Admin users may **delete** by removing information, photos, or reviews.
 
