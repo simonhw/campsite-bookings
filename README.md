@@ -1,8 +1,8 @@
-# Campsite Bookings
+# Lakeview Campsite
 
 This responsive website is designed to be viewed on a variety of screen sizes. Its purpose is to allow a visiting user to view information about and make a booking to stay at a campsite, and to allow an administrator to view all bookings and related information.
 
-Deployed program on Heroku: [Campsite Bookings]()
+Deployed program on Heroku: [Lakeview Campsite]()
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/simonhw/campsite-bookings)
 ![GitHub contributors](https://img.shields.io/github/contributors/simonhw/campsite-bookings)
@@ -10,7 +10,7 @@ Deployed program on Heroku: [Campsite Bookings]()
 ## Contents
 - [User Experience](#user-experience)
     - [Initial Discussion](#initial-discussion)
-    - [User Stories](#user-stories)
+    - [Agile Planning](#project-planning-with-the-agile-approach)
 - [Design](#design)
 - [Features](#features)
     - [Features to be Implemented](#features-to-be-implemented)
@@ -30,10 +30,12 @@ Deployed program on Heroku: [Campsite Bookings]()
 
 ## User Experience
 ### Initial Discussion
-The [NAME] Campsite is a website that facilitates bookings for small and large groups for one night or more of camping. The goal of the site is to encourage business by showcasing the campsite information and offering a user-friendly booking system to users. The website will show reviews left by former customers which can be managed by the website administrators.
+The Lakeview Campsite website facilitates bookings for small and large groups for one night or more of camping. The goal of the site is to encourage business by showcasing the campsite information and offering a user-friendly booking system to users. The website will show reviews left by former customers which can be managed by the website administrators.
 
-### User Stories
-The user stories for this project can be viewed on this [Kanban board]() on the GitHub repository.
+### Project Planning with the Agile Approach
+The Lakeview Campsite project was built using the Agile method. This involves breaking projects down into smaller manageable sections which allows team to deliver continuous working releases to the client and end users. These release periods are known as sprints and this project had X sprints over nine weeks.
+
+User stories were generated and grouped under different Epics to effectively structure the work involved at different stages of the project. Each user story 
 
 ## Design
 ### Colour Scheme
