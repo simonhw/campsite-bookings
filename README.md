@@ -35,7 +35,20 @@ The Lakeview Campsite website facilitates bookings for small and large groups fo
 ### Project Planning with the Agile Approach
 The Lakeview Campsite project was built using the Agile method. This involves breaking projects down into smaller manageable sections which allows team to deliver continuous working releases to the client and end users. These release periods are known as sprints and this project had X sprints over nine weeks.
 
-User stories were generated and grouped under different Epics to effectively structure the work involved at different stages of the project. Each user story 
+User Stories were generated and grouped under different Epics to effectively structure the work involved at different stages of the project. Each user story was assigned a number of labels to aid in the project workflow. These include:
+
+- `Sprint 1/2/3/4` - To denote in which sprint the user story will be worked on.
+- `Story Points: 1/2/3/5/8` - To denote how much effort each user story requires.
+- `Must-Have` - A user story relating to a feature without which the website will not function correctly.
+- `Should-Have` - A user story relating to a feature that will complement the core website features and enhance the user experience.
+- `Could-Have` - A user story relating to a feature which would be of benefit to the user but without which the site will still achieve all its design goals.
+- `Site User` - A user story from the perspective of a regular site user.
+- `Site Admin` - A user story from the perspective of a site administrator.
+
+The Epics for this projects were:
+- Initial Project Setup
+- Writing README and TESTING documentation
+- Creating Models
 
 ## Design
 ### Colour Scheme
