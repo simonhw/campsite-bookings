@@ -131,20 +131,28 @@ On tablet-sized screens, content is display in multiple columns to make user of 
 
 On large screen sizes, multiple columns are again used, with empty space on the outermost columns to focus the user's attention in the middle of the page. This is more aesthetically pleasing than having content spread aross a wide screen.
 
+## CRUD Functionality
+A key requirement for this project was for users to be able to create, read, update, and/or delete data from the database as appropriate. User could interact with the database in these ways as follows:
+
 ### Create
+* Site users and admin users may **create** by creating an account.
 * Site users may **create** by creating a booking.
 * Site users may **create** by posting reviews on the website after their stay.
+* Admin users may **create** by writing responses to reviews.
 * Admin users may **create** by adding information about the campsite to the homepage
 
 ### Read
-* Site users may **read** by viewing the camping information page and reviews page
-* Admin user may **read** by viewing the camping information page and reviews page
+* Site users and admin users may **read** by viewing the camping information page and reviews page.
+* Site users may **read** by viewing their list of bookings.
+* Admin user may **read** by viewing the list of all bookings.
 
 ### Update
+* Site users may **update** by editing their account details.
 * Site users may **update** by amending their booking information.
 * Admin user may **update** by amending the camping information page and adding new photos.
 
 ### Delete
+* Site users may **delete** by deleting their account.
 * Site users may **delete** by cancelling their booking.
 * Site users may **delete** by removing their reviews if desired.
 * Admin users may **delete** by removing information, photos, or reviews.
@@ -153,9 +161,13 @@ On large screen sizes, multiple columns are again used, with empty space on the 
 
 ## Technologies Used
 ### Languages
-HTML
-CSS
-Python
+HTML,
+CSS,
+Python,
+Javascript,
+and Django.
+
+Relational database: PostgreSQL.
 
 
 ### Frameworks, Libraries, and Programs
