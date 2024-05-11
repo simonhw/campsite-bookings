@@ -31,6 +31,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-simonhw-campsitebooking-a9kf66t9e8o.ws-eu111.gitpod.io',
+    '.herokuapp.com',
     ]
 
 
