@@ -5,4 +5,4 @@ from .models import Booking
 # Create your views here.
 class BookingList(generic.ListView):
     queryset = Booking.objects.all().order_by('-arrival')
-    template_name = 'booking_list.html'
+    template_name = 'home/index.html'

@@ -1,0 +1,23 @@
+{% load static %}
+
+{% url 'home' as home_url %}
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Lakeview Campsite</title>
+</head>
+<body>
+
+    <main>
+
+        {% block content %}
+        <!-- Content goes here -->
+        {% endblock content %}
+    </main>
+    
+</body>
+</html>
