@@ -17,8 +17,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon' %}" type="image/x-icon">
     <title>Lakeview Campsite</title>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 
+    <!-- Header -->
     <!-- Navigation and Links -->
     <nav class="navbar navbar-expand-lg bg-green-4 d-lg-none d-xl-none">
         <div class="container-fluid">
@@ -42,6 +43,43 @@
         <!-- Content goes here -->
         {% endblock content %}
     </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto bg-green-4 text-custom-white">
+        <div class="container">
+            <div class="row">
+                <h4 class="sedan-regular pt-3">Contact Us</h4>
+                <p>Lakeview Campsite<br>
+                   1234 Forest Trail Road<br>
+                   Evergreen Valley, CA 95472<br>
+                   USA
+                </p>
+            </div>
+            <div class="row">
+                <p>Phone: <a href="tel:555-1234567" aria-label="Call us (opens your phone app or program and auto-fills our phone number)">(555) 123-4567</a></p>
+            </div>
+            <div class="row">
+                <p>Email: <a href="mailto:info@lakeviewcamp.com" 
+                    aria-label="Email us (opens your email app or program with our email in the To field)">info@lakeviewcamp.com</a></p>
+            </div>
+            <!-- Social Media Links -->
+            <div class="row text-center fs-4 pb-3">
+                <div class="col-2 offset-3">
+                    <a href="https://facebook.com/lakeviewcampsite0" target="_blank" class="text-custom-white"
+                        aria-label="Open our Facebook page in a new tab."><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+                <div class="col-2">
+                    <a href="https://instagram.com/lakeviewcampsite0" target="_blank" class="text-custom-white"
+                        aria-label="Open our Instagram page in a new tab."><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <div class="col-2">
+                    <a href="https://twitter.com/lakeviewcampsite0" target="_blank" class="text-custom-white"
+                    aria-label="Open our X (Twitter) page in a new tab."><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
 
     <!-- JavaScript -->
     <script src="https://kit.fontawesome.com/f9b81dc597.js" crossorigin="anonymous"></script>
