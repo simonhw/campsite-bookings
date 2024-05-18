@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# ACCOMMODATION = ((0, 'Tent'), (1, 'Van'), (2, 'Caravan'), (3, 'Yurt'))
-
 # Create your models here.
 class Booking(models.Model):
     ACCOMMODATION = ((0, 'Tent'), (1, 'Van'), (2, 'Caravan'), (3, 'Yurt'))
@@ -25,6 +23,6 @@ class Booking(models.Model):
     
     def __str__(self):
         return f'{self.arrival} | \
-            {dict(self.ACCOMMODATION).get(self.accommodation)} booking | \
+            {dict(self.ACCOMMODATION).get(self.accommodation)} booking by \
                 {self.booked_by.first_name} {self.booked_by.last_name} | \
                     Booking id: {self.booking_id}'
