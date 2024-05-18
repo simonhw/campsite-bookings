@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
 <!-- index.html content -->
-<p class="sedan-regular">This is the index page</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 g-0">
+            <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
