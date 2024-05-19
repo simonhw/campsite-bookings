@@ -217,6 +217,10 @@ To deploy this program locally on your device, please follow the steps below:
 All documentation on the testing of this application can be found in the [TESTING.md](/TESTING.md) file.
 
 ## Credits
+
+### Content
+Some text content for this fictional website was generate using ChatGPT.
+https://chatgpt.com/share/aa45f534-dbd4-484e-a73b-31742d06ca5c
 ### Media
 
 https://www.pexels.com/photo/camping-chair-near-table-on-river-shore-6271625/
@@ -226,6 +230,7 @@ https://www.pexels.com/photo/brown-wooden-table-under-a-tent-4994126/
 https://www.pexels.com/photo/cheerful-traveling-couple-with-tent-near-lake-6271557/
 https://www.pexels.com/photo/white-tents-in-the-middle-of-the-woods-4993954/
 https://www.pexels.com/photo/tent-on-roof-of-car-on-lakeside-6271725/
+https://www.pexels.com/photo/thermos-books-and-photo-camera-on-camp-tent-6271651/
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
