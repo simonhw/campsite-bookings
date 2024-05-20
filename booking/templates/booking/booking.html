@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container-lg mb-3">
+    <div class="row">
+        <div class="col-12 g-0">
+            <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p-2">
+            <h1 class="sedan-regular">Book Your Stay</h1>
+        </div>
+        <p>You are logged in as: {{ user.username }}</p>
+        <form>
+            <div class="col-sm-12 col-md-6 offset-md-3">
+                <select class="form-select" aria-label="Accommodation type selection options">
+                    <option selected>Accommodation Type</option>
+                    <option value="0">Tent</option>
+                    <option value="1">Van</option>
+                    <option value="2">Caravan</option>
+                    <option value="3">Yurt</option>
+                  </select>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

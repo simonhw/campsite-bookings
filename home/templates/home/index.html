@@ -5,7 +5,7 @@
 {% block content %}
 
 <!-- index.html content -->
-<div class="container-lg">
+<div class="container-lg mb-3">
     <div class="row">
         <div class="col-12 g-0">
             <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col-6 offset-3 py-3 px-2 text-center">
-            <button type="button" class="btn btn-danger btn-lg sedan-regular">Book Now!</button>
+            <a href="{% url 'booking' %}" type="button" class="btn btn-danger btn-lg sedan-regular">Book Now!</a>
         </div>
     </div>
     <div class="row">
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-10 offset-1 my-3">
+        <div class="col-10 offset-1">
             <img class="img-fluid" src="{% static 'images/tent-book-sm.webp' %}" alt="A coffe cup, camera, and book on the floor of a tent.">
         </div>
     </div>
