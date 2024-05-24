@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator 
+import uuid
 
 # Create your models here.
 class Booking(models.Model):
     ACCOMMODATION = ((0, 'Tent'), (1, 'Van'), (2, 'Caravan'), (3, 'Yurt'))
 
-    booking_id = models.CharField(max_length=15, unique=True)
+    booking_id = models.CharField(max_length=36, default=uuid.uuid4)
     booked_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='bookings'
     )
@@ -14,8 +16,8 @@ class Booking(models.Model):
     accommodation = models.IntegerField(choices=ACCOMMODATION, default=0)
     arrival = models.DateField()
     departure = models.DateField()
-    adults = models.PositiveIntegerField()
-    children = models.PositiveIntegerField()
+    adults = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1)])
+    children = models.PositiveIntegerField(default=0)
     booked = models.BooleanField(default=False)
 
     class Meta:

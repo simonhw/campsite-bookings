@@ -1,6 +1,6 @@
 from home.models import Booking
 from django import forms
-from django.forms.widgets import DateInput, SelectDateWidget
+from django.forms.widgets import DateInput, SelectDateWidget, NumberInput
 
 class BookingForm(forms.ModelForm):
     class Meta:
@@ -13,6 +13,6 @@ class BookingForm(forms.ModelForm):
             'children',
         )
         widgets = {
-            'arrival': DateInput(),
-            'departure': DateInput(),
+            'arrival': DateInput(attrs={'type': 'date'}),
+            'departure': DateInput(attrs={'type': 'date'}),
         }
