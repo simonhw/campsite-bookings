@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
 from .forms import BookingForm
 from datetime import datetime
 from django.contrib import messages
