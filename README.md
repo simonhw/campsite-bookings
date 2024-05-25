@@ -234,6 +234,11 @@ https://www.pexels.com/photo/thermos-books-and-photo-camera-on-camp-tent-6271651
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
+form cleaning 
+https://docs.djangoproject.com/en/5.0/ref/forms/validation/#cleaning-and-validating-fields-that-depend-on-each-other 
+
+login/logout redirect
+https://stackoverflow.com/questions/806835/django-redirect-to-previous-page-after-login
 
 ## Acknowledgements
 - [Creating Your First README - Kera Cudmore](https://github.com/kera-cudmore/readme-examples)
