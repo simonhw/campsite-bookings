@@ -12,11 +12,19 @@ def booking_view(request):
             booking = booking_form.save(commit=False)
             booking.booked_by = request.user
             booking.save()
-            # The below code is having no effect...
             messages.add_message(
                 request, messages.SUCCESS, "Booking received! Confirmation "
                 "will follow after payment is completed."
                 )
+        else:
+            booking_form = BookingForm(data=request.POST)
+            return render(
+                request,
+                "booking/booking.html",
+                {
+                    "booking_form": booking_form,
+                },
+            )
 
     booking_form = BookingForm()
 

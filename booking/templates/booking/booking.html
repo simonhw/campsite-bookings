@@ -20,6 +20,20 @@
             <p>Please <a href="{% url 'account_signup' %}">sign up</a> or <a href="{% url 'account_login' %}">log in</a> to making a booking.</p>
             {% endif %}
         </div>
+        <!-- displaying Django messages -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible
+                                fade show" id="msg" role="alert">
+                        {{ message | safe }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
         <form id="bookingForm" method="post">
             {{ booking_form | crispy }}
             {% csrf_token %}
@@ -28,7 +42,6 @@
             {% else %}
                 <button id="submitButton" type="submit" class="btn btn-signup sedan-regular btn-lg" disabled>Submit</button>
             {% endif %}
-
         </form>
     </div>
 </div>
