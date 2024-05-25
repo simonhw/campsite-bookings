@@ -35,7 +35,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li class="dropdown-item"><a href="" class="nav-link">About</a></li>
-                    <li class="dropdown-item"><a href="{% url 'booking' %}" class="nav-link">Bookings</a></li>
+                    <li class="dropdown-item"><a href="{% url 'booking' %}" class="nav-link">Book Now</a></li>
                     {% if user.is_authenticated %}
                     <li class="dropdown-item"><a href="{% url 'account_logout' %}?next={{request.path}}" class="nav-link">Log Out</a></li>
                     {%  else %}
