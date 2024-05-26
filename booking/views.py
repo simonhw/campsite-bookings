@@ -7,7 +7,7 @@ from django.contrib import messages
 
 # Create your views here.
 class UserBookings(generic.ListView):
-    queryset = Booking.objects.all().order_by('-arrival')
+    queryset = Booking.objects.all().order_by('arrival')
     template_name = 'booking/user_bookings.html'
 
 def booking_view(request):

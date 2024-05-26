@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container-lg mb-3">
     <div class="row">
-        <div class="col-12  g-0">
+        <div class="col-12 g-0">
             <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
         </div>
     </div>
@@ -13,13 +13,38 @@
         <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
             <h1 class="sedan-regular">My Bookings</h1>
         </div>
-        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
-            {% if user.is_authenticated %}
-            <p>You are logged in as: {{ user }}</p>
-            {% else %}
-            <p>Please <a href="{% url 'account_signup' %}?next={{request.path}}">sign up</a> or <a href="{% url 'account_login' %}?next={{request.path}}">log in</a> to view your bookings.</p>
+        <!-- Booking List Column -->
+        {% for booking in booking_list %}
+            {% if booking.booked_by == request.user %}
+                <div class="col-12">
+                    <div class="card mt-1 mb-1 text-center">
+                        <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
+                        <p class="m-1">Arrival: {{ booking.arrival }} </p>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Show More
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="m-1">Departure: {{ booking.departure }} </p>
+                                        <p class="m-1">Adults: {{ booking.adults }} </p>
+                                        {% if booking.children %}
+                                            <p class="m-1">Children: {{ booking.children }} </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endif %}
-        </div>
+        {% endfor %}
+        
     </div>
 </div>
 

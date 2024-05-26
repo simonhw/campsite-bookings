@@ -28,3 +28,6 @@ class Booking(models.Model):
             {dict(self.ACCOMMODATION).get(self.accommodation)} booking by \
                 {self.booked_by.first_name} {self.booked_by.last_name} | \
                     Booking id: {self.booking_id}'
+    
+    def string_from_tuple(self):
+        return f'{dict(self.ACCOMMODATION).get(self.accommodation)}'
