@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator 
+from datetime import date
 import uuid
 
 # Create your models here.
@@ -31,3 +32,6 @@ class Booking(models.Model):
     
     def string_from_tuple(self):
         return f'{dict(self.ACCOMMODATION).get(self.accommodation)}'
+
+    def is_in_past(self):
+        return date.today() > self.arrival

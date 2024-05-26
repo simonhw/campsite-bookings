@@ -15,29 +15,57 @@
         </div>
         <!-- Booking List Column -->
         {% for booking in booking_list %}
-            {% if booking.booked_by == request.user %}
+            {% if booking.booked_by == request.user and not booking.is_in_past %}
                 <div class="col-12">
                     <div class="card mt-1 mb-1 text-center">
                         <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
-                        <p class="m-1">Arrival: {{ booking.arrival }} </p>
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Show More
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="m-1">Departure: {{ booking.departure }} </p>
-                                        <p class="m-1">Adults: {{ booking.adults }} </p>
-                                        {% if booking.children %}
-                                            <p class="m-1">Children: {{ booking.children }} </p>
-                                        {% endif %}
-                                    </div>
-                                </div>
+                        <p class="m-1">{{ booking.arrival }} </p>
+                        <p>
+                            <a data-bs-toggle="collapse" href="#collapse{{ booking.booking_id }}" role="button" aria-expanded="false" aria-controls="collapse{{ booking.booking_id }}">
+                              More Details
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapse{{ booking.booking_id }}">
+                            <div class="card card-body">
+                                <p class="m-1">Arrival: {{ booking.arrival }} </p>
+                                <p class="m-1">Departure: {{ booking.departure }} </p>
+                                <p class="m-1">Adults: {{ booking.adults }} </p>
+                                {% if booking.children %}
+                                    <p class="m-1">Children: {{ booking.children }} </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% for booking in booking_list %}
+        {% if booking.booked_by == request.user and booking.is_in_past %}
+            <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+                <h1 class="sedan-regular mt-3 mb-1">Past Bookings</h1>
+            </div>
+        {% endif %}
+        {% endfor %}
+        <!-- Past Bookings List -->
+        {% for booking in booking_list %}
+            {% if booking.booked_by == request.user and booking.is_in_past %}
+                <div class="col-12">
+                    <div class="card mt-1 mb-1 text-center bg-secondary-subtle">
+                        <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
+                        <p class="m-1">{{ booking.arrival }} </p>
+                        <p>
+                            <a data-bs-toggle="collapse" href="#collapse{{ booking.booking_id }}" role="button" aria-expanded="false" aria-controls="collapse{{ booking.booking_id }}">
+                              More Details
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapse{{ booking.booking_id }}">
+                            <div class="card card-body">
+                                <p class="m-1">Arrival: {{ booking.arrival }} </p>
+                                <p class="m-1">Departure: {{ booking.departure }} </p>
+                                <p class="m-1">Adults: {{ booking.adults }} </p>
+                                {% if booking.children %}
+                                    <p class="m-1">Children: {{ booking.children }} </p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
