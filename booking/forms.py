@@ -1,7 +1,7 @@
 from home.models import Booking
 from django import forms
 from django.forms.widgets import DateInput, SelectDateWidget, NumberInput
-from datetime import date
+from datetime import date, timedelta
 from django.core.exceptions import ValidationError
 
 class BookingForm(forms.ModelForm):
@@ -17,11 +17,13 @@ class BookingForm(forms.ModelForm):
         widgets = {
             'arrival': DateInput(attrs={
                 'type': 'date',
-                'min': date.today(),
+                'id': 'arrival',
+                'min': date.today()
                 }),
             'departure': DateInput(attrs={
                 'type': 'date',
-                'min': date.today()
+                'id': 'departure',
+                'min': date.today() + timedelta(days=1)
                 }),
         }
 
