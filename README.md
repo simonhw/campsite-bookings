@@ -2,7 +2,7 @@
 
 This responsive website is designed to be viewed on a variety of screen sizes. Its purpose is to allow a visiting user to view information about and make a booking to stay at a campsite, and to allow an administrator to view all bookings and related information.
 
-Deployed program on Heroku: [Lakeview Campsite]()
+Deployed program on Heroku: [Lakeview Campsite](https://lakeview-campsite-8b683b53a1cd.herokuapp.com/)
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/simonhw/campsite-bookings)
 ![GitHub contributors](https://img.shields.io/github/contributors/simonhw/campsite-bookings)
@@ -231,6 +231,7 @@ https://www.pexels.com/photo/cheerful-traveling-couple-with-tent-near-lake-62715
 https://www.pexels.com/photo/white-tents-in-the-middle-of-the-woods-4993954/
 https://www.pexels.com/photo/tent-on-roof-of-car-on-lakeside-6271725/
 https://www.pexels.com/photo/thermos-books-and-photo-camera-on-camp-tent-6271651/
+https://www.pexels.com/photo/tent-and-camping-chair-on-river-shore-in-summer-6271619/
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
