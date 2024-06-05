@@ -2,17 +2,21 @@
 let arrivalInput = document.getElementById('arrival');
 let departureInput = document.getElementById('departure');
 
-arrivalInput.addEventListener('change', function() {
-    if (arrivalInput.value) { 
-        let arrivalDate = new Date(arrivalInput.value);
-        let oneDayAfter = new Date();
+// Check if form inputs exist on current page
+if (arrivalInput) {
 
-        oneDayAfter.setDate(arrivalDate.getDate() + 1);
+    arrivalInput.addEventListener('change', function () {
+        if (arrivalInput.value) {
+            let arrivalDate = new Date(arrivalInput.value);
+            let oneDayAfter = new Date();
 
-        let year = oneDayAfter.getFullYear();
-        let month = ('0' + (oneDayAfter.getMonth() + 1)).slice(-2);
-        let day = ('0' + oneDayAfter.getDate()).slice(-2);
-        
-        departureInput.min = `${year}-${month}-${day}`;
-    }
-});
+            oneDayAfter.setDate(arrivalDate.getDate() + 1);
+
+            let year = oneDayAfter.getFullYear();
+            let month = ('0' + (oneDayAfter.getMonth() + 1)).slice(-2);
+            let day = ('0' + oneDayAfter.getDate()).slice(-2);
+
+            departureInput.min = `${year}-${month}-${day}`;
+        }
+    });
+}
