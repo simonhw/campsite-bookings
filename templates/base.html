@@ -26,6 +26,7 @@
 
     <!-- Header -->
     <!-- Navigation and Links -->
+    <!-- 1. Navbar for Tablets and Smaller Screens -->
     <nav class="navbar navbar-expand-lg bg-green-4 d-lg-none d-xl-none">
         <div class="container-fluid">
             <a class="navbar-brand sedan-regular" href="{% url 'home' %}"><span class="text-custom-white">Lakeview Campsite</span></a>
@@ -45,6 +46,23 @@
                     {% endif %}
                 </ul>
             </div>
+        </div>
+    </nav>
+    <!-- 2. Navbar for Larger Screens -->
+    <nav class="navbar navbar-expand-lg bg-green-4 d-none d-lg-block d-xl-block d-xxl-block">
+        <div class="container-fluid">
+            <a class="navbar-brand sedan-regular" href="{% url 'home' %}"><span class="text-custom-white">Lakeview Campsite</span></a>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a href="" class="nav-link text-custom-white">About</a></li>
+                    <li class="nav-item"><a href="{% url 'booking' %}" class="nav-link text-custom-white">Book Now</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'user_bookings' %}" class="nav-link text-custom-white">My Bookings</a></li>
+                    <li class="nav-item"><a href="{% url 'account_logout' %}?next={{request.path}}" class="nav-link text-custom-white">Log Out</a></li>
+                    {%  else %}
+                    <li class="nav-item"><a href="{% url 'account_login' %}?next={{request.path}}" class="nav-link text-custom-white">Log In</a></li>
+                    <li class="nav-item"><a href="{% url 'account_signup' %}?next={{request.path}}" class="nav-link text-custom-white">Sign Up</a></li>
+                    {% endif %}
+                </ul>
         </div>
     </nav>
 
