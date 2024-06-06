@@ -14,7 +14,19 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
     The path for the template used to render the list is declared.
     '''
 
-    queryset = Booking.objects.all().order_by('-arrival')
+    
+    def get_queryset(self):
+        '''
+        Method to get a queryset of bookings.
+
+        The queryset is filtered so that only bookings made by the currently
+        logged in user can be seen. The bookings are ordered by arrival date
+        in descending order.
+        '''
+
+        queryset = Booking.objects.all().order_by('-arrival').filter(booked_by=self.request.user)
+        return queryset
+
     template_name = 'booking/user_bookings.html'
 
 
