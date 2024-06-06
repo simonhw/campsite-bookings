@@ -241,5 +241,8 @@ https://docs.djangoproject.com/en/5.0/ref/forms/validation/#cleaning-and-validat
 login/logout redirect
 https://stackoverflow.com/questions/806835/django-redirect-to-previous-page-after-login
 
+securing my-bookings/ against non-login users
+https://stackoverflow.com/questions/24619629/django-do-not-allow-users-to-see-pages-when-they-are-not-logged-in
+
 ## Acknowledgements
 - [Creating Your First README - Kera Cudmore](https://github.com/kera-cudmore/readme-examples)
