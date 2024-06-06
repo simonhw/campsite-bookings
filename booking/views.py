@@ -2,11 +2,12 @@ from django.shortcuts import render
 from .forms import BookingForm
 from .models import Booking
 from datetime import datetime
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.contrib import messages
 
 
-class UserBookings(generic.ListView):
+class UserBookings(LoginRequiredMixin, generic.ListView):
     '''
     View that shows bookings made by users ordered by arrival date in
     descending order.
