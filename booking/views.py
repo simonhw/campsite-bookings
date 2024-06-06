@@ -5,16 +5,17 @@ from datetime import datetime
 from django.views import generic
 from django.contrib import messages
 
-# Create your views here.
+
 class UserBookings(generic.ListView):
     '''
     View that shows bookings made by users ordered by arrival date in
     descending order.
-    The path for the template used to render the list is declared. 
+    The path for the template used to render the list is declared.
     '''
 
     queryset = Booking.objects.all().order_by('-arrival')
     template_name = 'booking/user_bookings.html'
+
 
 def booking_view(request):
     '''

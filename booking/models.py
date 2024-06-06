@@ -1,22 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator 
+from django.core.validators import MinValueValidator
 from datetime import date
 import uuid
 
-# Create your models here.
+
 class Booking(models.Model):
     '''
     A model for campsite bookings.
 
     Fields:
         ACCOMMODATION (Tuple) - A set of options for accomodation type.
-        booking_id (CharField) - A universally unique identifier for the 
+        booking_id (CharField) - A universally unique identifier for the
                                  booking.
         booked_by (ForeignKey) - The user who created the booking referenced
                                  from the Django User model.
         created_on (DateTimeField) - The date and time the booking was created.
-        updated_on (DateTimeField) - The date and time the booking was last 
+        updated_on (DateTimeField) - The date and time the booking was last
                                      updated.
         accommodation (IntegerField) - The integer choice corresponding to the
                                        string in the ACCOMODATION tuple.
@@ -27,7 +27,7 @@ class Booking(models.Model):
         children (PositiveIntegerField) - An integer number of children in the
                                           booking with a minimum value of 0.
         booked (BooleanField) - The booking status of the booking request:
-                                either booked or pending. 
+                                either booked or pending.
     '''
 
     ACCOMMODATION = ((0, 'Tent'), (1, 'Van'), (2, 'Caravan'), (3, 'Yurt'))
@@ -41,7 +41,8 @@ class Booking(models.Model):
     accommodation = models.IntegerField(choices=ACCOMMODATION, default=0)
     arrival = models.DateField()
     departure = models.DateField()
-    adults = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1)])
+    adults = models.PositiveIntegerField(default=1,
+                                         validators=[MinValueValidator(1)])
     children = models.PositiveIntegerField(default=0)
     booked = models.BooleanField(default=False)
 
@@ -52,11 +53,11 @@ class Booking(models.Model):
         '''
 
         ordering = ["arrival"]
-    
+
     def __str__(self):
         '''
         Method to return a string with relevant booking details.
-        
+
         Returns the arrival date, accomodation type, name of the user who made
         the booking, the the unique booking ID.
         '''
@@ -65,7 +66,7 @@ class Booking(models.Model):
             {dict(self.ACCOMMODATION).get(self.accommodation)} booking by \
                 {self.booked_by.first_name} {self.booked_by.last_name} | \
                     Booking id: {self.booking_id}'
-    
+
     def string_from_tuple(self):
         '''
         Method to return the string value of the accomodation type from the

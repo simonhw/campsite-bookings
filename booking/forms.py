@@ -55,7 +55,8 @@ class BookingForm(forms.ModelForm):
         departure = cleaned_data.get('departure')
 
         if arrival > departure:
-            raise ValidationError('Please select a departure date after your arrival.')
+            raise ValidationError('Please select a departure date after your'
+                                  ' arrival.')
 
         if arrival == departure:
             raise ValidationError('The minimum length of stay is one night.')
