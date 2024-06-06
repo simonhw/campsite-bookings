@@ -7,6 +7,10 @@ from django.views import generic
 #     template_name = 'home/index.html'
 
 def index_page(request):
+    '''
+    View that renders the index.html page.
+    '''
+
     return render(
         request,
         "home/index.html"
