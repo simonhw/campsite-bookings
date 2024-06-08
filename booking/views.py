@@ -14,6 +14,8 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
     The path for the template used to render the list is declared.
     '''
 
+    template_name = 'booking/user_bookings.html'
+
     
     def get_queryset(self):
         '''
@@ -24,10 +26,12 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
         in descending order.
         '''
 
-        queryset = Booking.objects.all().order_by('-arrival').filter(booked_by=self.request.user)
+        queryset = Booking.objects.all().order_by(
+            '-arrival'
+            ).filter(
+                booked_by=self.request.user
+                )
         return queryset
-
-    template_name = 'booking/user_bookings.html'
 
 
 def booking_view(request):

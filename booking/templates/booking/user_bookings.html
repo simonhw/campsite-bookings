@@ -38,6 +38,8 @@
                     </div>
                 </div>
             {% endif %}
+            {% empty %}
+                <p>You have no upcoming bookings.</p>
         {% endfor %}
 
         <!-- Past Bookings List -->
@@ -69,6 +71,8 @@
                     </div>
                 </div>
             {% endif %}
+            {% empty %}
+                <p>You have no past bookings.</p>
         {% endfor %} 
     </div>
 </div>
