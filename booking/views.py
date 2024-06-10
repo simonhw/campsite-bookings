@@ -1,30 +1,32 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .forms import BookingForm
 from .models import Booking
 from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 
 class UserBookings(LoginRequiredMixin, generic.ListView):
-    '''
+    """
     View that shows bookings made by users ordered by arrival date in
     descending order.
     The path for the template used to render the list is declared.
-    '''
+    """
 
     template_name = 'booking/user_bookings.html'
 
     
     def get_queryset(self):
-        '''
+        """
         Method to get a queryset of bookings.
 
         The queryset is filtered so that only bookings made by the currently
         logged in user can be seen. The bookings are ordered by arrival date
         in descending order.
-        '''
+        """
 
         queryset = Booking.objects.all().order_by(
             '-arrival'
@@ -35,7 +37,7 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
 
 
 def booking_view(request):
-    '''
+    """
     Method to handle the booking form.
 
     Method processes the user-submitted data and checks if it is valid.
@@ -44,7 +46,7 @@ def booking_view(request):
     A message is shown on the front-end to denote a successful booking.
     If the data is invalid, the form is re-rendered and shows appropriate
     error messages.
-    '''
+    """
 
     if request.method == 'POST':
         booking_form = BookingForm(data=request.POST)
@@ -75,3 +77,34 @@ def booking_view(request):
             "booking_form": booking_form,
         },
     )
+
+
+@login_required
+def booking_edit(request, id):
+    """
+    Method to allow user edit a booking.
+
+    Method takes in the booking id and fills the form with the relevant data
+    for the user to edit.
+
+    TO-DO: Method verifies that requested booking is being viewed by the user that
+    created it. 
+    """
+
+    booking = get_object_or_404(Booking, id=id)
+    print(f'Booking found: {booking}') # Debugging
+
+    if request.method == 'GET':
+        booking_form = BookingForm(instance=booking)
+        print(f'Form initialised: {booking_form}') # Debugging
+        return render(request, 'booking/booking.html', {'booking_form': booking_form, 'id': id})
+    elif request.method == 'POST':
+        booking_form = BookingForm(request.POST, instance=booking)
+        print(f'Form initialised: {booking_form}') # Debugging
+        if booking_form.is_valid():
+            booking_form.save()
+            return redirect('user_bookings')
+        else:
+            return HttpResponseBadRequest('Invalid form data. Please check your inputs.')
+    else:
+        return HttpResponseBadRequest('Unsupported request method.')

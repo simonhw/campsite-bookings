@@ -11,7 +11,7 @@
     </div>
     <div class="row mt-3">
         <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
-            <h1 class="sedan-regular">Book Your Stay</h1>
+            <h1 class="sedan-regular">{% if id %} Edit {% else %} Book {% endif %} Your Stay</h1>
         </div>
         <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
             {% if user.is_authenticated %}
@@ -24,7 +24,7 @@
             {{ booking_form | crispy }}
             {% csrf_token %}
             {% if user.is_authenticated %}
-                <button id="submitButton" type="submit" class="btn btn-danger btn-lg sedan-regular">Submit</button>
+                <button id="submitButton" type="submit" class="btn btn-danger btn-lg sedan-regular">{% if id %} Update {% else %} Submit {% endif %}</button>
             {% else %}
                 <button id="submitButton" type="submit" class="btn btn-signup sedan-regular btn-lg" disabled>Submit</button>
             {% endif %}

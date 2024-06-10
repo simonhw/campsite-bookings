@@ -33,6 +33,9 @@
                                 {% if booking.children %}
                                     <p class="m-1">Children: {{ booking.children }} </p>
                                 {% endif %}
+                                <a class="btn btn-edit" href="{% url 'booking_edit' booking.id %}">
+                                    Edit
+                                </a>
                             </div>
                         </div>
                     </div>

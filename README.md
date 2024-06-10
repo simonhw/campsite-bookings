@@ -244,5 +244,8 @@ https://stackoverflow.com/questions/806835/django-redirect-to-previous-page-afte
 securing my-bookings/ against non-login users
 https://stackoverflow.com/questions/24619629/django-do-not-allow-users-to-see-pages-when-they-are-not-logged-in
 
+editing a django form
+https://www.pythontutorial.net/django-tutorial/django-edit-form/ 
+
 ## Acknowledgements
 - [Creating Your First README - Kera Cudmore](https://github.com/kera-cudmore/readme-examples)
