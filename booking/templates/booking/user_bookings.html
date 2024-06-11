@@ -15,34 +15,85 @@
         </div>
         <!-- Booking List Column -->
         {% for booking in booking_list %}
-            {% if not booking.is_in_past %}
-                <div class="col-12">
-                    <div class="card mt-1 mb-1 text-center">
-                        <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
-                        <p class="m-1">{{ booking.arrival }} </p>
-                        <p>
-                            <a data-bs-toggle="collapse" href="#collapse{{ booking.booking_id }}" role="button" aria-expanded="false" aria-controls="collapse{{ booking.booking_id }}">
-                              More Details
-                            </a>
-                        </p>
-                        <div class="collapse" id="collapse{{ booking.booking_id }}">
-                            <div class="card card-body">
-                                <p class="m-1">Arrival: {{ booking.arrival }} </p>
-                                <p class="m-1">Departure: {{ booking.departure }} </p>
-                                <p class="m-1">Adults: {{ booking.adults }} </p>
-                                {% if booking.children %}
-                                    <p class="m-1">Children: {{ booking.children }} </p>
-                                {% endif %}
-                                <a class="btn btn-edit" href="{% url 'booking_edit' booking.id %}">
+        {% if not booking.is_in_past %}
+        <div class="col-12">
+            <div class="card mt-1 mb-1 text-center">
+                <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
+                <p class="m-1">{{ booking.arrival }} </p>
+                <p>
+                    <a data-bs-toggle="collapse" href="#collapse{{ booking.booking_id }}" role="button"
+                        aria-expanded="false" aria-controls="collapse{{ booking.booking_id }}">
+                        More Details
+                    </a>
+                </p>
+                <div class="collapse" id="collapse{{ booking.booking_id }}">
+                    <div class="card card-body">
+                        <p class="m-1">Arrival: {{ booking.arrival }} </p>
+                        <p class="m-1">Departure: {{ booking.departure }} </p>
+                        <p class="m-1">Adults: {{ booking.adults }} </p>
+                        {% if booking.children %}
+                        <p class="m-1">Children: {{ booking.children }} </p>
+                        {% endif %}
+                        {% if not booking.is_within_48h %}
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <a class="btn btn-outline-dark" href="{% url 'booking_edit' booking.id %}">
                                     Edit
                                 </a>
                             </div>
+                            <div class="col-6">
+                                <a class="btn btn-outline-danger">
+                                    Delete
+                                </a>
+                            </div>
                         </div>
+                        {% else %}
+                        <!-- Button trigger modal -->
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Edit
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">It is not possible to amend your booking.
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Your arrival date in within the next 48 hours. Please contact us directly to discuss your booking.</p>
+                                        <p>Phone: <a href="tel:555-1234567" aria-label="Call us (opens your phone app or program and auto-fills our phone number)">(555) 123-4567</a></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Understood</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
-            {% endif %}
-            {% empty %}
-                <p>You have no upcoming bookings.</p>
+            </div>
+        </div>
+        {% endif %}
+        {% empty %}
+        <p>You have no upcoming bookings.</p>
         {% endfor %}
 
         <!-- Past Bookings List -->
@@ -63,8 +114,8 @@
                         </p>
                         <div class="collapse" id="collapse{{ booking.booking_id }}">
                             <div class="card card-body bg-secondary-subtle">
-                                <p class="m-1">Arrival: {{ booking.arrival }} </p>
-                                <p class="m-1">Departure: {{ booking.departure }} </p>
+                                <p class="m-1">Arrived: {{ booking.arrival }} </p>
+                                <p class="m-1">Departed: {{ booking.departure }} </p>
                                 <p class="m-1">Adults: {{ booking.adults }} </p>
                                 {% if booking.children %}
                                     <p class="m-1">Children: {{ booking.children }} </p>

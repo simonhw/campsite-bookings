@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
-from datetime import date
+from datetime import date, timedelta
 import uuid
 
 
 class Booking(models.Model):
-    '''
+    """
     A model for campsite bookings.
 
     Fields:
@@ -28,7 +28,7 @@ class Booking(models.Model):
                                           booking with a minimum value of 0.
         booked (BooleanField) - The booking status of the booking request:
                                 either booked or pending.
-    '''
+    """
 
     ACCOMMODATION = ((0, 'Tent'), (1, 'Van'), (2, 'Caravan'), (3, 'Yurt'))
 
@@ -47,20 +47,20 @@ class Booking(models.Model):
     booked = models.BooleanField(default=False)
 
     class Meta:
-        '''
+        """
         Meta class for the booking form. Specifies how to sort the bookings
         in querysets.
-        '''
+        """
 
         ordering = ["arrival"]
 
     def __str__(self):
-        '''
+        """
         Method to return a string with relevant booking details.
 
         Returns the arrival date, accomodation type, name of the user who made
         the booking, the the unique booking ID.
-        '''
+        """
 
         return f'{self.arrival} | \
             {dict(self.ACCOMMODATION).get(self.accommodation)} booking by \
@@ -68,17 +68,25 @@ class Booking(models.Model):
                     Booking id: {self.booking_id}'
 
     def string_from_tuple(self):
-        '''
+        """
         Method to return the string value of the accomodation type from the
         ACCOMODATION tuple.
-        '''
+        """
 
         return f'{dict(self.ACCOMMODATION).get(self.accommodation)}'
 
     def is_in_past(self):
-        '''
+        """
         Method to return a boolean True if the arrival date is in the past,
         and False if it is not.
-        '''
+        """
 
         return date.today() > self.arrival
+
+    def is_within_48h(self):
+        """
+        Method to return a boolean True is the arrival date is within the next
+        48 hours, and false if it is not.
+        """
+
+        return self.arrival < date.today() + timedelta(hours=48)
