@@ -6,17 +6,26 @@ let departureInput = document.getElementById('departure');
 if (arrivalInput) {
 
     arrivalInput.addEventListener('change', function () {
+        console.log('arrivalInput was changed!');
         if (arrivalInput.value) {
             let arrivalDate = new Date(arrivalInput.value);
-            let oneDayAfter = new Date();
+            console.log('arrivalDate is ', arrivalDate);
+            let oneDayAfter = new Date(arrivalDate);
 
             oneDayAfter.setDate(arrivalDate.getDate() + 1);
+            console.log('oneDayAfter is ', oneDayAfter);
+
 
             let year = oneDayAfter.getFullYear();
+            console.log('year is ', year);
             let month = ('0' + (oneDayAfter.getMonth() + 1)).slice(-2);
+            console.log('month is ', month);
             let day = ('0' + oneDayAfter.getDate()).slice(-2);
+            console.log('day is ', day);
 
             departureInput.min = `${year}-${month}-${day}`;
+            console.log('departureInput.min is ', departureInput.min);
+
         }
     });
 }
