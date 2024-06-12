@@ -33,7 +33,6 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
             ).filter(
                 booked_by=self.request.user
                 )
-        print(queryset) # Debugging
         return queryset
 
 
