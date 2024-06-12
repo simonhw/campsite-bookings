@@ -33,6 +33,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     '8000-simonhw-campsitebooking-a9kf66t9e8o.ws-eu111.gitpod.io',
     '8000-simonhw-campsitebooking-a9kf66t9e8o.ws-eu114.gitpod.io',
+    '8000-simonhw-campsitebooking-wsq90atmkh4.ws.codeinstitute-ide.net',
     '.herokuapp.com'
     ]
 
@@ -113,7 +114,8 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.gitpod.io",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
+    "https://*.codeinstitute-ide.net"
 ]
 
 # Password validation
