@@ -247,5 +247,8 @@ https://stackoverflow.com/questions/24619629/django-do-not-allow-users-to-see-pa
 editing a django form
 https://www.pythontutorial.net/django-tutorial/django-edit-form/ 
 
+solving departure date bug
+https://stackoverflow.com/questions/563406/how-to-add-days-to-date 
+
 ## Acknowledgements
 - [Creating Your First README - Kera Cudmore](https://github.com/kera-cudmore/readme-examples)
