@@ -106,3 +106,27 @@ def booking_edit(request, id):
             return HttpResponseBadRequest('Invalid form data. Please check your inputs.')
     else:
         return HttpResponseBadRequest('Unsupported request method.')
+
+
+@login_required
+def booking_delete(request, id):
+    """
+    Method to allow a user to delete their booking.
+
+    Method takes in the booking ID and 
+    """
+
+    booking = get_object_or_404(Booking, id=id)
+
+    if booking.booked_by == request.user and not booking.is_within_48h():
+        booking.delete()
+        messages.add_message(
+                request, messages.SUCCESS, "Booking successfully deleted!"
+                )
+    else:
+        messages.add_message(
+            request, messages.ERROR, "It was not possible to delete this"
+            " booking."
+        )
+    return redirect('user_bookings')
+    

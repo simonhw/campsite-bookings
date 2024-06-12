@@ -42,9 +42,10 @@
                                 </a>
                             </div>
                             <div class="col-6">
-                                <a class="btn btn-outline-danger">
+                                <button type="button" class="btn btn-outline-danger btn-delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal" booking_id="{{ booking.id }}">
                                     Delete
-                                </a>
+                                </button>
                             </div>
                         </div>
                         {% else %}
@@ -53,38 +54,15 @@
                         <div class="row mt-2">
                             <div class="col-6">
                                 <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                    data-bs-target="#within48hModal">
                                     Edit
                                 </button>
                             </div>
                             <div class="col-6">
                                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                    data-bs-target="#within48hModal">
                                     Delete
                                 </button>
-                            </div>
-                        </div>
-                        <!-- Modal -->
-                        <!-- Code taken from Bootstrap Documentation -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">It is not possible to amend your booking.
-                                        </h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Your arrival date in within the next 48 hours. Please contact us directly to discuss your booking.</p>
-                                        <p>Phone: <a href="tel:555-1234567" aria-label="Call us (opens your phone app or program and auto-fills our phone number)">(555) 123-4567</a></p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Understood</button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         {% endif %}
@@ -129,6 +107,56 @@
             {% empty %}
                 <p>You have no past bookings.</p>
         {% endfor %} 
+    </div>
+</div>
+
+<!-- Modals -->
+<!-- Amending a booking within 48 hours  -->
+    <!-- Code taken from Bootstrap Documentation -->
+<div class="modal fade" id="within48hModal" tabindex="-1" aria-labelledby="within48hModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="within48hModalLabel">It is not possible to amend your booking.
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Your arrival date in within the next 48 hours. Please contact us directly to discuss your booking.
+                </p>
+                <p>Phone: <a href="tel:555-1234567"
+                        aria-label="Call us (opens your phone app or program and auto-fills our phone number)">(555)
+                        123-4567</a></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Confirming User Delete Action -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete booking?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure you want to delete your booking?
+                    This action cannot be undone.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancel
+                </button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">
+                    Delete
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
