@@ -77,11 +77,11 @@ class Booking(models.Model):
 
     def is_in_past(self):
         """
-        Method to return a boolean True if the arrival date is in the past,
+        Method to return a boolean True if the departure date is in the past,
         and False if it is not.
         """
 
-        return date.today() > self.arrival
+        return date.today() > self.departure
 
     def is_within_48h(self):
         """
@@ -90,3 +90,11 @@ class Booking(models.Model):
         """
 
         return self.arrival < date.today() + timedelta(hours=48)
+
+    def full_name(self):
+        """
+        Method to return the full name of the user who made a given booking
+        in the form of a string.
+        """
+
+        return f'{self.booked_by.first_name} {self.booked_by.last_name}'

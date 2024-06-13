@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-lg mb-3">
+    <div class="row">
+        <div class="col-12 g-0">
+            <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h1 class="sedan-regular">Manage Bookings</h1>
+        </div>
+        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h2 class="sedan-regular">Upcoming Bookings</h2>
+        </div>
+        <!-- Booking List Column -->
+        {% for booking in booking_list %}
+        {% if not booking.is_in_past %}
+        <div class="col-12">
+            <div class="card mt-1 mb-1 text-center">
+                <h5 class='sedan-regular mt-2'>{{ booking.full_name }}</h5>
+                <p class="m-1">{{ booking.string_from_tuple }} Booking</p>
+                <p class="m-1">{{ booking.arrival }} - {{ booking.departure }} </p>
+                <p class="m-1">Adults: {{ booking.adults }}
+                {% if booking.children %}
+                - Children: {{ booking.children }} </p>
+                {% else %}
+                </p>
+                {% endif %}
+                <div class="row m-3">
+                    <div class="col-6">
+                        <a class="btn btn-outline-dark" href="{% url 'booking_edit' booking.id %}">
+                            Manage
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-outline-danger btn-delete" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal" booking_id="{{ booking.id }}">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% empty %}
+        <p>There are no upcoming bookings.</p>
+        {% endfor %}
+
+        <!-- Past Bookings List -->
+        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h2 class="sedan-regular mt-3 mb-1">Past Bookings</h2>
+        </div>
+        {% for booking in booking_list %}
+            {% if booking.is_in_past %}
+                <div class="col-12">
+                    <div class="card mt-1 mb-1 text-center bg-secondary-subtle">
+                        <h5 class='sedan-regular mt-2'>{{ booking.full_name }}</h5>
+                <p class="m-1">{{ booking.string_from_tuple }} Booking</p>
+                <p class="m-1">{{ booking.arrival }} - {{ booking.departure }} </p>
+                <p class="m-1">Adults: {{ booking.adults }}
+                {% if booking.children %}
+                - Children: {{ booking.children }} </p>
+                {% else %}
+                </p>
+                {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+            {% empty %}
+                <p>There are no past bookings.</p>
+        {% endfor %} 
+    </div>
+</div>
+
+<!-- Modals -->
+<!-- Confirming User Delete Action -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete booking?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure you want to delete this booking?
+                    This action cannot be undone.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancel
+                </button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/user_bookings.js' %}"></script>
+{% endblock content %}

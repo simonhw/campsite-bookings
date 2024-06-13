@@ -39,6 +39,9 @@
                     <li class="dropdown-item"><a href="{% url 'booking' %}" class="nav-link">Book Now</a></li>
                     {% if user.is_authenticated %}
                     <li class="dropdown-item"><a href="{% url 'user_bookings' %}" class="nav-link">My Bookings</a></li>
+                    {% if user.is_superuser %}
+                    <li class="dropdown-item"><a href="{% url 'manage_bookings' %}" class="nav-link">Manage Bookings</a></li>
+                    {% endif %}
                     <li class="dropdown-item"><a href="{% url 'account_logout' %}?next={{request.path}}" class="nav-link">Log Out</a></li>
                     {%  else %}
                     <li class="dropdown-item"><a href="{% url 'account_login' %}?next={{request.path}}" class="nav-link">Log In</a></li>

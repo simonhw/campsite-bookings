@@ -7,6 +7,12 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import UserPassesTestMixin
+
+
+class SuperUserCheck(UserPassesTestMixin, generic.ListView):
+    def test_func(self):
+        return self.request.user.is_superuser
 
 
 class UserBookings(LoginRequiredMixin, generic.ListView):
@@ -33,6 +39,27 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
             ).filter(
                 booked_by=self.request.user
                 )
+        return queryset
+
+
+class AllBookings(SuperUserCheck, generic.ListView):
+    """
+    View that shows all bookings ordered by arrival date in descending order.
+    The path for the template used to render the list is declared.
+    """
+
+    template_name = 'booking/manage_bookings.html'
+
+    
+    def get_queryset(self):
+        """
+        Method to get a queryset of bookings.
+
+        The queryset is filtered so that all bookings are listed ordered by
+        arrival date in descending order.
+        """
+
+        queryset = Booking.objects.all().order_by('-arrival')
         return queryset
 
 
