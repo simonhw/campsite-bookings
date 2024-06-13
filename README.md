@@ -250,5 +250,8 @@ https://www.pythontutorial.net/django-tutorial/django-edit-form/
 solving departure date bug
 https://stackoverflow.com/questions/563406/how-to-add-days-to-date 
 
+check superuser for view
+https://stackoverflow.com/questions/12003736/django-login-required-decorator-for-a-superuser 
+
 ## Acknowledgements
 - [Creating Your First README - Kera Cudmore](https://github.com/kera-cudmore/readme-examples)
