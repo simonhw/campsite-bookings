@@ -157,6 +157,10 @@ A key requirement for this project was for users to be able to create, read, upd
 * Site users may **delete** by removing their reviews if desired.
 * Admin users may **delete** by removing information, photos, or reviews.
 
+### Admin View
+The bookings are displayed with more details for the admin user without the use of a dropdown.
+The wording changes on the booking page when the admin user edits something.
+
 ### Features to be Implemented
 
 ## Technologies Used
@@ -232,6 +236,7 @@ https://www.pexels.com/photo/white-tents-in-the-middle-of-the-woods-4993954/
 https://www.pexels.com/photo/tent-on-roof-of-car-on-lakeside-6271725/
 https://www.pexels.com/photo/thermos-books-and-photo-camera-on-camp-tent-6271651/
 https://www.pexels.com/photo/tent-and-camping-chair-on-river-shore-in-summer-6271619/
+https://www.pexels.com/photo/man-in-green-sweater-lost-in-forest-using-smartphone-10374361/
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
