@@ -60,6 +60,9 @@
                     <li class="nav-item"><a href="{% url 'booking' %}" class="nav-link text-custom-white">Book Now</a></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a href="{% url 'user_bookings' %}" class="nav-link text-custom-white">My Bookings</a></li>
+                    {% if user.is_superuser %}
+                    <li class="nav-item"><a href="{% url 'manage_bookings' %}" class="nav-link text-custom-white">Manage Bookings</a></li>
+                    {% endif %}
                     <li class="nav-item"><a href="{% url 'account_logout' %}?next={{request.path}}" class="nav-link text-custom-white">Log Out</a></li>
                     {%  else %}
                     <li class="nav-item"><a href="{% url 'account_login' %}?next={{request.path}}" class="nav-link text-custom-white">Log In</a></li>
