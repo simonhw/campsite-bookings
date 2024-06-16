@@ -121,10 +121,10 @@ def booking_edit(request, id):
 
     booking = get_object_or_404(Booking, id=id)
 
-    if not booking.booked_by == request.user:
+    if not booking.booked_by == request.user and not request.user.is_superuser:
         raise PermissionDenied
     else:
-        if booking.booked_by == request.user and request.method == 'GET':
+        if booking.booked_by == request.user or request.user.is_superuser and request.method == 'GET':
             booking_form = BookingForm(instance=booking)
             return render(request, 'booking/booking.html', {'booking_form': booking_form, 'id': id})
         elif request.method == 'POST':
@@ -148,11 +148,14 @@ def booking_delete(request, id):
 
     booking = get_object_or_404(Booking, id=id)
 
-    if not booking.booked_by == request.user:
+    if not booking.booked_by == request.user and not request.user.is_superuser:
         raise PermissionDenied
     else:
-        if booking.booked_by == request.user and not booking.is_within_48h():
+        console.log('made it to the else block')
+        if booking.booked_by == request.user or request.user.is_superuser and not booking.is_within_48h():
+            console.log('passed the second if check')
             booking.delete()
+            console.log('attempted to delete booking')
             messages.add_message(
                     request, messages.SUCCESS, "Booking successfully deleted!"
                     )
