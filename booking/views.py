@@ -8,6 +8,7 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.core.exceptions import PermissionDenied
 
 
 class SuperUserCheck(UserPassesTestMixin, generic.ListView):
@@ -120,18 +121,21 @@ def booking_edit(request, id):
 
     booking = get_object_or_404(Booking, id=id)
 
-    if request.method == 'GET':
-        booking_form = BookingForm(instance=booking)
-        return render(request, 'booking/booking.html', {'booking_form': booking_form, 'id': id})
-    elif request.method == 'POST':
-        booking_form = BookingForm(request.POST, instance=booking)
-        if booking_form.is_valid():
-            booking_form.save()
-            return redirect('user_bookings')
-        else:
-            return HttpResponseBadRequest('Invalid form data. Please check your inputs.')
+    if not booking.booked_by == request.user:
+        raise PermissionDenied
     else:
-        return HttpResponseBadRequest('Unsupported request method.')
+        if booking.booked_by == request.user and request.method == 'GET':
+            booking_form = BookingForm(instance=booking)
+            return render(request, 'booking/booking.html', {'booking_form': booking_form, 'id': id})
+        elif request.method == 'POST':
+            booking_form = BookingForm(request.POST, instance=booking)
+            if booking_form.is_valid():
+                booking_form.save()
+                return redirect('user_bookings')
+            else:
+                return HttpResponseBadRequest('Invalid form data. Please check your inputs.')
+        else:
+            return HttpResponseBadRequest('Unsupported request method.')
 
 
 @login_required
@@ -144,15 +148,18 @@ def booking_delete(request, id):
 
     booking = get_object_or_404(Booking, id=id)
 
-    if booking.booked_by == request.user and not booking.is_within_48h():
-        booking.delete()
-        messages.add_message(
-                request, messages.SUCCESS, "Booking successfully deleted!"
-                )
+    if not booking.booked_by == request.user:
+        raise PermissionDenied
     else:
-        messages.add_message(
-            request, messages.ERROR, "It was not possible to delete this"
-            " booking."
-        )
-    return redirect('user_bookings')
+        if booking.booked_by == request.user and not booking.is_within_48h():
+            booking.delete()
+            messages.add_message(
+                    request, messages.SUCCESS, "Booking successfully deleted!"
+                    )
+        else:
+            messages.add_message(
+                request, messages.ERROR, "It was not possible to delete this"
+                " booking."
+            )
+        return redirect('user_bookings')
     
