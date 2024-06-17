@@ -3,10 +3,15 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container-lg mb-3">
-    <div class="row">
-        <div class="col-12  g-0">
+<div class="container-fluid mb-3">
+    <div class="row d-lg-none d-xl-none">
+        <div class="col-12 g-0">
             <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
+        </div>
+    </div>
+    <div class="row d-none d-lg-block d-xl-block d-xxl-block">
+        <div class="col-12 g-0">
+            <img class="img-fluid w-100" src="{% static 'images/wide-tent-lake.webp' %}" alt="A tent and chair in front of a lake.">
         </div>
     </div>
     <div class="row mt-3">
@@ -29,6 +34,53 @@
                 <button id="submitButton" type="submit" class="btn btn-signup sedan-regular btn-lg" disabled>Submit</button>
             {% endif %}
         </form>
+    </div>
+    <div class="row mt-4 bg-green-3 pt-3">
+        <div class="col-sm-12">
+            <h2 class="sedan-regular text-white">Booking Information</h2>
+            <hr class="text-custom-white">
+        </div>
+        <div class="col-sm-12">
+            <h5 class="sedan-regular text-white">Check-In/Check-Out</h5>
+            <p class="text-custom-white">Check-in is from 14:00 to 20:00 every day. Check-out is strictly at 11:00.</p>
+            <h5 class="sedan-regular text-white">Payment</h5>
+            <p class="text-custom-white">A valid ID and credit card are required for booking. Full payment is due at the time of reservation.</p>
+            <h5 class="sedan-regular text-white">Cancellation Policy</h5>
+            <p class="text-custom-white">Cancellations made 2 days prior to the arrival date will receive a full refund. Cancellations within
+                2 days of arrival will forfeit the full booking amount.</p>
+            <h5 class="sedan-regular text-white">Noise Curfew</h5>
+            <p class="text-custom-white">Quiet hours are from 22:00 to 07:00 to ensure a peaceful environment for all guests.</p>
+            <hr class="text-custom-white">
+            <p class="text-custom-white">For any special requests or further information, please contact our booking office at <a
+                    href="tel:555-1234567"
+                    aria-label="Call us (opens your phone app or program and auto-fills our phone number)">(555)
+                    123-4567</a> or <a href="mailto:info@lakeviewcamp.com"
+                    aria-label="Email us (opens your email app or program with our email in the To field)">info@lakeviewcamp.com</a>.
+                We look forward to hosting you!</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <h2 class="sedan-regular">Terms and Conditions</h2>
+        </div>
+        <div class="col-sm-12">
+            <h5 class="sedan-regular">Check-In/Check-Out</h5>
+            <p>Check-in is from 14:00 to 20:00 every day. Check-out is strictly at 11:00.</p>
+            <h5 class="sedan-regular">Payment</h5>
+            <p>A valid ID and credit card are required for booking. Full payment is due at the time of reservation.</p>
+            <h5 class="sedan-regular">Cancellation Policy</h5>
+            <p>Cancellations made 2 days prior to the arrival date will receive a full refund. Cancellations within
+                2 days of arrival will forfeit the full booking amount.</p>
+            <h5 class="sedan-regular">Noise Curfew</h5>
+            <p>Quiet hours are from 22:00 to 07:00 to ensure a peaceful environment for all guests.</p>
+            <hr>
+            <p>For any special requests or further information, please contact our booking office at <a
+                    href="tel:555-1234567"
+                    aria-label="Call us (opens your phone app or program and auto-fills our phone number)">(555)
+                    123-4567</a> or <a href="mailto:info@lakeviewcamp.com"
+                    aria-label="Email us (opens your email app or program with our email in the To field)">info@lakeviewcamp.com</a>.
+                We look forward to hosting you!</p>
+        </div>
     </div>
 </div>
 

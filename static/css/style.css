@@ -12,12 +12,28 @@
     font-style: italic;
 }
 
+.bg-green-1 {
+    background-color: #6cc678;
+}
+
+.bg-green-2 {
+    background-color: #2a9134;
+}
+
+.bg-green-3 {
+    background-color: #137547;
+}
+
 .bg-green-4 {
     background-color: #054A29;
 }
 
 .text-custom-white {
     color: #D4EDDA;
+}
+
+.text-white {
+    color: white;
 }
 
 .social-link {
