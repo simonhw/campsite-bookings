@@ -131,7 +131,10 @@ def booking_edit(request, id):
             booking_form = BookingForm(request.POST, instance=booking)
             if booking_form.is_valid():
                 booking_form.save()
-                return redirect('user_bookings')
+                if request.user.is_superuser:
+                    return redirect ('manage_bookings')
+                else:
+                    return redirect('user_bookings')
             else:
                 return HttpResponseBadRequest('Invalid form data. Please check your inputs.')
         else:
@@ -145,17 +148,14 @@ def booking_delete(request, id):
 
     Method takes in the booking ID and 
     """
-
+    print('booking_delete being called')
     booking = get_object_or_404(Booking, id=id)
-
+    
     if not booking.booked_by == request.user and not request.user.is_superuser:
         raise PermissionDenied
     else:
-        console.log('made it to the else block')
         if booking.booked_by == request.user or request.user.is_superuser and not booking.is_within_48h():
-            console.log('passed the second if check')
             booking.delete()
-            console.log('attempted to delete booking')
             messages.add_message(
                     request, messages.SUCCESS, "Booking successfully deleted!"
                     )
@@ -164,5 +164,8 @@ def booking_delete(request, id):
                 request, messages.ERROR, "It was not possible to delete this"
                 " booking."
             )
-        return redirect('user_bookings')
-    
+        if request.user.is_superuser:
+            return redirect ('manage_bookings')
+        else:
+            return redirect('user_bookings')
+        
