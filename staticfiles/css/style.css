@@ -28,6 +28,10 @@
     background-color: #054A29;
 }
 
+.list-group-item ul {
+    list-style-type: disc;
+}
+
 .text-custom-white {
     color: #D4EDDA;
 }
