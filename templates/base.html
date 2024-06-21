@@ -1,6 +1,7 @@
 {% load static %}
 
 {% url 'home' as home_url %}
+{% url 'about' as about_url %}
 {% url 'booking' as booking_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
@@ -35,7 +36,7 @@
                     <i class="fa-solid fa-bars text-custom-white"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li class="dropdown-item"><a href="" class="nav-link">About</a></li>
+                    <li class="dropdown-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
                     <li class="dropdown-item"><a href="{% url 'booking' %}" class="nav-link">Book Now</a></li>
                     {% if user.is_authenticated %}
                     <li class="dropdown-item"><a href="{% url 'user_bookings' %}" class="nav-link">My Bookings</a></li>
@@ -56,7 +57,7 @@
         <div class="container-fluid">
             <a class="navbar-brand sedan-regular" href="{% url 'home' %}"><span class="text-custom-white">Lakeview Campsite</span></a>
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a href="" class="nav-link text-custom-white">About</a></li>
+                    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link text-custom-white">About</a></li>
                     <li class="nav-item"><a href="{% url 'booking' %}" class="nav-link text-custom-white">Book Now</a></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a href="{% url 'user_bookings' %}" class="nav-link text-custom-white">My Bookings</a></li>
