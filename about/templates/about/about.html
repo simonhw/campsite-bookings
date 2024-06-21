@@ -9,8 +9,8 @@
 
     <div class="row d-lg-none d-xl-none">
         <div class="col-12 g-0">
-            <img class="img-fluid" src="{% static 'images/lake-view.webp' %}"
-                alt="A view of a lake and woods in the evening.">
+            <img class="img-fluid" src="{% static 'images/chair-table.webp' %}"
+                alt="A camp chair and small table by the edge of a lake.">
         </div>
     </div>
 
@@ -27,6 +27,7 @@
         </div>
     </div>
 
+    <!-- Welcome Section -->
     <div class="row">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
             <p id='about-welcome'>
@@ -37,27 +38,55 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <hr>
+        </div>
+    </div>
+
+
+    <!-- Accomodation Section -->
     <div class="row mt-3">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
-            <h2 class="sedan-regular">Our Accomodations</h2>
+            <h2 class="sedan-regular">Our Accomodation</h2>
             <p id="about-accom">
                 At Lakeview Campsite, we cater to all types of campers. Bring your own tent, van, or caravan and set up
                 in one of our spacious, scenic plots. If you prefer a more unique experience, stay in one of our cozy
-                yurts equipped with comfortable bedding and rustic charm. RV travelers are also welcome, with dedicated
-                spots offering easy access and full hookups.
+                yurts equipped with comfortable bedding and rustic charm.
             </p>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-10 offset-1 col-lg-4 offset-lg-4">
-            <img class="img-fluid" src="{% static 'images/van-campsite.webp' %}" alt="A sunny view of a campsite with camper vans.">
+        <div id="carouselExample" class="col-10 offset-1 carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/tent-sq.webp' %}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/van-sq.webp' %}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/caravan-sq.webp' %}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/yurt-sq.webp' %}" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 
-    <div class="row mt-3">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">    
-            <h3 class="sedan-regular">Need a Hand?</h3>
+    <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h4 class="sedan-regular">Need a Hand?</h4>
             <p id="about-help">
                 Our friendly staff are always on hand to assist with pitching tents and ensuring your setup is secure
                 and comfortable. Just let us know, and we'll be happy to help!
@@ -67,7 +96,110 @@
 
     <div class="row">
         <div class="col-10 offset-1 col-lg-4 offset-lg-4">
-            <img class="img-fluid" src="{% static 'images/tent-help.webp' %}" alt="A staff member helping a camper pitch their tent.">
+            <img class="img-fluid" src="{% static 'images/tent-help.webp' %}"
+                alt="A staff member helping a camper pitch their tent.">
+        </div>
+    </div>
+
+    <!-- Amenities Section -->
+    <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h2 class="sedan-regular">Amenities</h2>
+            <h4 class="sedan-regular">BBQ Areas</h4>
+            <p id="about-bbq">
+                Nothing says camping like a BBQ under the stars. Our designated BBQ areas are perfect for grilling your
+                favorite meals and enjoying outdoor dining with family and friends. We provide grills, picnic tables,
+                and all the essentials to make your cookout a success.
+            </p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h4 class="sedan-regular">Modern Restrooms and Showers</h4>
+            <p id="about-wc">
+                Our clean and well-maintained restrooms and shower facilities are conveniently located throughout the
+                campsite. Enjoy hot showers and all the comforts of home while staying close to nature.
+            </p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h4 class="sedan-regular">Camp Store</h4>
+            <p id="about-store">
+                Forgot something? No worries! Our camp store is stocked with all the essentials, including camping gear,
+                snacks, drinks, toiletries, and local souvenirs. We also have a selection of firewood and charcoal for
+                your BBQ needs.
+            </p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h4 class="sedan-regular">Pet-Friendly Areas</h4>
+            <p id="about-pets">
+                We understand that pets are part of the family. Lakeview Campsite features designated pet-friendly areas
+                where your furry friends can roam and play. We also have pet waste stations for your convenience.
+            </p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h4 class="sedan-regular">Laundry Facilities</h4>
+            <p id="about-laundry">
+                For longer stays, our on-site laundry facilities are a lifesaver. Equipped with washers and dryers, you
+                can keep your clothes fresh and clean throughout your stay.
+            </p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h4 class="sedan-regular">Bike Rentals</h4>
+            <p id="about-bikes">
+                Explore the surrounding areas on two wheels with our convenient bike rental service. We offer bikes for
+                all ages and skill levels, along with helmets and maps of the best local routes.
+            </p>
+        </div>
+    </div>
+
+    <!-- Activities Section -->
+    <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+            <h2 class="sedan-regular">Activities</h2>
+            <p>
+                There's never a dull moment at Lakeview Campsite. We offer a variety of activities to suit all
+                interests:
+            </p>
+            <ul>
+                <li>
+                    <strong>Fishing:</strong> Our serene lake is well-stocked with fish, making it a paradise for
+                    anglers. Enjoy a
+                    peaceful day casting your line and relishing the tranquility of nature.
+                </li>
+                <li>
+                    <strong>Hiking:</strong> Explore our network of scenic trails, which cater to all levels of hikers.
+                    From gentle walks
+                    to more challenging treks, there's a path for everyone.
+                </li>
+                <li>
+                    <strong>Water Sports:</strong> Dive into adventure with kayaking, paddleboarding, and canoeing on
+                    the lake. Equipment
+                    rental is available for those looking to make a splash.
+                </li>
+                <li>
+                    <strong>Stargazing:</strong> The clear, unpolluted skies at Lakeview Campsite are perfect for
+                    stargazing. Join our
+                    guided astronomy nights to learn about constellations and enjoy the beauty of the night sky.
+                </li>
+                <li>
+                    <strong>Campfire Stories:</strong> Gather around the campfire for an evening of storytelling,
+                    marshmallow roasting,
+                    and making new friends. Our campfire nights are a hit with guests of all ages.
+                </li>
+                <li>
+                    <strong>Nature Workshops:</strong> Participate in our nature workshops to learn about the local
+                    flora and fauna,
+                    bushcraft skills, and more. These hands-on experiences are fun and educational for the whole family.
+                </li>
+            </ul>
         </div>
     </div>
 
