@@ -240,6 +240,10 @@ https://www.pexels.com/photo/man-in-green-sweater-lost-in-forest-using-smartphon
 https://www.pexels.com/photo/close-up-photo-of-chain-link-fence-3605822/
 https://www.pexels.com/photo/people-sitting-around-bonfire-during-nighttime-4994136/
 https://www.pexels.com/photo/autumn-forest-over-lake-in-canada-20843515/
+https://www.pexels.com/photo/person-sitting-on-grass-field-facing-on-body-of-water-2516423/
+https://www.pexels.com/photo/a-luxurious-tent-on-a-campsite-in-a-forest-5364965/
+https://www.pexels.com/photo/tent-on-lake-shore-against-lush-trees-6271631/
+https://www.pexels.com/photo/white-and-gray-camper-trailer-7967392/
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
