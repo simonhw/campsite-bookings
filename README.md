@@ -238,6 +238,8 @@ https://www.pexels.com/photo/thermos-books-and-photo-camera-on-camp-tent-6271651
 https://www.pexels.com/photo/tent-and-camping-chair-on-river-shore-in-summer-6271619/
 https://www.pexels.com/photo/man-in-green-sweater-lost-in-forest-using-smartphone-10374361/
 https://www.pexels.com/photo/close-up-photo-of-chain-link-fence-3605822/
+https://www.pexels.com/photo/people-sitting-around-bonfire-during-nighttime-4994136/
+https://www.pexels.com/photo/autumn-forest-over-lake-in-canada-20843515/
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
