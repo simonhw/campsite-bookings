@@ -244,6 +244,7 @@ https://www.pexels.com/photo/person-sitting-on-grass-field-facing-on-body-of-wat
 https://www.pexels.com/photo/a-luxurious-tent-on-a-campsite-in-a-forest-5364965/
 https://www.pexels.com/photo/tent-on-lake-shore-against-lush-trees-6271631/
 https://www.pexels.com/photo/white-and-gray-camper-trailer-7967392/
+https://www.pexels.com/photo/chairs-outside-a-tent-6271635/
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
@@ -267,3 +268,12 @@ https://stackoverflow.com/questions/12003736/django-login-required-decorator-for
 
 ## Acknowledgements
 - [Creating Your First README - Kera Cudmore](https://github.com/kera-cudmore/readme-examples)
+
+## Mentor Meeting Notes
+- linter
+- w3c
+- lighthouse
+- extensive testing
+- add fname lname to signup
+- detailed explanation of features and reasons why
+- update ERD
