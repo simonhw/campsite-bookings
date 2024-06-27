@@ -15,32 +15,34 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <h1 class="sedan-regular">{% if id %} Edit {% else %} Book {% endif %} {% if user.is_superuser %} Booking {% else %} Your Stay {% endif %}</h1>
         </div>
-        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             {% if user.is_authenticated %}
             <p>You are logged in as: {{ user }}</p>
             {% else %}
             <p>Please <a href="{% url 'account_signup' %}?next={{request.path}}">sign up</a> or <a href="{% url 'account_login' %}?next={{request.path}}">log in</a> to make a booking.</p>
             {% endif %}
         </div>
-        <form id="bookingForm" method="post">
-            {{ booking_form | crispy }}
-            {% csrf_token %}
-            {% if user.is_authenticated %}
-                <button id="submitButton" type="submit" class="btn btn-danger btn-lg sedan-regular">{% if id %} Update {% else %} Submit {% endif %}</button>
-            {% else %}
-                <button id="submitButton" type="submit" class="btn btn-signup sedan-regular btn-lg" disabled>Submit</button>
-            {% endif %}
-        </form>
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <form id="bookingForm" method="post">
+                {{ booking_form | crispy }}
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                    <button id="submitButton" type="submit" class="btn btn-danger btn-lg sedan-regular">{% if id %} Update {% else %} Submit {% endif %}</button>
+                {% else %}
+                    <button id="submitButton" type="submit" class="btn btn-signup sedan-regular btn-lg" disabled>Submit</button>
+                {% endif %}
+            </form>
+        </div>
     </div>
     <div class="row mt-4 bg-green-3 pt-3">
-        <div class="col-sm-12">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <h2 class="sedan-regular text-white">Booking Information</h2>
             <hr class="text-custom-white">
         </div>
-        <div class="col-sm-12">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <h5 class="sedan-regular text-white">Check-In/Check-Out</h5>
             <p class="text-custom-white">Check-in is from 14:00 to 20:00 every day. Check-out is strictly at 11:00.</p>
             <h5 class="sedan-regular text-white">Payment</h5>
@@ -61,10 +63,10 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-sm-12">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <h2 class="sedan-regular">Terms and Conditions</h2>
         </div>
-        <div class="col-sm-12">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <p class="d-inline-flex gap-1">
                 <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                   View Terms and Conditions
@@ -75,7 +77,7 @@
                     <h5 class="sedan-regular">1. Reservations and Payments</h5>
                     <p>
                         Full payment is required at the time of booking to secure your reservation.
-                        Accepted payment methods include major credit cards and online payment platforms.
+                        Accepted payment methods include cash and major credit cards.
                     </p>
                     <h5 class="sedan-regular">2. Check-In and Check-Out</h5>
                     <p>
@@ -84,8 +86,8 @@
                     </p>
                     <h5 class="sedan-regular">3. Cancellation and Refund Policy</h5>
                     <p>
-                        Cancellations made 7 days or more before the arrival date will receive a full refund.
-                        Cancellations made within 7 days of the arrival date will not be refunded.
+                        Cancellations made 2 days or more before the arrival date will receive a full refund.
+                        Cancellations made within 2 days of the arrival date will not be refunded.
                         No-shows and early departures are non-refundable.
                     </p>
                     <h5 class="sedan-regular">4. Modification of Reservations</h5>

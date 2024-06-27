@@ -7,14 +7,14 @@
 <!-- index.html content -->
 <div class="container-fluid mb-3">
 
-    <div class="row d-lg-none d-xl-none">
+    <div class="row d-md-none d-lg-none d-xl-none">
         <div class="col-12 g-0">
-            <img class="img-fluid" src="{% static 'images/chair-table.webp' %}"
+            <img class="img-fluid w-100" src="{% static 'images/chair-table.webp' %}"
                 alt="A camp chair and small table by the edge of a lake.">
         </div>
     </div>
 
-    <div class="row d-none d-lg-block d-xl-block d-xxl-block">
+    <div class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block">
         <div class="col-12 g-0">
             <img class="img-fluid w-100" src="{% static 'images/wide-tent-lake.webp' %}"
                 alt="A tent and chair in front of a lake.">
@@ -22,14 +22,14 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h1 class="sedan-regular">About</h1>
         </div>
     </div>
 
     <!-- Welcome Section -->
     <div class="row">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <p id='about-welcome'>
                 Welcome to Lakeview Campsite, your perfect getaway nestled in the heart of nature! Whether you're a
                 seasoned camper or new to the outdoor experience, we offer a diverse range of accommodations and
@@ -39,7 +39,7 @@
     </div>
 
     <div class="row">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <hr>
         </div>
     </div>
@@ -47,8 +47,8 @@
 
     <!-- Accomodation Section -->
     <div class="row mt-3">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
-            <h2 class="sedan-regular">Our Accomodation</h2>
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+            <h2 class="sedan-regular">Our Accommodation</h2>
             <p id="about-accom">
                 At Lakeview Campsite, we cater to all types of campers. Bring your own tent, van, or caravan and set up
                 in one of our spacious, scenic plots. If you prefer a more unique experience, stay in one of our cozy
@@ -58,7 +58,7 @@
     </div>
 
     <div class="row">
-        <div id="carouselExample" class="col-10 offset-1 carousel slide" data-bs-ride="carousel">
+        <div id="carouselExample" class="col-10 offset-1 col-md-6 offset-md-3 carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="{% static 'images/tent-sq.webp' %}" class="d-block w-100" alt="...">
@@ -85,7 +85,7 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h4 class="sedan-regular">Need a Hand?</h4>
             <p id="about-help">
                 Our friendly staff are always on hand to assist with pitching tents and ensuring your setup is secure
@@ -95,7 +95,7 @@
     </div>
 
     <div class="row">
-        <div class="col-10 offset-1 col-lg-4 offset-lg-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3">
             <img class="img-fluid" src="{% static 'images/tent-help.webp' %}"
                 alt="A staff member helping a camper pitch their tent.">
         </div>
@@ -103,7 +103,7 @@
 
     <!-- Amenities Section -->
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h2 class="sedan-regular">Amenities</h2>
             <h4 class="sedan-regular">BBQ Areas</h4>
             <p id="about-bbq">
@@ -114,7 +114,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h4 class="sedan-regular">Modern Restrooms and Showers</h4>
             <p id="about-wc">
                 Our clean and well-maintained restrooms and shower facilities are conveniently located throughout the
@@ -123,7 +123,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h4 class="sedan-regular">Camp Store</h4>
             <p id="about-store">
                 Forgot something? No worries! Our camp store is stocked with all the essentials, including camping gear,
@@ -133,7 +133,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h4 class="sedan-regular">Pet-Friendly Areas</h4>
             <p id="about-pets">
                 We understand that pets are part of the family. Lakeview Campsite features designated pet-friendly areas
@@ -142,7 +142,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h4 class="sedan-regular">Laundry Facilities</h4>
             <p id="about-laundry">
                 For longer stays, our on-site laundry facilities are a lifesaver. Equipped with washers and dryers, you
@@ -151,7 +151,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h4 class="sedan-regular">Bike Rentals</h4>
             <p id="about-bikes">
                 Explore the surrounding areas on two wheels with our convenient bike rental service. We offer bikes for
@@ -162,7 +162,7 @@
 
     <!-- Activities Section -->
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
             <h2 class="sedan-regular">Activities</h2>
             <p>
                 There's never a dull moment at Lakeview Campsite. We offer a variety of activities to suit all
