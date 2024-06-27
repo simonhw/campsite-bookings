@@ -43,3 +43,11 @@
 .social-link {
     text-decoration: none;
 }
+
+/* Media query for tablets and larger: >= 768px */
+@media screen and (min-width: 768px) {
+
+    .md-text-center {
+        text-align: center;
+    }
+}
