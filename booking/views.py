@@ -131,6 +131,9 @@ def booking_edit(request, id):
             booking_form = BookingForm(request.POST, instance=booking)
             if booking_form.is_valid():
                 booking_form.save()
+                messages.add_message(
+                    request, messages.SUCCESS, "Booking successfully updated!"
+                )
                 if request.user.is_superuser:
                     return redirect ('manage_bookings')
                 else:
