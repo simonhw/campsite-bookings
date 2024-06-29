@@ -110,7 +110,7 @@ An ERD was created to plan out the models that would be created and used in this
 
 ## Features
 The website was designed to be as simple as possible, with little to no distracting content. A mobile-first design process was undertaken from the start.
-The website is comprised of thrfour main pages visible to the site user: a homepage, about page, a booking form page, and a "my bookings" page (when logged in). A page is also visible to staff users once logged in where they can manage all bookings. Additional pages visible to users include: the signup page, login page, logout page, password reset page, 404 error page, 403 error page, and 500 error page.
+The website is comprised of four main pages visible to the site user: a homepage, an about page, a booking form page, and a "my bookings" page (when logged in). An additional page is also visible to staff users once logged in where they can manage all bookings. Other pages visible to users include: the signup page, login page, logout page, password reset page, 404 error page, 403 error page, and 500 error page.
 
 **All pages on the website have:**
 1. A favicon of a tent next to a tree with a cloud.
@@ -144,6 +144,21 @@ The website is comprised of thrfour main pages visible to the site user: a homep
 
     ![Website Footer](static/images/readme/footer-mob.png)
 
+### The Homepage
+The landing page for Lakeview campsite is brightly coloured yet minimalist. The user is immediately presented with a red call-to-action button encouraging them to book a stay. This is presented first as it is the main purpose of the website and also allows a returning user to quickly navigate to the booking page. The colour of the button was chosen as it matches well with the red fabric of the tent in the hero image, thus giving the site a very slick and professional feel.
+
+![Call-to-action button on the homepage](static/images/readme/homepage-top.png)
+
+A short introduction to the user is then presented with an enticing image of a lakeside scene intended to excite the site user and make them want to find out more about the campsite.
+Below this image is presented a green "Learn More" button which bring the the user to the comprehensively detailed about page. The green colour was chosen as it was more calm and neutral compared to the red previously used.
+
+![Homepage image and Learn More button](static/images/readme/homepage-learnmore.png)
+
+At the bottom of the homepage are some recent testimonials from former customers. This content is shown here to contribute to the main purpose of the landing page: encouraging users to make a booking. Three testimonials are listed to give a sense of a fair amount of reviews without detracting from the minimalist style of the page. The use of a star rating allows the site user to quickly understand the satisfaction of these previous customers after staying at Lakeview Campsite.
+
+![Homepage testimonials section](static/images/readme/testimonials.png)
+
+
 ## Responsiveness
 On small screen sizes, namely mobiles, the website is displayed with content in a scrollable single column. This design was chosen as it is a comfortable and familiar experience for mobile users.
 
@@ -157,25 +172,19 @@ A key requirement for this project was for users to be able to create, read, upd
 ### Create
 * Site users and admin users may **create** by creating an account.
 * Site users may **create** by creating a booking.
-* Site users may **create** by posting reviews on the website after their stay.
-* Admin users may **create** by writing responses to reviews.
-* Admin users may **create** by adding information about the campsite to the homepage
 
 ### Read
-* Site users and admin users may **read** by viewing the camping information page and reviews page.
+* Site users and admin users may **read** by viewing the home and about pages.
 * Site users may **read** by viewing their list of bookings.
 * Admin user may **read** by viewing the list of all bookings.
 
 ### Update
-* Site users may **update** by editing their account details.
 * Site users may **update** by amending their booking information.
-* Admin user may **update** by amending the camping information page and adding new photos.
+* Admin user may **update** by amending customer's booking information.
 
 ### Delete
-* Site users may **delete** by deleting their account.
 * Site users may **delete** by cancelling their booking.
-* Site users may **delete** by removing their reviews if desired.
-* Admin users may **delete** by removing information, photos, or reviews.
+* Admin users may **delete** by cancelling user bookings.
 
 ### Admin View
 The bookings are displayed with more details for the admin user without the use of a dropdown.
@@ -210,7 +219,9 @@ Visual Studio Code and [Gitpod](https://www.gitpod.io/) - The IDEs used to write
 
 [ElephantSQL](https://www.elephantsql.com/) - To create and store the database.
 
-[LucidChart](https://lucid.app/) - To creat Entity Relationship Diagrams
+[LucidChart](https://lucid.app/) - To create Entity Relationship Diagrams
+
+[Bootstrap](https://getbootstrap.com/) - To build and style content on the website.
 
 [W3Schools.com](https://www.w3schools.com/) and [The Python Library](https://docs.python.org/3/library/) - For researching and learning about Python methods and syntax.
 
