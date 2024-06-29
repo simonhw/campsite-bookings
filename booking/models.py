@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import date, timedelta
 import uuid
 
@@ -42,8 +42,9 @@ class Booking(models.Model):
     arrival = models.DateField()
     departure = models.DateField()
     adults = models.PositiveIntegerField(default=1,
-                                         validators=[MinValueValidator(1)])
-    children = models.PositiveIntegerField(default=0)
+                                         validators=[MinValueValidator(1), MaxValueValidator(10)])
+    children = models.PositiveIntegerField(default=0,
+                                         validators=[MaxValueValidator(10)])
     booked = models.BooleanField(default=False)
 
     class Meta:
