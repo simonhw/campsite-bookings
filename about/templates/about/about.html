@@ -22,14 +22,14 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h1 class="sedan-regular">About</h1>
         </div>
     </div>
 
     <!-- Welcome Section -->
     <div class="row">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <p id='about-welcome'>
                 Welcome to Lakeview Campsite, your perfect getaway nestled in the heart of nature! Situated on the
                 eastern shores of Crystal Lake in Evergreen Valley, our campsite spans over 40 acres of picturesque
@@ -40,15 +40,16 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
-            <hr>
+    <div class="row text-center mt-2 mb-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3">
+            <img class="img-fluid" src="{% static 'images/drone-view.webp' %}"
+                alt="A view of a lake and its shore with mountains in the background.">
         </div>
     </div>
 
     <!-- Location Section -->
     <div class="row mt-3">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h2 class="sedan-regular">Our Location</h2>
             <p id="about-accom">
                 Lakeview Campsite is ideally located just a short 8 mile drive from the charming town of Greenfield, making it
@@ -76,10 +77,23 @@
         </div>
     </div>
 
+    <!-- Book Now Button -->
+    <div class="row">
+        <div class="col-6 offset-3 py-3 px-2 text-center">
+            <a href="{% url 'booking' %}" type="button" class="btn btn-danger btn-lg sedan-regular">Book Now!</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+            <hr>
+        </div>
+    </div>
+
 
     <!-- Accomodation Section -->
     <div class="row mt-3">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h2 class="sedan-regular">Our Accommodation</h2>
             <p id="about-accom">
                 At Lakeview Campsite, we cater to all types of campers. Bring your own tent, van, or caravan and set up
@@ -90,7 +104,7 @@
     </div>
 
     <div class="row">
-        <div id="carouselExample" class="col-10 offset-1 col-md-6 offset-md-3 carousel slide" data-bs-ride="carousel">
+        <div id="carouselExample" class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4 carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="{% static 'images/tent-sq.webp' %}" class="d-block w-100" alt="A red tent pitched on grass with a lake in the background.">
@@ -117,7 +131,7 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h4 class="sedan-regular">Need a Hand?</h4>
             <p id="about-help">
                 Our friendly staff are always on hand to assist with pitching tents and ensuring your setup is secure
@@ -134,14 +148,14 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <hr>
         </div>
     </div>
 
     <!-- Amenities Section -->
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h2 class="sedan-regular">Amenities</h2>
             <h4 class="sedan-regular">BBQ Areas</h4>
             <p id="about-bbq">
@@ -152,7 +166,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h4 class="sedan-regular">Modern Restrooms and Showers</h4>
             <p id="about-wc">
                 Our clean and well-maintained restrooms and shower facilities are conveniently located throughout the
@@ -161,7 +175,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 ccol-lg-6 offset-lg-3">
             <h4 class="sedan-regular">Camp Store</h4>
             <p id="about-store">
                 Forgot something? No worries! Our camp store is stocked with all the essentials, including camping gear,
@@ -171,7 +185,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h4 class="sedan-regular">Pet-Friendly Areas</h4>
             <p id="about-pets">
                 We understand that pets are part of the family. Lakeview Campsite features designated pet-friendly areas
@@ -180,7 +194,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h4 class="sedan-regular">Laundry Facilities</h4>
             <p id="about-laundry">
                 For longer stays, our on-site laundry facilities are a lifesaver. Equipped with washers and dryers, you
@@ -189,7 +203,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h4 class="sedan-regular">Bike Rentals <span class="badge text-bg-success">New</span></h4>
             <p id="about-bikes">
                 Explore the surrounding areas on two wheels with our convenient bike rental service. We offer bikes for
@@ -200,7 +214,7 @@
 
     <!-- Activities Section -->
     <div class="row mt-4">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
             <h2 class="sedan-regular">Activities</h2>
             <p>
                 There's never a dull moment at Lakeview Campsite. We offer a variety of activities to suit all
@@ -241,6 +255,88 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+            <hr>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->    
+     <div class="row mt-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+            <h2 class="sedan-regular">Pricing Guide for Lakeview Campsite</h2>
+    
+            <!-- Accomodation Prices -->
+            <h3 class="sedan-regular">Accommodation</h3>
+            <strong>Tent Sites:</strong>
+            <ul>
+                <li>Basic Tent Site: $25 per night</li>
+                <li>Lakeside Tent Site: $35 per night</li>
+                <li>Group Tent Site (up to 10 people): $60 per night</li>
+            </ul>
+            
+            <strong>Van and Caravan Sites:</strong>
+            <ul>
+                <li>Standard Site: $40 per night</li>
+                <li>Lakeside Site: $50 per night</li>
+                <li>Full Hookup Site (water, electric, sewer): $55 per night</li>
+            </ul>
+            
+            <strong>Yurts:</strong>          
+            <ul>
+                <li>Standard Yurt (sleeps 4): $70 per night</li>
+                <li>Deluxe Yurt (sleeps 6, includes kitchenette): $100 per night</li>
+                <li>Lakeside Yurt (sleeps 4, premium location): $90 per night</li>
+            </ul>
+            
+            <!-- Amenities Prices -->
+            <h3 class="sedan-regular">Amenities and Services</h3>
+            <ul>
+                <li>Tent Pitching Assistance: $15 per tent</li>
+                <li>Firewood Bundle: $10 each</li>
+                <li>BBQ Grill Rental: $20 per day</li>
+                <li>Bike Rental: $15 per day <span class="badge text-bg-success">New</span></li>
+                <li>Kayak Rental: $25 per day</li>
+                <li>Canoe Rental: $30 per day</li>
+                <li>Paddleboard Rental: $25 per day</li>
+            </ul>
+            
+            <!-- Package Prices -->
+            <h3 class="sedan-regular">Packages</h3>
+
+            <strong>Weekend Getaway Package:</strong>
+            <ul>
+                <li>Includes: 2 nights in a Standard Yurt, BBQ Grill Rental, and a bundle of firewood.</li>
+                <li>Price: $160 (saves $20)</li>
+            </ul>
+
+            <strong>Family Adventure Package:</strong>
+            <ul>
+                <li>Includes: 3 nights in a Lakeside Tent Site, 1 day of bike rentals for 4, and a guided nature workshop.</li>
+                <li>Price: $200 (saves $30)</li>
+            </ul>
+
+            <strong>Romantic Escape Package: <span class="badge text-bg-success">New</span></strong>
+            <ul>
+                <li>Includes: 2 nights in a Lakeside Yurt, kayak rental for 2, and a complimentary bottle of local wine.</li>
+                <li>Price: $190 (saves $25)</li>
+            </ul>
+
+            <!-- Discounts -->
+            <h3 class="sedan-regular">Seasonal Discounts</h3>
+            <strong>Off-Season Rates (November - March):</strong>
+            <ul>
+                <li>20% discount on all accommodations and rentals.</li>
+            </ul>
+
+            <strong>Long Stay Discount:</strong>
+            <ul>
+                <li>Stay 7 nights or more and receive a 15% discount on your total stay.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Book Now Button -->
     <div class="row">
         <div class="col-6 offset-3 py-3 px-2 text-center">
             <a href="{% url 'booking' %}" type="button" class="btn btn-danger btn-lg sedan-regular">Book Now!</a>
