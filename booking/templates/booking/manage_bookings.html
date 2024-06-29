@@ -30,7 +30,11 @@
         {% if not booking.is_in_past %}
         <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="card mt-1 mb-1 text-center">
+                {% if booking.full_name %}
                 <h5 class='sedan-regular mt-2'>{{ booking.full_name }}</h5>
+                {% else %}
+                <h5 class='sedan-regular mt-2'>{{ booking.booked_by }}</h5>
+                {% endif %}
                 <p class="m-1">{{ booking.string_from_tuple }} Booking</p>
                 <p class="m-1">{{ booking.arrival }} - {{ booking.departure }} </p>
                 <p class="m-1">Adults: {{ booking.adults }}

@@ -96,5 +96,7 @@ class Booking(models.Model):
         Method to return the full name of the user who made a given booking
         in the form of a string.
         """
-
-        return f'{self.booked_by.first_name} {self.booked_by.last_name}'
+        if self.booked_by.first_name:
+            return f'{self.booked_by.first_name} {self.booked_by.last_name}'
+        else:
+            return False
