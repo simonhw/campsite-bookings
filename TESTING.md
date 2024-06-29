@@ -36,6 +36,7 @@ The site was tested on Google Chrome on desktop, and DuckDuckGo on mobile.
 ### Known Bugs
 | # | Bug | Image | Plan to Solve |
 | --- | --- | --- | --- |
+| 1 | On some mobile screen sizes, the signup form fields are not visually consistent. Some are inline with their labels while others are on a new line. | ![Image of Unsolved Bug #1](static/images/readme/bugs/ubug-01-signup-fields.png) | Writing a custom form for the signup page will allow for more customisation and control. This will be implemented in a future version of the website. |
 
 ### Solved Bugs
 | # | Bug | Image | Solution |
@@ -55,5 +56,6 @@ The site was tested on Google Chrome on desktop, and DuckDuckGo on mobile.
 | 12b | After solving Bug #12a, the departure date was still not being limited to the correct month. | |  The `getMonth()` method is 0-indexed so the month value needed to be incremented by 1 for the date to be properly restricted, i.e. 0 corresponded to January, 1 to February etc. |
 | 13 | The departure date was not always restricted to at least one day after the selected arrival date. | | The new Date variable needed to be instantiated with the arrival date value otherwise it returned erroneous values. The use of `console.log()` statements showing the erroneous values allowed this error to be discovered. |
 | 14 | When logged in as a non-superuser, adding any booking ID to the end of .../booking/my-bookings/edit/ allowed the user to view the details and amend the bookings. | ![Image of Bug #14 Solution](static/images/readme/bugs/bug-14.png) | The highlighted code in the image was added to the booking_edit view. This ensured only the authorised user was able to view the details and additionally a PermissionDenied exception was explicitly raised otherwise. |
+
 
 Back to [README.md](/README.md)
