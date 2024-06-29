@@ -30,12 +30,12 @@ class BookingForm(forms.ModelForm):
             'arrival': DateInput(attrs={
                 'type': 'date',
                 'id': 'arrival',
-                'min': date.today()
+                'min': date.today() + timedelta(days=1)
                 }),
             'departure': DateInput(attrs={
                 'type': 'date',
                 'id': 'departure',
-                'min': date.today() + timedelta(days=1)
+                'min': date.today() + timedelta(days=2)
                 }),
         }
 
