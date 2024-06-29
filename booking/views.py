@@ -11,9 +11,9 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
 
 
-class SuperUserCheck(UserPassesTestMixin, generic.ListView):
+class StaffCheck(UserPassesTestMixin, generic.ListView):
     def test_func(self):
-        return self.request.user.is_superuser
+        return self.request.user.is_staff
 
 
 class UserBookings(LoginRequiredMixin, generic.ListView):
@@ -43,7 +43,7 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-class AllBookings(SuperUserCheck, generic.ListView):
+class AllBookings(StaffCheck, generic.ListView):
     """
     View that shows all bookings ordered by arrival date in descending order.
     The path for the template used to render the list is declared.
@@ -121,10 +121,10 @@ def booking_edit(request, id):
 
     booking = get_object_or_404(Booking, id=id)
 
-    if not booking.booked_by == request.user and not request.user.is_superuser:
+    if not booking.booked_by == request.user and not request.user.is_staff:
         raise PermissionDenied
     else:
-        if booking.booked_by == request.user or request.user.is_superuser and request.method == 'GET':
+        if booking.booked_by == request.user or request.user.is_staff and request.method == 'GET':
             booking_form = BookingForm(instance=booking)
             return render(request, 'booking/booking.html', {'booking_form': booking_form, 'id': id})
         elif request.method == 'POST':
@@ -134,7 +134,7 @@ def booking_edit(request, id):
                 messages.add_message(
                     request, messages.SUCCESS, "Booking successfully updated!"
                 )
-                if request.user.is_superuser:
+                if request.user.is_staff:
                     return redirect ('manage_bookings')
                 else:
                     return redirect('user_bookings')
@@ -154,10 +154,10 @@ def booking_delete(request, id):
     print('booking_delete being called')
     booking = get_object_or_404(Booking, id=id)
     
-    if not booking.booked_by == request.user and not request.user.is_superuser:
+    if not booking.booked_by == request.user and not request.user.is_staff:
         raise PermissionDenied
     else:
-        if booking.booked_by == request.user or request.user.is_superuser and not booking.is_within_48h():
+        if booking.booked_by == request.user or request.user.is_staff and not booking.is_within_48h():
             booking.delete()
             messages.add_message(
                     request, messages.SUCCESS, "Booking successfully deleted!"
@@ -167,7 +167,7 @@ def booking_delete(request, id):
                 request, messages.ERROR, "It was not possible to delete this"
                 " booking."
             )
-        if request.user.is_superuser:
+        if request.user.is_staff:
             return redirect ('manage_bookings')
         else:
             return redirect('user_bookings')
