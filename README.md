@@ -56,6 +56,10 @@ Each user story was assigned a number of labels to aid in the project workflow. 
 
 Using the Agile method allowed this project to be managed well in small chunks. The developer was able to work on specific tasks without losing focus and manage and project the time required for these tasks optimally.
 
+### User Stories
+
+#### Kanban Board
+
 ## Design
 ### Colour Scheme
 A palette of green colours was chosen to reflect the calming and relaxing environment of the campsite, being surround by greenery and nature away from the hustle and bustle of the cities.
@@ -73,7 +77,7 @@ Images were chosen that show an attractive campsite and surroundings. Bright ima
 
 The header image for smaller screens was either a tent and chair by the lake's edge or a closeup of books, a mug, and flask, and a camera on the floor of a tent. The latter was used mainly for account pages and the Manage Bookings page to reflect their administrative nature. A wider image of the chair and tent was used for larger screens to make good use of the extra horizontal space.
 
-For the 404, 403, and 500 error pages, two different images were used. For the 403 page an image of a diamond mesh fence was used to convey the sense of forbidden access. For the 404 and 500 error pages, an image of a man looking at his phone in the woods was used, to give the sense of being lost or something having gone wrong.
+For the 404, 403, and 500 error pages, two different images were used. For the 403 page an image of a diamond mesh fence was used to convey the sense of forbidden access. For the 404 and 500 error pages, an image of a worried man looking at his phone in the woods was used, to give the sense of being lost or something having gone wrong.
 
 ### Wireframes
 Wireframes were created in Balsamiq for the initial front-end design of the website. The mobile layout was designed first and the tablet and desktop were adapted from this.
@@ -107,6 +111,8 @@ Wireframes were created in Balsamiq for the initial front-end design of the webs
 An ERD was created to plan out the models that would be created and used in this project.
 
 ![ERDs](static/images/readme/erd-v2.png)
+
+The User model shown above is the default model supplied with the Django framework, and is included to show how it related to the custom Booking model. Another custom Review model was planned but did not make it into this interation of the project. Further details on this model can be found in the [Features to be Implemented](#features-to-be-implemented) section.
 
 ## Features
 The website was designed to be as simple as possible, with little to no distracting content. A mobile-first design process was undertaken from the start.
@@ -159,12 +165,12 @@ At the bottom of the homepage are some recent testimonials from former customers
 ![Homepage testimonials section](static/images/readme/testimonials.png)
 
 ### The About Page
-A different header image is used on this page for smaller screens, mainly to introduce some variety into the design of the page. An image of the camp chair with a small table and flasks was chosen as it makes the site user feel relaxed and places them at the campsite in their mind's eye.
+A different header image is used on this page for smaller screens, mainly to introduce some variety into its design. An image of a camp chair with a small table and flasks was chosen as it makes the site user feel relaxed and places them at the campsite in their mind's eye.
 Below the header image, some extra details are given about the campsite with the same picturesque aerial image of the lake and mountains underneath.
 
 ![About page initial content](static/images/readme/about-top.png)
 
-The next section present details on the location of Lakeview Campsite and how to get there from different points. Information for drivers and those using public transport is provided, giving the site user a sense of good accessibilty. Below this content, the red "Book Now" button is presented again to encourage the user to make a booking.
+The next section presents details on the location of Lakeview Campsite and how to get there from different points. Information for drivers and those using public transport is provided, giving the site user a sense of good accessibilty. Below this content, the red "Book Now" button is presented again to encourage the user to make a booking.
 
 ![About page location content](static/images/readme/about-location.png)
 
@@ -177,11 +183,78 @@ Sections listing the amenities and activities on offer are presented next, with 
 
 ![About page bike rental new badge](static/images/readme/bike-new-badge.png)
 
-The final section on this page is the pricing guide. This section breaks down the costs for each type of stay and activity, including extra services and package deals. The type of accomodation or package deal is presented in bold text which allows the user to quickly find the information most relevant to them. Green "New" badge are again utilised in this section to satisfy the user that the owners of Lakeview Campsite are always improving the business and that they would receive a high standard of service and care if they choose to book a stay.
+The final section on this page is the pricing guide. This section breaks down the costs for each type of stay and activity, including extra services and package deals. The type of accomodation or package deal is presented in bold text which allows the user to quickly find the information most relevant to them. Green "New" badges are again utilised in this section to satisfy the user that the owners of Lakeview Campsite are always improving the business and that they would receive a high standard of service and care if they choose to book a stay.
 
 ![About page pricing guide](static/images/readme/pricing-bottom.png)
 
 A final "Book Now" call-to-action button is presented to the user again to avoid them having to scroll back up to the top of the page if they have now decided to make a booking.
+
+### The Booking Page
+Unauthenticated users navigating to the booking page will not see the form until they either sign up or log in. Initially this functionality was achieved by having the Submit button be disabled for such users, but the rest of the form could still be interacted with, and upon signing in the user would have to enter their data again. This was deemed to be too poor a user experience so instead the entire form is only rendered when the user is logged in.
+
+![Hidden booking form for unauthenticated user](static/images/readme/booking-form-hidden.png)
+
+The authenticated user's username is displayed under the page's heading as a visual indication that they are logged in and to show under which account they are going to make a booking.
+
+![Booking form page](static/images/readme/booking-form.png)
+
+#### Form Fields
+- Accommodation
+    - A dropdown list of four types of accommodation is presented to the user for selection
+        
+        ![Accommodation dropdown list](static/images/readme/accom-dd.png)
+        
+- Arrival and Departure
+    - The user can manually enter dates in these fields according to the format shown, or they can click the calendar icon to open a date picker. The earliest date possible for the arrival field is always tommorrow.
+
+        ![Arrival date picker](static/images/readme/arrival-pick.gif)
+    
+    - The minimum value for the depature date will always be the arrival date plus one day. This was achieved using custom JavaScript code explained futher below.
+
+        ![Departure date picker](static/images/readme/departure-picker.png)
+        ![Departure date picker](static/images/readme/departure-picker-3.png)
+        ![Departure date picker](static/images/readme/departure-picker-4.png)
+
+- Number of Guests
+    - The final form fields are those for the number of adults and children in the booking. These fields only accept non-negative integers; the adults field has a minimum value of one and the children field has a minimum value of zero. The maximum number of guests of either type is set to 10, to prevent the user booking in impossibly large guest numbers. See [Features to be Implemented](#features-to-be-implemented) for more on this.
+
+#### Form Validation
+Validating the data to be submitted by the user is done both on the back and front end. 
+- Accommodation
+    - The dropdown list of four accommodation types is pre-selected to "Tent" and it is impossible to unselect any option in the list. This value is set in the `models.py` file.
+
+        ![Accommodation dropdown validation](static/images/readme/dd-val.gif)
+
+        ```
+        accommodation = models.IntegerField(choices=ACCOMMODATION, default=0)
+        ```
+
+- Arrival and Departure
+    - The minimum values of the arrival and departure dates are set in the `forms.py` file:
+        
+        ```
+        widgets = {
+            'arrival': DateInput(attrs={
+                'type': 'date',
+                'id': 'arrival',
+                'min': date.today() + timedelta(days=1)
+                }),
+            'departure': DateInput(attrs={
+                'type': 'date',
+                'id': 'departure',
+                'min': date.today() + timedelta(days=2)
+                }),
+        }
+        ```
+
+        They are set such that the minimum value of arrival is always tomorrow from the point of view of the user, and the departure date is always at least the day after tomorrow.
+        In most cases the arrival date will be selected first, so the minimum departure must be updated dynamically. this was achieved using [custom JavaScript code](static/js/booking.js). The custom code adds an event listener to the arrival input field and when the value is changed, set the new minimum departure date to be one day after the chosen arrival date.
+        In cases where the user has selected a departure date and then updates the arrival date to be after the departure, a front-end validation check prevents the form from being submitted.
+
+            ![Future arrival validation](static/images/readme/future-date.png)
+
+
+        
 
 ## Responsiveness
 On small screen sizes, namely mobiles, the website is displayed with content in a scrollable single column. This design was chosen as it is a comfortable and familiar experience for mobile users.
@@ -221,6 +294,9 @@ The wording changes on the booking page when the admin user edits something.
 - upgrade calendar to booking style with available dates
 - diasble the form not just the submit button when not signed in
 - sort bookings by month for the admin user
+- have to accept terms and conditions to submit booking
+- modal to contact us if wanted to book >10 guests
+- set guests limits based on accommodation type selected.
 
 ## Technologies Used
 ### Languages
