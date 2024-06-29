@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap');
 
+.checked {
+    color: orange;
+  }
+
 .sedan-regular {
     font-family: "Sedan", serif;
     font-weight: 400;
