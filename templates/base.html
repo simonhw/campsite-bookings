@@ -39,7 +39,7 @@
                     <li class="dropdown-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
                     <li class="dropdown-item"><a href="{% url 'booking' %}" class="nav-link">Book Now</a></li>
                     {% if user.is_authenticated %}
-                    {% if user.is_superuser %}
+                    {% if user.is_staff %}
                     <li class="dropdown-item"><a href="{% url 'manage_bookings' %}" class="nav-link">Manage Bookings</a></li>
                     {% else %}
                     <li class="dropdown-item"><a href="{% url 'user_bookings' %}" class="nav-link">My Bookings</a></li>
@@ -61,7 +61,7 @@
                     <li class="nav-item"><a href="{% url 'about' %}" class="nav-link text-custom-white">About</a></li>
                     <li class="nav-item"><a href="{% url 'booking' %}" class="nav-link text-custom-white">Book Now</a></li>
                     {% if user.is_authenticated %}
-                    {% if user.is_superuser %}
+                    {% if user.is_staff %}
                     <li class="nav-item"><a href="{% url 'manage_bookings' %}" class="nav-link text-custom-white">Manage Bookings</a></li>
                     {% else %}
                     <li class="nav-item"><a href="{% url 'user_bookings' %}" class="nav-link text-custom-white">My Bookings</a></li>
