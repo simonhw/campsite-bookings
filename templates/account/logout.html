@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% load i18n %}
 
@@ -6,19 +7,35 @@
 
 {% block content %}
 
-<div class="container-lg mb-3">
+<div class="container-fluid mb-3">
+
+  <!-- Hero Image -->
+  <div class="row d-md-none d-lg-none d-xl-none">
+    <div class="col-12 g-0">
+      <img class="img-fluid" src="{% static 'images/tent-book-sm.webp' %}"
+        alt="A coffe cup, camera, and book on the floor of a tent.">
+    </div>
+  </div>
+  <div class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block">
+    <div class="col-12 g-0">
+      <img class="img-fluid w-100" src="{% static 'images/wide-tent-lake.webp' %}"
+        alt="A tent and chair in front of a lake.">
+    </div>
+  </div>
+
+  <!-- Logout Section -->
   <div class="row mt-3">
-    <div class="col-12">
+    <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
       <h1 class="sedan-regular">{% trans "Sign Out" %}</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
       <p>{% trans 'Are you sure you want to sign out?' %}</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
+  <div class="row mb-5">
+    <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
       <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
         {% if redirect_field_value %}
@@ -30,4 +47,4 @@
   </div>
 
 
-{% endblock content %}
+  {% endblock content %}
