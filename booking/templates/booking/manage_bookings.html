@@ -4,6 +4,8 @@
 
 {% block content %}
 <div class="container-fluid mb-3">
+
+    <!-- Hero Image -->
     <div class="row d-md-none d-lg-none d-xl-none">
         <div class="col-12 g-0">
             <img class="img-fluid" src="{% static 'images/tent-book-sm.webp' %}" alt="A coffe cup, camera, and book on the floor of a tent.">
@@ -14,17 +16,19 @@
             <img class="img-fluid w-100" src="{% static 'images/wide-tent-lake.webp' %}" alt="A tent and chair in front of a lake.">
         </div>
     </div>
+
+    <!-- Manage Bookings Section -->
     <div class="row mt-3">
-        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3">
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <h1 class="sedan-regular">Manage Bookings</h1>
         </div>
-        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3">
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <h2 class="sedan-regular">Upcoming Bookings</h2>
         </div>
-        <!-- Booking List Column -->
+        <!-- Upcoming Bookings List -->
         {% for booking in booking_list %}
         {% if not booking.is_in_past %}
-        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3">
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="card mt-1 mb-1 text-center">
                 <h5 class='sedan-regular mt-2'>{{ booking.full_name }}</h5>
                 <p class="m-1">{{ booking.string_from_tuple }} Booking</p>
@@ -56,12 +60,12 @@
         {% endfor %}
 
         <!-- Past Bookings List -->
-        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3">
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <h2 class="sedan-regular mt-3 mb-1">Past Bookings</h2>
         </div>
         {% for booking in booking_list %}
             {% if booking.is_in_past %}
-                <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3">
+                <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                     <div class="card mt-1 mb-1 text-center bg-secondary-subtle">
                         <h5 class='sedan-regular mt-2'>{{ booking.full_name }}</h5>
                 <p class="m-1">{{ booking.string_from_tuple }} Booking</p>
@@ -108,5 +112,6 @@
     </div>
 </div>
 
+<!-- Javascript Link -->
 <script src="{% static 'js/user_bookings.js' %}"></script>
 {% endblock content %}

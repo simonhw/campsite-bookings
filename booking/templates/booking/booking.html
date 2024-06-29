@@ -3,20 +3,25 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
 <div class="container-fluid mb-3">
-    <div class="row d-lg-none d-xl-none">
+
+    <!-- Hero Image -->
+    <div class="row d-md-none d-lg-none d-xl-none">
         <div class="col-12 g-0">
             <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
         </div>
     </div>
-    <div class="row d-none d-lg-block d-xl-block d-xxl-block">
+    <div class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block">
         <div class="col-12 g-0">
             <img class="img-fluid w-100" src="{% static 'images/wide-tent-lake.webp' %}" alt="A tent and chair in front of a lake.">
         </div>
     </div>
+
+    <!-- Booking Form Section -->
     <div class="row mt-3">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-            <h1 class="sedan-regular">{% if id %} Edit {% else %} Book {% endif %} {% if user.is_superuser %} Booking {% else %} Your Stay {% endif %}</h1>
+            <h1 class="sedan-regular">{% if id %} Edit {% else %} Book {% endif %} {% if user.is_staff %} Booking {% else %} Your Stay {% endif %}</h1>
         </div>
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             {% if user.is_authenticated %}
@@ -27,7 +32,7 @@
         </div>
 
         {% if user.is_authenticated %}
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4 mb-3">
             <form id="bookingForm" method="post">
                 {{ booking_form | crispy }}
                 {% csrf_token %}
@@ -36,12 +41,14 @@
         </div>
         {% endif %}
     </div>
-    <div class="row mt-4 bg-green-3 pt-3">
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+
+    <!-- Booking Information Section -->
+    <div class="row mt-3 bg-green-3">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4 mt-4">
             <h2 class="sedan-regular text-white">Booking Information</h2>
             <hr class="text-custom-white">
         </div>
-        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4 mb-4">
             <h5 class="sedan-regular text-white">Check-In/Check-Out</h5>
             <p class="text-custom-white">Check-in is from 14:00 to 20:00 every day. Check-out is strictly at 11:00.</p>
             <h5 class="sedan-regular text-white">Payment</h5>
@@ -61,6 +68,8 @@
                 We look forward to hosting you!</p>
         </div>
     </div>
+
+    <!-- Terms and Conditions Section -->
     <div class="row mt-4">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <h2 class="sedan-regular">Terms and Conditions</h2>
@@ -136,5 +145,7 @@
     </div>
 </div>
 
+<!-- Javascript Link -->
 <script src="{% static 'js/booking.js' %}"></script>
+
 {% endblock content %}

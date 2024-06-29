@@ -3,20 +3,29 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container-lg mb-3">
-    <div class="row">
+<div class="container-fluid mb-3">
+
+    <!-- Hero Image -->
+    <div class="row d-md-none d-lg-none d-xl-none">
         <div class="col-12 g-0">
             <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
         </div>
     </div>
+    <div class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block">
+        <div class="col-12 g-0">
+            <img class="img-fluid w-100" src="{% static 'images/wide-tent-lake.webp' %}" alt="A tent and chair in front of a lake.">
+        </div>
+    </div>
+
+    <!-- User Bookings Section -->
     <div class="row mt-3">
-        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <h1 class="sedan-regular">My Bookings</h1>
         </div>
-        <!-- Booking List Column -->
+        <!-- Upcoming Bookings List -->
         {% for booking in booking_list %}
         {% if not booking.is_in_past %}
-        <div class="col-12">
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="card mt-1 mb-1 text-center">
                 <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
                 <p class="m-1">{{ booking.arrival }} </p>
@@ -76,12 +85,12 @@
         {% endfor %}
 
         <!-- Past Bookings List -->
-        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4p-2">
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <h1 class="sedan-regular mt-3 mb-1">Past Bookings</h1>
         </div>
         {% for booking in booking_list %}
             {% if booking.is_in_past %}
-                <div class="col-12">
+                <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                     <div class="card mt-1 mb-1 text-center bg-secondary-subtle">
                         <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
                         <p class="m-1">{{ booking.arrival }} </p>
@@ -111,8 +120,7 @@
 </div>
 
 <!-- Modals -->
-<!-- Amending a booking within 48 hours  -->
-    <!-- Code taken from Bootstrap Documentation -->
+<!-- Amending a booking within 48 hours (Code taken from Bootstrap Documentation)  -->
 <div class="modal fade" id="within48hModal" tabindex="-1" aria-labelledby="within48hModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -160,5 +168,6 @@
     </div>
 </div>
 
+<!-- Javascript Link -->
 <script src="{% static 'js/user_bookings.js' %}"></script>
 {% endblock content %}
