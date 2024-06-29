@@ -44,6 +44,10 @@
     text-decoration: none;
 }
 
+.custom-mb-1 li {
+    margin-bottom: 1rem;
+}
+
 /* Media query for tablets and larger: >= 768px */
 @media screen and (min-width: 768px) {
 
