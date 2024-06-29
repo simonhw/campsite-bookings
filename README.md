@@ -249,12 +249,47 @@ Validating the data to be submitted by the user is done both on the back and fro
 
         They are set such that the minimum value of arrival is always tomorrow from the point of view of the user, and the departure date is always at least the day after tomorrow.
         In most cases the arrival date will be selected first, so the minimum departure must be updated dynamically. this was achieved using [custom JavaScript code](static/js/booking.js). The custom code adds an event listener to the arrival input field and when the value is changed, set the new minimum departure date to be one day after the chosen arrival date.
-        In cases where the user has selected a departure date and then updates the arrival date to be after the departure, a front-end validation check prevents the form from being submitted.
-
-            ![Future arrival validation](static/images/readme/future-date.png)
-
-
         
+        In cases where the user has selected a departure date and then updates the arrival date to be equal to are after the departure, the form is prevented from being submitted and the user is informed of their error.
+
+        ![Same date validation](static/images/readme/same-date.png)
+        ![Future arrival validation](static/images/readme/future-date.png)
+
+- Number of Guests
+    - If user attempt to submit the form with values less than the minimum or greater than the maximum values for the adults and children fields, the form does not submit and the user is informed of their error.
+
+        ![Minimuim adults validation](static/images/readme/adults-validation.png)
+        ![Minimum children validation](static/images/readme/children-validation.png)
+
+        ![Maximum adults and children validation](static/images/readme/adult-children-validation.png)
+
+        These limits are set in `booking/models.py` using Django core validator classes as shown below:
+
+        ```
+            adults = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
+            children = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(10)])
+        ```
+
+#### Form Submission
+Upon valid data entry and submission, the data is POSTED to the database and a confirmation message is displayed to the user at the top of the page.
+
+![Booking confirmation toast message](static/images/readme/booking-confirmation.png)
+
+After submission, the input data is cleared and the form is restored to its default state.
+
+#### Booking Information 
+Below the form section, with a distinct white-on-green style to distinguish it from the booking form, the main points of informtion for making a booking are presented to the site user. These items are shown here to address the more frequently asked questions about bookings: check-in time, payments, and cancellations. The contact details for the campsite are listed here and the user is encouraged to get in touch regarding and special request or specific questions.
+
+![Booking information section](static/images/readme/booking-info.png)
+![Booking information section](static/images/readme/booking-info-2.png)
+
+#### Terms and Conditions
+A Bootstrap collapse component is utilised for the long list of Terms and Conditions to keep the booking page looking neat and avoid having to scroll too much to view the footer details. The user can choose to view the full list by clicking on the link as prompted.
+
+![Terms and Conditons collapsed](static/images/readme/tac-hidden.png)
+
+![Terms and Conditons expanded](static/images/readme/tac-show.png)
+
 
 ## Responsiveness
 On small screen sizes, namely mobiles, the website is displayed with content in a scrollable single column. This design was chosen as it is a comfortable and familiar experience for mobile users.
@@ -297,6 +332,7 @@ The wording changes on the booking page when the admin user edits something.
 - have to accept terms and conditions to submit booking
 - modal to contact us if wanted to book >10 guests
 - set guests limits based on accommodation type selected.
+- replace toast messages with modals
 
 ## Technologies Used
 ### Languages
