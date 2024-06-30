@@ -11,8 +11,24 @@ Deployed program on Heroku: [Lakeview Campsite](https://lakeview-campsite-8b683b
 - [User Experience](#user-experience)
     - [Initial Discussion](#initial-discussion)
     - [Agile Planning](#project-planning-with-the-agile-approach)
+    - [User Stories](#user-stories)
+    - [Kanban Board](#kanban-board)
 - [Design](#design)
+    - [Colour Scheme](#colour-scheme)
+    - [Typography](#typography)
+    - [Imagery](#imagery)
+    - [Wireframes](#wireframes)
+    - [ERDs](#entity-relationship-diagrams)
+    - [CRUD Functionality](#crud-functionality)
+    - [Responsiveness](#responsiveness)
 - [Features](#features)
+    - [The Homepage](#the-homepage)
+    - [The About Page](#the-about-page)
+    - [Accounts Pages](#the-signup-page)
+    - [The Booking Page](#the-booking-page)
+    - [User Bookings](#user-bookings)
+    - [Managing Bookings](#managing-bookings)
+    - [Error Pages](#error-pages)
     - [Features to be Implemented](#features-to-be-implemented)
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
@@ -58,7 +74,7 @@ Using the Agile method allowed this project to be managed well in small chunks. 
 
 ### User Stories
 
-#### Kanban Board
+### Kanban Board
 
 ## Design
 ### Colour Scheme
@@ -113,6 +129,33 @@ An ERD was created to plan out the models that would be created and used in this
 ![ERDs](static/images/readme/erd-v2.png)
 
 The User model shown above is the default model supplied with the Django framework, and is included to show how it related to the custom Booking model. Another custom Review model was planned but did not make it into this interation of the project. Further details on this model can be found in the [Features to be Implemented](#features-to-be-implemented) section.
+
+### CRUD Functionality
+A key requirement for this project was for users to be able to create, read, update, and/or delete data from the database as appropriate. User could interact with the database in these ways as follows:
+
+#### Create
+* Site users and admin users may **create** by creating an account.
+* Site users may **create** by creating a booking.
+
+#### Read
+* Site users and admin users may **read** by viewing the home and about pages.
+* Site users may **read** by viewing their list of bookings.
+* Admin user may **read** by viewing the list of all bookings.
+
+#### Update
+* Site users may **update** by amending their booking information.
+* Admin user may **update** by amending customer's booking information.
+
+#### Delete
+* Site users may **delete** by cancelling their booking.
+* Admin users may **delete** by cancelling user bookings.
+
+### Responsiveness
+On small screen sizes, namely mobiles, the website is displayed with content in a scrollable single column. This design was chosen as it is a comfortable and familiar experience for mobile users.
+
+On tablet-sized screens, content is display in multiple columns to make user of the larger space. Reviews are now displayed four at a time with the use of previous and next buttons to view the paginated list.
+
+On large screen sizes, multiple columns are again used, with empty space on the outermost columns to focus the user's attention in the middle of the page. This is more aesthetically pleasing than having content spread aross a wide screen.
 
 ## Features
 The website was designed to be as simple as possible, with little to no distracting content. A mobile-first design process was undertaken from the start.
@@ -372,36 +415,13 @@ If the user has no bookings associated with their account, paragraphs are displa
 
 ![No bookings paragraphs](static/images/readme/no-bookings.png)
 
-## Responsiveness
-On small screen sizes, namely mobiles, the website is displayed with content in a scrollable single column. This design was chosen as it is a comfortable and familiar experience for mobile users.
+### Managing Bookings
+For a staff user, all bookings can be managed by navigating to the `manage_bookings.html` page. Here a list of all bookings is displayed, with the booking card having a slightly different format to that seen in the `user_bookings.html` page. Each booking card has the user's name or username displayed at the top and all relevant booking details are listed below it. The same options of editing and deleting bookings are afforded to the staff user here, but the wording is changed from "Edit" to "Manage". There is currently no functionality implemented for a user to edit their account details and add their first and last names; when this is the case, their username is displayed on the card instead of their first and last name. The staff user is also not limited when choosing to manage or delete a booking that is within 48 hours.
 
-On tablet-sized screens, content is display in multiple columns to make user of the larger space. Reviews are now displayed four at a time with the use of previous and next buttons to view the paginated list.
+![Manage bookings page](static/images/readme/manage-bookings.png)
+![Manage bookings page](static/images/readme/manage-bookings-2.png)
 
-On large screen sizes, multiple columns are again used, with empty space on the outermost columns to focus the user's attention in the middle of the page. This is more aesthetically pleasing than having content spread aross a wide screen.
-
-## CRUD Functionality
-A key requirement for this project was for users to be able to create, read, update, and/or delete data from the database as appropriate. User could interact with the database in these ways as follows:
-
-### Create
-* Site users and admin users may **create** by creating an account.
-* Site users may **create** by creating a booking.
-
-### Read
-* Site users and admin users may **read** by viewing the home and about pages.
-* Site users may **read** by viewing their list of bookings.
-* Admin user may **read** by viewing the list of all bookings.
-
-### Update
-* Site users may **update** by amending their booking information.
-* Admin user may **update** by amending customer's booking information.
-
-### Delete
-* Site users may **delete** by cancelling their booking.
-* Admin users may **delete** by cancelling user bookings.
-
-### Admin View
-The bookings are displayed with more details for the admin user without the use of a dropdown.
-The wording changes on the booking page when the admin user edits something.
+### Error Pages
 
 ### Features to be Implemented
 - occupancy limits per accom type
