@@ -69,12 +69,72 @@ Each user story was assigned a number of labels to aid in the project workflow. 
 - `Could-Have` - A user story relating to a feature which would be of benefit to the user but without which the site will still achieve all its design goals.
 - `Site User` - A user story from the perspective of a regular site user.
 - `Site Admin` - A user story from the perspective of a site administrator.
+- `documentation` - A task related to writing the README or TESTING documents.
+- `bug` - Denoting an unsolved bug.
+- `Solved Bug` - Denoting a bug that has been resolved.
 
 Using the Agile method allowed this project to be managed well in small chunks. The developer was able to work on specific tasks without losing focus and manage and project the time required for these tasks optimally.
 
 ### User Stories
+#### Epic: Initial Project Setup
+- **Set Up Django Files**: As a **Developer** I can **set up the Django template files** so that **I can begin to write code for the project**.
+    - Install the correct version of Django.
+    - Create a project called **lakeview**.
+    - Create an app called **home**.
+    - Display a "Hello world!" string on the webpage.
+
+#### Epic: User Accounts
+- **Create an Account**: As a **Site User** I can **create an account** so that **I can make bookings and leave reviews**.
+    - When I click the sign in button, I am prompted to make an account.
+    - After registering my details, I can log in and view, create, update, or delete a booking.
+    - I can log out and log back in using the password I created.
+
+#### Epic: Website Content
+- **View Campsite Information**: As a **Site User** I can **view information about the campsite** so that **I can make an informed decision about making a booking**.
+    - When I visit the about page, I can read the campsite information.
+    - I can view the location of the campsite.
+    - I can view the size of the campsite.
+    - I can view the facilities and services offered.
+
+#### Epic: Bookings System
+- **Make a Booking**: As a **Site User** I can **select a booking option** so that I can **secure a campsite booking**.
+    - I can view the types of bookings that can be made.
+    - I can select an option to book.
+    - I can only select valid date options.
+    
+
+- **View My Bookings**: As a **Site User** I can **view my bookings** so that I can **see my bookings history as well as upcoming bookings**.
+    - When I open the bookings page, I will see a list of my past and future bookings
+    - When the booking is in the past, I will see it displayed in a different style to future bookings.
+    - When I click on a booking, I will be able to view more detailed information about it.
+
+- **Edit a Booking**: As a **Site User** I can **edit a booking of mine** so that I can **have control over the details of my bookings**.
+    - I can select an upcoming booking to edit.
+    - For a past booking, I do not have the option to edit the details.
+    - When editing booking details, I can change any details they wish and save the changes.
+    - If the booking is less than 48 hours away, I cannot edit the booking and I am instead prompted to ring the campsite for further instruction.
+
+- **Delete a Booking**: As a **Site User** I can **cancel a booking** so that **I can manage my stay at the campsite**.
+    - I can navigate to my bookings page and cancel a booking.
+    - If the booking is less than 48 hours away, I will not have the option to cancel and will be prompted to ring the campsite for further advice.
+    - Otherwise, a modal prompt will ask me to confirm this irreversible action.
+    - On successful deletion, a confirmation message will be displayed to me.
+
+- **View All Bookings**: As a **Site Admin** I can **view all bookings** so that **I can understand when people will use the campsite**.
+    - I can view a list of all bookings and their details.
+    - For a given booking, I can amend or delete it.
+    - For a booking in the past, I cannot amend or delete it.
 
 ### Kanban Board
+The GitHub Projects tool was used to manage developement progress for this website. The kanban board was used to separate tasks into four columns:
+- Todo
+- In Progress
+- Done
+- Future Features
+
+The Epics and labels discussed above were used in conjuction with the board and allowed the developer to manage their time well during development. Below is a screenshot of the final state of the kanban board.
+
+![Image of Kanban Board]()
 
 ## Design
 ### Colour Scheme
