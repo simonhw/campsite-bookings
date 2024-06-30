@@ -124,10 +124,11 @@ def booking_edit(request, id):
     if not booking.booked_by == request.user and not request.user.is_staff:
         raise PermissionDenied
     else:
-        if booking.booked_by == request.user or request.user.is_staff and request.method == 'GET':
+        if (booking.booked_by == request.user or request.user.is_staff) and request.method == 'GET':
             booking_form = BookingForm(instance=booking)
             return render(request, 'booking/booking.html', {'booking_form': booking_form, 'id': id})
         elif request.method == 'POST':
+            print('request.method is ', request.method)
             booking_form = BookingForm(request.POST, instance=booking)
             if booking_form.is_valid():
                 booking_form.save()
