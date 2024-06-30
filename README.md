@@ -322,7 +322,55 @@ A Bootstrap collapse component is utilised for the long list of Terms and Condit
 ![Terms and Conditons expanded](static/images/readme/tac-show.png)
 
 ### User Bookings
-For a given logged in user who is not a staff member
+As described above, a given logged in user who is not a staff member may navigate to the `user_bookings.html` page and view a list of campsite booking make by them.
+
+![User Bookings page](static/images/readme/my-bookings.png)
+
+The bookings are separated into two sections: "My Bookings" and "Past Bookings". Bookings with a departure date of today or later are displayed in the former section and those whose departure date have passed are shown in the latter. All booking have a collapse link that allows the user to view more details when clicked. 
+
+![My Bookings more details](static/images/readme/my-booking-details.png)
+
+The details show all details that the user would have entered when making a booking: arrival date, departure date, and number of guests. When no children were booked in, this field is omitted entirely from the card.
+
+#### Editing Bookings
+The user is able to edit or delete bookings up until two day before the arrival date. When the edit button is clicked, the user is brought back to the booking form page. Through the use of template tags, the page checks if a booking id exists. In this case it does as the user has clicked on the "Edit" button, calling the `booking_edit` view which populates the form with the correct data. The heading is thus changed to read "Edit Your Stay" and the submit button text changed to "Update". This is a way of making sure the user is aware that they are editing an existing booking as opposed to making a new one.
+
+![Edit Your Stay page](static/images/readme/edit-booking.png)
+
+If the new data is valid, the user is shown a message confirming their action and is redirected to the `user_bookings.html` page.
+
+![Edit booking toast message](static/images/readme/edit-booking-toast.png)
+
+If the booking arrival date is within the next 48 hours, the user is not able to amend the details and a modal message is displayed informing the user of same and prompting them to get in contact with the campsite staff. A modal was chosen for this feature as it forces the user to acknowledge the message and click a button labelled "Understood" before they are able to interact with the website again. The campsite contact phone number is linked here for the user's convenience.
+
+![Edit booking denied modal](static/images/readme/edit-denied.png)
+
+This is achieved by writing a custom method in `booking/models.py` which returns a boolean value based on whether the date provided is within the next 48 hours. This method can be easily amended to restrict to any number of hours or days using the `timedelta` class.
+```
+def is_within_48h(self):
+    return self.arrival < date.today() + timedelta(hours=48)
+```
+
+#### Deleting Bookings
+Similar to above, the user can choose to delete their booking as long as it is not within the next 48 hours. A modal is shown to the user asking them to confirm this action and reminds them that it is not possible to retrieve the data afterwards.
+
+![Delete booking modal](static/images/readme/delete-booking.png)
+
+If the booking is successfully deleted, the user is shown a message confirming the action and is redirected to their bookings page.
+
+![Delete booking toast message](static/images/readme/delete-toast.png)
+
+As with the edit action described above, if the booking is in the next 48 hours another [modal](static/images/readme/delete-denied.png) is shown to the user explaining that it is not possible to delete the booking and action does not take place.
+
+#### Past Bookings
+A list of past booking is also shown to the user on this page for ease of reference. When the "More Details" link is clicked, the details for the chosen past booking are displayed. The wording here is slightly different with the past tense of "Arrived" and "Departed" used. No edit or delete functionality is possible with these bookings.
+
+![Past bookings details](static/images/readme/past-booking-details.png)
+
+#### No Bookings
+If the user has no bookings associated with their account, paragraphs are displayed to this effect.
+
+![No bookings paragraphs](static/images/readme/no-bookings.png)
 
 ## Responsiveness
 On small screen sizes, namely mobiles, the website is displayed with content in a scrollable single column. This design was chosen as it is a comfortable and familiar experience for mobile users.
@@ -369,6 +417,7 @@ The wording changes on the booking page when the admin user edits something.
 - robins tips
 - email funtionality
 - signout page extra button
+- include more details such as price and packages in my bookings details
 
 ## Technologies Used
 ### Languages
