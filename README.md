@@ -257,7 +257,7 @@ This page is included as standard with the Django framework, but in this release
 ![Password reset page](static/images/readme/password-reset.png)
 
 ### The Sign Out Page
-When users click the sign out button in the nav bar they are directed to the `signout.html` page. Users must confirm the action by clicking the red "Sign Out" button after which they are redirected to the homepage. This is different from the previous two pages due to the fact that the user could be signing out from a page that required specific authenitcated access. Instead of showing the user a 403 error page, it was deemed a much better user experience to simply be returned to the homepage.
+When users click the sign out button in the nav bar they are directed to the `signout.html` page. Users must confirm the action by clicking the red "Sign Out" button after which they are redirected to the homepage. This is different from the previous two pages due to the fact that the user could be signing out from a page that required specific authenitcated access. Instead of showing the user a 403 error page, it was deemed a much better user experience to simply be returned to the homepage. A "Cancel" button allows the user to navigate back to the previous page without having to use their browser.
 
 ![Sign out page](static/images/readme/signout.png)
 
@@ -290,7 +290,12 @@ The authenticated user's username is displayed under the page's heading as a vis
         ![Departure date picker](static/images/readme/departure-picker-4.png)
 
 - Number of Guests
-    - The final form fields are those for the number of adults and children in the booking. These fields only accept non-negative integers; the adults field has a minimum value of one and the children field has a minimum value of zero. The maximum number of guests of either type is set to 10, to prevent the user booking in impossibly large guest numbers. See [Features to be Implemented](#features-to-be-implemented) for more on this.
+    - The next form fields are those for the number of adults and children in the booking. These fields only accept non-negative integers; the adults field has a minimum value of one and the children field has a minimum value of zero. The maximum number of guests of either type is set to 10, to prevent the user booking in impossibly large guest numbers. See [Features to be Implemented](#features-to-be-implemented) for more on this.
+
+- Terms and Conditions
+    - The final form field is a radio button with which the user can indicate that they have accepted the Terms and Conditions listed below.
+
+        ![Terms and Conditions radio button](static/images/readme/tac-radio.png)
 
 #### Form Validation
 Validating the data to be submitted by the user is done both on the back and front end. 
@@ -343,6 +348,11 @@ Validating the data to be submitted by the user is done both on the back and fro
             adults = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
             children = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(10)])
         ```
+
+- Terms and Conditions
+    - If the user does tick the radio button, the form is prevented from being submitted and a message is displayed reminding the user that they must accept the Terms and Conditions to proceed with the booking.
+
+        ![Terms and Conditions error message](static/images/readme/tac-error.png)
 
 #### Form Submission
 Upon valid data entry and submission, the data is POSTED to the database and a confirmation message is displayed to the user at the top of the page.
@@ -422,22 +432,68 @@ For a staff user, all bookings can be managed by navigating to the `manage_booki
 ![Manage bookings page](static/images/readme/manage-bookings-2.png)
 
 ### Error Pages
+Three error pages were created for this website:
+
+- A 404 page - Page not found
+- A 403 page - Permission denied
+- A 500 page - Internal Server Error
+
+The pages were customised with different header images that reflected the error encountered. For the 404 and 500 pages, a puzzled man looking at his phone in the middle of the woods was used to convey a sense of being lost or losing track of where one is.
+
+![404 Error Page](static/images/readme/error404.png)
+![500 Error Page](static/images/readme/error500.png)
+
+For the 403 error page, an image of a diamond mesh fence was used to convey a sense of forbidden access and keeping the user out of somewhere they shouldn't be.
+
+![403 Error Page](static/images/readme/error403.png)
+
+All three error pages have some brief text explaining why the user is seeing the error page, and that they should use click the large green "Home" button to bring them back to the homepage.
 
 ### Features to be Implemented
-- occupancy limits per accom type
-- images on booking page per type
-- add pricing information and page
-- upgrade calendar to booking style with available dates
-- diasble the form not just the submit button when not signed in
-- sort bookings by month for the admin user
-- have to accept terms and conditions to submit booking
-- modal to contact us if wanted to book >10 guests
-- set guests limits based on accommodation type selected.
-- replace toast messages with modals
-- robins tips
-- email funtionality
-- signout page extra button
-- include more details such as price and packages in my bookings details
+This project has many possible features that are beyond the scope of the current release. In the future, I hope to implement all of the below and more to create a fully functional and business-ready campsite website.
+
+#### Booking Page
+- **Booking Images**
+    - When a user selects an accommodation option in the booking form, an image of that type of accomodation is shown adjacent to the field. This would be achieved using JavaScript and adding an event listener that changes the image when the accommodation field is changed.
+- **Occupancy Limits**
+    - Limiting the number of guests per day and per accomodation type would be a much sought-after feature for a client. Not all campsites would have the same sized facilities or staff support. Ideally the user would be shown how many spaces are left for each accomodation type when they select their preferred booking dates. This could involve using a "Check Availibility" button which calls a custom method that returns the number of open accommodation spaces available to the user.
+    - Currently there is a maximum value of 10 guests set for the adults and children input fields. This is to prevent unreasonable booking in the website's current version. An intermediate step to improve this would be to show the user a modal window asking them to get in touch to discuss their booking if they wish to make a booking of more than 10 guests.
+- **Date Picker**
+    - Having a date field that shows a calendar indicating booking availibility would improve the current user experience. A JavaScript library such as [flatpickr](https://flatpickr.js.org/) would be one way of implementing this feature. Writing custom JavaScript to pass available dates to flatpickr would allow it to configure the choices available to the user.
+- **Extra Products**
+    - The extra services and packages described in the "Pricing Guide" section of `about.html` could be presented to the user as additional items they can purchase at the point of booking. This would involve updating the booking model with new fields and updating the booking form.
+- **Pricing**
+    - It would be much more beneficial to the user to see the price of their boooking before they click submit. Having a dynamically updating price total on the booking form would achieve this goal. JavaScript can be used to implement this feature by setting up event listeners to monitor changes in the form fields and writing a custom function to calculate the total price and update the figure using `.innerText` or a similar DOM property.
+- **Payment**
+    - For real-world application of this wesbite, adding a payment option such as the Stripe platform would be essential. This would involve setting up a Stripe account, integrating it on the backend with custom views and urls, and updating the booking form or creating a separate checkout form. Templates would also need to be created to deal with successful or failed payment attempts.
+- **Spam and Security**
+    - Implementing additional security for the booking form could involve the use of CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart). The [Google reCAPTHCA service](https://developers.google.com/recaptcha/) could be used to prevent malicious users from creating multiple accounts, flooding the database with false bookings, or running brute force login attempts for existing user accounts.
+- **Accepting T&Cs**
+    - The Terms and Conditions are currently listed below the booking form, and the user is told that by making a booking they are accepeting these terms; however, it would be better to have a checkbox that the user must click to indicate that they have read the Terms and Conditions before they can submit their booking.
+
+#### Manage Bookings Page
+- **Sort Bookings**
+    - In this release, all bookings are listed and sorted by arrival date in descending order; however, in a real-world application, there could be hundreds of bookings available to view to the staff user. It would be prefereable to have more control on how to sort the bookings list, e.g. view by month or by accomodation type. This may involve creating new classes in `booking/views.py` and having different buttons that the staff user can click to sort the bookings in different ways.
+
+#### User Accounts
+- **Email Functionality**
+    - Integrating an email service with the website will allow users to reset their password, to be sent details of their bookings, and to receive other important messages, e.g. reminders before their arrival.
+- **Custom Sign Up Form**
+    - The sign up form can be imroved both in its formatting and content. It would be preferable to have the user enter thier first and last name upon signup. The current labels and fields can display inconsistently (see [Bug #1](/TESTING.md#bugs)) and it would give a better user experience to have the sign up form look consistent across all screen sizes.
+- **Edit Account Details**
+    - An app to deal with user accounts will be created in a future release. It will allow users to update thier personal details, payment methods, and delete their accounts.
+
+#### Website Content
+- **Image Gallery**
+    - Add a new webpage containing various images of the campsite which will encourage site users to choose this campsite for the next holiday. Use of Bootstrap grips and carousels could make this a very pleasing webpage to browse.
+- **Manage Campsite Information**
+    - For a staff user, functionality can be written that allows them to directly edit the website content from the front end. This would involve writing custom forms that will replace the content of a certain HTML element with the content entered by the staff user with the use of a rich text editor package, e.g. [summernote](https://summernote.org/)
+
+#### Reviews App
+- Users should be able to leave reviews for the campsite if they have had at least one booking. Users would have to be logged in and the current time be after the departure date of their first booking before being able to access the review form. Staff users will be able to approve reviews before they are published to the site.
+- This will involve creating a reviews model and associated views to allow users to edit and delete reviews.
+- The most recent reviews will be displayed on the homepage. Site visitor can view a separate webpage containing all reviews, paginated to keep the page looking tidy.
+
 
 ## Technologies Used
 ### Languages
