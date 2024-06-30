@@ -96,7 +96,9 @@
         </div>
         {% endif %}
         {% empty %}
-        <p>You have no upcoming bookings.</p>
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            <p>You have no upcoming bookings.</p>
+        </div>
         {% endfor %}
 
         <!-- Past Bookings List -->
@@ -129,7 +131,9 @@
                 </div>
             {% endif %}
             {% empty %}
+            <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                 <p>You have no past bookings.</p>
+            </div>
         {% endfor %} 
     </div>
 </div>
