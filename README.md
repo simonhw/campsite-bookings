@@ -189,6 +189,37 @@ The final section on this page is the pricing guide. This section breaks down th
 
 A final "Book Now" call-to-action button is presented to the user again to avoid them having to scroll back up to the top of the page if they have now decided to make a booking.
 
+### The Signup Page
+New users that wish to make a booking must create an account to access this feature on the website. The user is brought to the `signup.html` page through either the [nav bar link](static/images/readme/header-nav.png) or the [booking page link](static/images/readme/booking-form-hidden.png).
+
+![Signup Page](static/images/readme/signup-1.png)
+![Signup Page](static/images/readme/signup-2.png)
+
+This is a default Django signup form that is provided with the framework; however the template was amended to have a consistent style with the rest of the website and extend the custom `base.html` page.
+
+Upon successful account creation, a message is shown to the user confirming the action and they are returned to the prevoius page they were viewing.
+
+![Signup toast message](static/images/readme/signup-toast.png)
+
+### The Sign In Page
+The sign in page similary is a default Django form that has had its template styled to be consistent with the website. When returning users sign in successfully, they are shown a message to confirm their action and they are returned to the prevoius page they were viewing. There is also a reset password link on this page which is further discussed below.
+
+![Signin Page](static/images/readme/signin.png)
+
+![Signin toast message](static/images/readme/signin-toast.png)
+
+#### The Password Reset Page
+This page is included as standard with the Django framework, but in this release the email functionality is not fully implemented. See [Features to be Implemented](#features-to-be-implemented) for more disscusion on future plans. Regardless, the template was styled to be consistent with the rest of the site, as it is still accessible by the user. The "Reset My Password" button was disabled for final release to prevent the user from seeing a 500 error page and wondering if their password was reset or not.
+
+![Password reset page](static/images/readme/password-reset.png)
+
+### The Sign Out Page
+When users click the sign out button in the nav bar they are directed to the `signout.html` page. Users must confirm the action by clicking the red "Sign Out" button after which they are redirected to the homepage. This is different from the previous two pages due to the fact that the user could be signing out from a page that required specific authenitcated access. Instead of showing the user a 403 error page, it was deemed a much better user experience to simply be returned to the homepage.
+
+![Sign out page](static/images/readme/signout.png)
+
+![Sign out toast message](static/images/readme/signout-toast.png)
+
 ### The Booking Page
 Unauthenticated users navigating to the booking page will not see the form until they either sign up or log in. Initially this functionality was achieved by having the Submit button be disabled for such users, but the rest of the form could still be interacted with, and upon signing in the user would have to enter their data again. This was deemed to be too poor a user experience so instead the entire form is only rendered when the user is logged in.
 
@@ -290,6 +321,8 @@ A Bootstrap collapse component is utilised for the long list of Terms and Condit
 
 ![Terms and Conditons expanded](static/images/readme/tac-show.png)
 
+### User Bookings
+For a given logged in user who is not a staff member
 
 ## Responsiveness
 On small screen sizes, namely mobiles, the website is displayed with content in a scrollable single column. This design was chosen as it is a comfortable and familiar experience for mobile users.
@@ -333,6 +366,9 @@ The wording changes on the booking page when the admin user edits something.
 - modal to contact us if wanted to book >10 guests
 - set guests limits based on accommodation type selected.
 - replace toast messages with modals
+- robins tips
+- email funtionality
+- signout page extra button
 
 ## Technologies Used
 ### Languages
