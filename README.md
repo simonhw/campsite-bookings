@@ -407,61 +407,7 @@ The authenticated user's username is displayed under the page's heading as a vis
         ![Terms and Conditions radio button](static/images/readme/tac-radio.png)
 
 #### Form Validation
-Validating the data to be submitted by the user is done both on the back and front end. 
-- Accommodation
-    - The dropdown list of four accommodation types is pre-selected to "Tent" and it is impossible to unselect any option in the list. This value is set in the `models.py` file.
-
-        ![Accommodation dropdown validation](static/images/readme/dd-val.gif)
-
-        ```
-        accommodation = models.IntegerField(choices=ACCOMMODATION, default=0)
-        ```
-
-- Arrival and Departure
-    - The minimum values of the arrival and departure dates are set in the `forms.py` file:
-        
-        ```
-        widgets = {
-            'arrival': DateInput(attrs={
-                'type': 'date',
-                'id': 'arrival',
-                'min': date.today() + timedelta(days=1)
-                }),
-            'departure': DateInput(attrs={
-                'type': 'date',
-                'id': 'departure',
-                'min': date.today() + timedelta(days=2)
-                }),
-        }
-        ```
-
-        They are set such that the minimum value of arrival is always tomorrow from the point of view of the user, and the departure date is always at least the day after tomorrow.
-        In most cases the arrival date will be selected first, so the minimum departure must be updated dynamically. this was achieved using [custom JavaScript code](static/js/booking.js). The custom code adds an event listener to the arrival input field and when the value is changed, set the new minimum departure date to be one day after the chosen arrival date.
-        
-        In cases where the user has selected a departure date and then updates the arrival date to be equal to are after the departure, the form is prevented from being submitted and the user is informed of their error.
-
-        ![Same date validation](static/images/readme/same-date.png)
-        ![Future arrival validation](static/images/readme/future-date.png)
-
-- Number of Guests
-    - If user attempt to submit the form with values less than the minimum or greater than the maximum values for the adults and children fields, the form does not submit and the user is informed of their error.
-
-        ![Minimuim adults validation](static/images/readme/adults-validation.png)
-        ![Minimum children validation](static/images/readme/children-validation.png)
-
-        ![Maximum adults and children validation](static/images/readme/adult-children-validation.png)
-
-        These limits are set in `booking/models.py` using Django core validator classes as shown below:
-
-        ```
-            adults = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
-            children = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(10)])
-        ```
-
-- Terms and Conditions
-    - If the user does tick the radio button, the form is prevented from being submitted and a message is displayed reminding the user that they must accept the Terms and Conditions to proceed with the booking.
-
-        ![Terms and Conditions error message](static/images/readme/tac-error.png)
+A full discussion on validating the various form input can be found in [TESTING.md](/TESTING.md#form-validation).
 
 #### Form Submission
 Upon valid data entry and submission, the data is POSTED to the database and a confirmation message is displayed to the user at the top of the page.

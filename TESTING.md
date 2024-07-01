@@ -1,13 +1,21 @@
 # Campsite Bookings - Testing
 
-Deployed program on Heroku: [Campsite Bookings]()
+Deployed program on Heroku: [Campsite Bookings](https://lakeview-campsite-8b683b53a1cd.herokuapp.com/)
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/simonhw/campsite-bookings)
 ![GitHub contributors](https://img.shields.io/github/contributors/simonhw/campsite-bookings)
 
 ## Contents
-- [](#)
-    - [](#)
+- [Form Validation](#form-validation)
+    - [Accomodation Type](#accommodation-type)
+    - [Booking Dates](#booking-dates)
+    - [Guest Numbers](#guest-numbers)
+    - [Terms and Conditions](#terms-and-conditions)
+    - [Form Submission](#form-submission)
+    - [Viewing Bookings](#viewing-bookings)
+    - [Changing Bookings](#changing-bookings)
+    - [Deleting Bookings](#deleting-bookings)
+    - [Accounts Pages](#accounts-pages)
 - [Testing](#testing)
     - [Manual Testing](#manual-testing)
     - [Full Testing](#full-testing)
@@ -16,7 +24,116 @@ Deployed program on Heroku: [Campsite Bookings]()
     - [Known Bugs](#known-bugs)
     - [Solved Bugs](#solved-bugs)
 
-![API error gif](assets/images/readme/validate-api-error.gif)
+## Form Validation
+Validating the data to be submitted by the user is done both on the back and front end. 
+
+### Accommodation Type
+The dropdown list of four accommodation types is pre-selected to "Tent" and it is impossible to unselect any option in the list. This value is set in the `models.py` file.
+
+![Accommodation dropdown validation](static/images/readme/dd-val.gif)
+
+```
+    accommodation = models.IntegerField(choices=ACCOMMODATION, default=0)
+```
+
+### Booking Dates
+The minimum values of the arrival and departure dates are set in the `forms.py` file:
+        
+```
+widgets = {
+    'arrival': DateInput(attrs={
+        'type': 'date',
+        'id': 'arrival',
+        'min': date.today() + timedelta(days=1)
+        }),
+    'departure': DateInput(attrs={
+        'type': 'date',
+        'id': 'departure',
+        'min': date.today() + timedelta(days=2)
+        }),
+}
+```
+
+They are set such that the minimum value of arrival is always tomorrow from the point of view of the user, and the departure date is always at least the day after tomorrow.
+In most cases the arrival date will be selected first, so the minimum departure must be updated dynamically. this was achieved using [custom JavaScript code](static/js/booking.js). The custom code adds an event listener to the arrival input field and when the value is changed, set the new minimum departure date to be one day after the chosen arrival date.
+
+In cases where the user has selected a departure date and then updates the arrival date to be equal to or after the departure, the form is prevented from being submitted and the user is informed of their error.
+
+![Same date validation](static/images/readme/same-date.png)
+![Future arrival validation](static/images/readme/future-date.png)
+
+### Guest Numbers
+If users attempt to submit the form with values less than the minimum or greater than the maximum values for the adults and children fields, the form does not submit and the user is informed of their error.
+
+![Minimuim adults validation](static/images/readme/adults-validation.png)
+![Minimum children validation](static/images/readme/children-validation.png)
+
+![Maximum adults and children validation](static/images/readme/adult-children-validation.png)
+
+These limits are set in `booking/models.py` using Django core validator classes as shown below:
+
+```
+adults = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(10)])
+children = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(10)])
+```
+
+### Terms and Conditions
+If the user does tick the radio button, the form is prevented from being submitted and a message is displayed reminding the user that they must accept the Terms and Conditions to proceed with the booking.
+
+![Terms and Conditions error message](static/images/readme/tac-error.png)
+
+### Form Submission
+When the submit button is clicked on the booking form, the view checks that the requested method is POST and then that the form data is valid. 
+```
+if request.method == 'POST':
+    booking_form = BookingForm(data=request.POST)
+```
+
+Passing these checks, the data is saved to the database. If the data is found to be invalid, the page is re-rendered with the data pre-filled in the form, and any error or validation messages are displayed to the user.
+
+### Viewing Bookings
+When a user click the "My Bookings" nav bar link, they are brought to the `user_bookings.html` page. This page calls a view that is dependent on the user viewing the page. The queryset of bookings displayed is filtered based on the model's `booked_by` field matching the requesting user.
+
+```
+queryset = Booking.objects.all().order_by('-arrival').filter(booked_by=self.request.user)
+```
+
+In this way, it is impossible for one user to access another user's booking details even though the page url is the same.
+
+### Changing Bookings
+The Edit button is rendered differently on the frontend based on whether the booking is withing the next 48 hours. If is is, the button displayed links to a modal on the page instead of the `edit/` url. The Manage button does not have this limitation. In either case, when a user clicks the Edit or Manage button for a given booking, their identity is verified in the `booking_edit` view. The login_required decorator redirects them to the login url if they are not signed in. This is a backup security check as the user should only be able to view this page after they have logged in.
+
+```
+if booking.booked_by == request.user or request.user.is_staff:
+```
+
+If this check passes, another if statement checks that requested method is GET. Validating to True, the form is filled with the booking data and the page is rendered.
+If the requested method is POST, the booking model is populated with the amended data and is verified using the `is_valid()` method before being saved to the database. If the data is invalid, a HttpsResponseBadRequest is returned and the form is not submitted.
+
+If the if statement above validates to False, a PermissionDenied exception is raised.
+
+### Deleting Bookings
+When a user clicks the Delete button for a given booking, their identity is verified in the `booking_delete` view. The login_required decorator is also included before this view to carry the same purpose as described above. If the identity checks pass, a second check takes places to verify the user's identity in conjunction with the `is_within_48h()` method. This ensures that the user receives the correct permissions to edit the details, i.e. the booking owner cannot delete a booking within 48 hours of arrival but a staff user can.
+
+```
+if booking.booked_by == request.user or request.user.is_staff:
+    if ( booking.booked_by == request.user and not booking.is_within_48h() ) or request.user.is_staff :
+        booking.delete()
+```
+
+If these conditions are satisfied, the booking is deleted from the database and the user is redirected to either `user_bookings.html` or `manage_booking.html` as shown below:
+
+```
+if request.user.is_staff:
+    return redirect ('manage_bookings')
+else:
+    return redirect('user_bookings')
+```
+
+### Accounts Pages
+The sign in, sign out, sign up, and reset password pages already come with form validation in the Django package. Full testing of these pages is detailed below in [Manual Testing](#manual-testing).
+
+## Testing
 
 ### Manual Testing
 | User Stories | Achieved by: | Supporting Images |
