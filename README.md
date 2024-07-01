@@ -58,7 +58,7 @@ User Stories were generated and grouped under different Epics to effectively str
 - "Bookings System"
 - "Website Content"
 - "Bugs"
-- "Documentation"
+- "Writing Documentation"
 
 Each user story was assigned a number of labels to aid in the project workflow. These include:
 
@@ -78,10 +78,41 @@ Using the Agile method allowed this project to be managed well in small chunks. 
 ### User Stories
 #### Epic: Initial Project Setup
 - **Set Up Django Files**: As a **Developer** I can **set up the Django template files** so that **I can begin to write code for the project**.
-    - Install the correct version of Django.
-    - Create a project called **lakeview**.
-    - Create an app called **home**.
-    - Display a "Hello world!" string on the webpage.
+    - I can install the correct version of Django.
+    - I can create a project called **lakeview**.
+    - I can create an app called **home**.
+    - I can display a "Hello world!" string on the webpage.
+
+- **Create PostgreSQL Database**: As a **Developer** I can **create a could-based database** so that **store and retrieve data for my website**.
+    - I can create a new PostgreSQL instance
+    - I can copy the URL in the Details section
+    - I can create the env.py file and set DATABASE_URL constant.
+    - I can install the relevant packages for database connection.
+    - I can run migrations.
+
+- **Deploy Project to Heroku**: As a **Developer** I can **deploy the project to Heroku** so that **I can see that the website displays properly**.
+    - I can create a Heroku app with a unique name.
+    - I can update the code for deployment with gunicorn.
+    - I can deploy the app on Heroku.
+
+- **Deploy Heroku App with Static Files**: As a **Developer** I can **deploy the project with static files** so that **the app will have the same styling as the local version.**.
+    - I can set up the WhiteNoise module.
+    - I can add the relevant data to the settings file.
+    - I can create a staticfiles directory and collect the static files.
+    - I can deploy the project on Heroku and ensure all styles are applied.
+
+#### Epic: Create Models
+- **Create Bookings Model**: As a **Developer** I can **create a Django model** so that **a user can create a campsite booking**.
+    - I can create a **booking** app.
+    - I can create a models file.
+    - I can declare the necessary imports.
+    - I can create a model with the appropriate fields required.
+
+- **Move Booking Model to the Correct App**: As a **Developer** I can **successfully migrate a model from one app to another** so that I can **have all the relevant code for a desired action contained in one app**.
+    - I can create the new model in the correct app.
+    - I can change all the refences from old model to the new model in other files.
+    - I can run migrations and check for any errors.
+    - I can delete the old model once the Heroku app is verifed to be working properly.
 
 #### Epic: User Accounts
 - **Create an Account**: As a **Site User** I can **create an account** so that **I can make bookings and leave reviews**.
@@ -90,11 +121,23 @@ Using the Agile method allowed this project to be managed well in small chunks. 
     - I can log out and log back in using the password I created.
 
 #### Epic: Website Content
+- **Create Base Template**: As a **Developer** I can **create a base template and homepage** so that **the similar aspects of the webpages need only be written once and the UX has a consistent appearance across the app**.
+    - I can create a base.html file.
+    - I can create a header and nav bar for small screens.
+    - I can create a footer for small screens.
+    - I can create a header and nav bar for larger screens.
+    - I can create a footer for larger screens.
+
 - **View Campsite Information**: As a **Site User** I can **view information about the campsite** so that **I can make an informed decision about making a booking**.
     - When I visit the about page, I can read the campsite information.
     - I can view the location of the campsite.
     - I can view the size of the campsite.
     - I can view the facilities and services offered.
+
+- **Create Error Pages**: As a **Developer** I can **create certain error pages** so that **a site user can understand when something goes wrong viewing a webpage**
+    - I can create a 404 error page.
+    - I can create a 403 error page.
+    - I can create a 500 error page.
 
 #### Epic: Bookings System
 - **Make a Booking**: As a **Site User** I can **select a booking option** so that I can **secure a campsite booking**.
@@ -124,6 +167,12 @@ Using the Agile method allowed this project to be managed well in small chunks. 
     - I can view a list of all bookings and their details.
     - For a given booking, I can amend or delete it.
     - For a booking in the past, I cannot amend or delete it.
+
+#### Epic: Bugs
+- As a **Developer** I can **detail and keep track of bugs** so that I can **solve them before release or come up with a plan to address them in the future**.
+
+#### Epic: Writing Documentation
+- As a **Developer** I can **write a README and TESTING file** so that **others can learn about my app and see the work that has gone into preparing it for final release**.
 
 ### Kanban Board
 The GitHub Projects tool was used to manage developement progress for this website. The kanban board was used to separate tasks into four columns:
