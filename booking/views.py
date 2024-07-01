@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseBadRequest
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
 
@@ -137,7 +137,17 @@ def booking_edit(request, id):
                 else:
                     return redirect('user_bookings')
             else:
-                return HttpResponseBadRequest('Invalid form data. Please check your inputs.')
+                booking_form = BookingForm(data=request.POST)
+                return render(
+                    request,
+                    "booking/booking.html",
+                    {
+                        "booking_form": booking_form,
+                    },
+                )
+                messages.add_message(
+                    request, messages.SUCCESS, "Invalid form data. Please check your inputs."
+                )
         else:
             return HttpResponseBadRequest('Unsupported request method.')    
     else:
