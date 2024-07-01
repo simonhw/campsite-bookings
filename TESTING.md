@@ -316,6 +316,15 @@ Username Field|When a username is entered that is not registered on the database
 Password Field|When an incorrect password for the respective username is entered and the Sign In button is clicked, a validation message is displayed and the form is not submitted.|Incorrect password entered for a given username and Sign In button clicked.|A validation message was displayed and the form was not submitted|Pass
 
 ### Automated Testing
+The W3C validator sites were used to validate the HTML and CSS files. JSHint was used to validate the JavaScript files.
+- index.html - local
+- about.html - local
+- booking.html - local
+
+- manage_bookings.html - local
+
+- signout.html - 
+- 404.html - Validated by direct input. 
 
 ## Bugs
 ### Known Bugs
