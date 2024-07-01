@@ -27,7 +27,7 @@
                 <div class="alert {{ message.tags }} alert-dismissible
                                     fade show mt-3" id="msg" role="alert">
                     {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor %}
             </div>
@@ -37,7 +37,7 @@
     <!-- Book Now button -->
     <div class="row">
         <div class="col-6 offset-3 mt-2 py-3 px-2 text-center">
-            <a href="{% url 'booking' %}" type="button" class="btn btn-danger btn-lg sedan-regular">Book Now!</a>
+            <a href="{% url 'booking' %}" class="btn btn-danger btn-lg sedan-regular">Book Now!</a>
         </div>
     </div>
 
@@ -60,7 +60,7 @@
     <!-- About Page Link button -->
     <div class="row mb-4">
         <div class="col-6 offset-3 py-3 px-2 text-center">
-            <a href="{% url 'about' %}" type="button" class="btn btn-success btn-lg sedan-regular">Learn More</a>
+            <a href="{% url 'about' %}" class="btn btn-success btn-lg sedan-regular">Learn More</a>
         </div>
     </div>
 
