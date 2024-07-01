@@ -151,13 +151,11 @@ def booking_delete(request, id):
 
     Method takes in the booking ID and 
     """
-    print('booking_delete being called')
+    
     booking = get_object_or_404(Booking, id=id)
     
-    if not booking.booked_by == request.user and not request.user.is_staff:
-        raise PermissionDenied
-    else:
-        if booking.booked_by == request.user or request.user.is_staff and not booking.is_within_48h():
+    if booking.booked_by == request.user or request.user.is_staff:
+        if ( booking.booked_by == request.user and not booking.is_within_48h() ) or request.user.is_staff :
             booking.delete()
             messages.add_message(
                     request, messages.SUCCESS, "Booking successfully deleted!"
@@ -171,4 +169,6 @@ def booking_delete(request, id):
             return redirect ('manage_bookings')
         else:
             return redirect('user_bookings')
+    else:
+        raise PermissionDenied
         
