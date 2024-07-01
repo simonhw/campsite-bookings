@@ -136,8 +136,30 @@ The sign in, sign out, sign up, and reset password pages already come with form 
 ## Testing
 
 ### Manual Testing
-| User Stories | Achieved by: | Supporting Images |
-| --- | --- | --- | 
+**User Stories** | **Achieved By:** | **Supporting Images**
+--- | --- | ---
+**Initial Project Setup** | | 
+Set Up Django Files | Installing the correct version of Django in the IDE. Creating a project named "lakeview". Creating an app called "home" and writing a basic view to display "Hello World!" on the homepage. | [Closed Issue on kanban board](static/images/readme/kanban-setup.png)
+Create PostgreSQL Database | Creating an ElephantSQL account and generating a new database instance. Add the correct values to the settings file and creating the env.py file. Installing the relevant packages to faciliate databse connection and running migrations. |  [Closed Issue on kanban board](static/images/readme/kanban-create.png)
+Deploy Project to Heroku | Creating a new Heroku app and updating the code with gunicorn before deploying the branch. |  [Closed Issue on kanban board](static/images/readme/kanban-deploy-heroku.png)
+Deploy Heroku App with Static Files | Setting up the WhiteNoise module and updating the settings file with the relevant information. Creating a staticfiles directory and running the `collectstatic` command. Deploing a new branch on Heroku and verifying all styling is applied. |  [Closed Issue on kanban board](static/images/readme/kanban-deploy-static.png)
+**Create Models** | | 
+Create Bookings Model | Creating a booking app in Django and a model file with the necessary imports. Creating the model itself with all the appropriate fields shown in the ERD. | [Closed Issue on kanban board](static/images/readme/kanban-create-model.png) 
+Move Booking Model to the Correct App | Create a new model in the correct app and changing all referneces in other files to this new model. Running migrations and checking for errors before deleting the old model. |  [Closed Issue on kanban board](static/images/readme/kanban-move-model.png)
+**User Accounts** | | 
+Create an Account | Clicking the Sign In button and registering personal details in the form. Submitting the form with valid data. | [1. Sign Up Page (top)](static/images/readme/signup-1.png) [2. Sign Up Page (bottom)](static/images/readme/signup-2.png)
+**Website Content** | | 
+Create Base Template | Creating a base.html file with the common code that will be used across all webpages such as the style links, header, and footer. |  [Closed Issue on kanban board](static/images/readme/kanban-base.png)
+View Campsite Information | Navigating to the About page and viewing the content displayed there. |  [1. Website Header (mobile)](static/images/readme/header-dd-user.png) [2. Website Header (dekstop)](static/images/readme/header-nav-user.png) [3. Website Footer](static/images/readme/footer-mob.png)
+Create Error Pages | Creating a 404.htmt, 403.html, and 500.html page and storing them in the same directory as base.html |  [1. 404 Error Page](static/images/readme/error404.png) [2. 403 Error Page](static/images/readme/error403.png) [3. 500 Error Page](static/images/readme/error500.png)
+**Bookings System** | | 
+Make a Booking | Navigating to the Bookings page and selecting an accomodation option, booking dates, and number of guests. |  [Booking Form Page](static/images/readme/booking-form.png)
+View My Bookings | Navigating to the My Bookings page and viewing the list of displayed upcoming and past booking. Clicking the link in each booking to view more details. |  [1. My Bookings Page](static/images/readme/my-bookings.png) [2. More details on Bookings Page](static/images/readme/my-booking-details.png)
+Edit a Booking | Selecting a valid booking to edit and amending the details in the form provided. |  [Editing a Booking](static/images/readme/edit-booking.png)
+Delete a Booking | Selecting a valid booking to delete and confirming the action in the provided modal message. |  [Deleting a Booking](static/images/readme/delete-booking.png)
+View All Bookings | Navigating to the Manage Bookings page when logged in with a staff account and viewing the list of all bookings. |  [1. Managing Bookings (top)](static/images/readme/manage-bookings.png) [2. Managing Bookings (bottom)](static/images/readme/manage-bookings-2.png)
+**Bugs** | | 
+Detail and Keep Track of Bugs | Utilising the Kanban board to track bugs and the actions taken to attempt to solve the issues. |  [Kanban Board view of Bugs](static/images/readme/kanban-bugs.png)
 
 ### Full Testing
 The program was deployed on Heroku and tested there on a Windows 10 desktop with a 26" monitor and on a One Plus 9 Pro mobile phone.
