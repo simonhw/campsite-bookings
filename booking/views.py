@@ -121,14 +121,11 @@ def booking_edit(request, id):
 
     booking = get_object_or_404(Booking, id=id)
 
-    if not booking.booked_by == request.user and not request.user.is_staff:
-        raise PermissionDenied
-    else:
-        if (booking.booked_by == request.user or request.user.is_staff) and request.method == 'GET':
+    if booking.booked_by == request.user or request.user.is_staff:
+        if request.method == 'GET':
             booking_form = BookingForm(instance=booking)
             return render(request, 'booking/booking.html', {'booking_form': booking_form, 'id': id})
         elif request.method == 'POST':
-            print('request.method is ', request.method)
             booking_form = BookingForm(request.POST, instance=booking)
             if booking_form.is_valid():
                 booking_form.save()
@@ -142,7 +139,9 @@ def booking_edit(request, id):
             else:
                 return HttpResponseBadRequest('Invalid form data. Please check your inputs.')
         else:
-            return HttpResponseBadRequest('Unsupported request method.')
+            return HttpResponseBadRequest('Unsupported request method.')    
+    else:
+        raise PermissionDenied
 
 
 @login_required
