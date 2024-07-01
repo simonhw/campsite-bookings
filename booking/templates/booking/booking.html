@@ -9,12 +9,14 @@
     <!-- Hero Image -->
     <div class="row d-md-none d-lg-none d-xl-none">
         <div class="col-12 g-0">
-            <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}" alt="A tent and chair by the side of a lake.">
+            <img class="img-fluid" src="{% static 'images/lake-chair-tent.webp' %}"
+                alt="A tent and chair by the side of a lake.">
         </div>
     </div>
     <div class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block">
         <div class="col-12 g-0">
-            <img class="img-fluid w-100" src="{% static 'images/wide-tent-lake.webp' %}" alt="A tent and chair in front of a lake.">
+            <img class="img-fluid w-100" src="{% static 'images/wide-tent-lake.webp' %}"
+                alt="A tent and chair in front of a lake.">
         </div>
     </div>
 
@@ -36,13 +38,15 @@
     <!-- Booking Form Section -->
     <div class="row mt-3">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-            <h1 class="sedan-regular">{% if id %} Edit {% else %} Book {% endif %} {% if user.is_staff and id %} Booking {% else %} Your Stay {% endif %}</h1>
+            <h1 class="sedan-regular">{% if id %} Edit {% else %} Book {% endif %} {% if user.is_staff and id %} Booking
+                {% else %} Your Stay {% endif %}</h1>
         </div>
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             {% if user.is_authenticated %}
             <p>You are logged in as: {{ user }}</p>
             {% else %}
-            <p>Please <a href="{% url 'account_signup' %}?next={{request.path}}">sign up</a> or <a href="{% url 'account_login' %}?next={{request.path}}">log in</a> to make a booking.</p>
+            <p>Please <a href="{% url 'account_signup' %}?next={{request.path}}">sign up</a> or <a
+                    href="{% url 'account_login' %}?next={{request.path}}">log in</a> to make a booking.</p>
             {% endif %}
         </div>
 
@@ -51,7 +55,8 @@
             <form id="bookingForm" method="post">
                 {{ booking_form | crispy }}
                 {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-danger btn-lg sedan-regular">{% if id %} Update {% else %} Submit {% endif %}</button>
+                <button id="submitButton" type="submit" class="btn btn-danger btn-lg sedan-regular">{% if id %} Update
+                    {% else %} Submit {% endif %}</button>
             </form>
         </div>
         {% endif %}
@@ -67,17 +72,20 @@
             <h5 class="sedan-regular text-white">Check-In/Check-Out</h5>
             <p class="text-custom-white">Check-in is from 14:00 to 20:00 every day. Check-out is strictly at 11:00.</p>
             <h5 class="sedan-regular text-white">Payment</h5>
-            <p class="text-custom-white">A valid ID and credit card are required for booking. Full payment is due at the time of reservation. 
-                For a full pricing list please click <a class="text-custom-white" href="{% url 'about' %}/#pricing-section">here</a>.</p>
+            <p class="text-custom-white">A valid ID and credit card are required for booking. Full payment is due at the
+                time of reservation.
+                For a full pricing list please click <a class="text-custom-white"
+                    href="{% url 'about' %}/#pricing-section">here</a>.</p>
             <h5 class="sedan-regular text-white">Cancellation Policy</h5>
-            <p class="text-custom-white">Cancellations made 2 days prior to the arrival date will receive a full refund. Cancellations within
+            <p class="text-custom-white">Cancellations made 2 days prior to the arrival date will receive a full refund.
+                Cancellations within
                 2 days of arrival will forfeit the full booking amount.</p>
             <h5 class="sedan-regular text-white">Terms and Conditions</h5>
-            <p class="text-custom-white">By making a booking, guests agree to comply with the terms and conditions detailed below.</p>
+            <p class="text-custom-white">By making a booking, guests agree to comply with the terms and conditions
+                detailed below.</p>
             <hr class="text-custom-white">
-            <p class="text-custom-white">For any special requests or further information, please contact our booking office at <a
-                    class="text-custom-white"
-                    href="tel:555-1234567"
+            <p class="text-custom-white">For any special requests or further information, please contact our booking
+                office at <a class="text-custom-white" href="tel:555-1234567"
                     aria-label="Call us (opens your phone app or program and auto-fills our phone number)">(555)
                     123-4567</a> or <a href="mailto:info@lakeviewcamp.com" class="text-custom-white"
                     aria-label="Email us (opens your email app or program with our email in the To field)">info@lakeviewcamp.com</a>.
@@ -92,11 +100,12 @@
         </div>
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <p class="d-inline-flex gap-1">
-                <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  View Terms and Conditions
+                <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                    aria-controls="collapseExample">
+                    View Terms and Conditions
                 </a>
-              </p>
-              <div class="collapse" id="collapseExample">
+            </p>
+            <div class="collapse" id="collapseExample">
                 <div>
                     <h5 class="sedan-regular">1. Reservations and Payments</h5>
                     <p>
@@ -105,7 +114,8 @@
                     </p>
                     <h5 class="sedan-regular">2. Check-In and Check-Out</h5>
                     <p>
-                        Check-in time is between 14:00 and 20:00. Please notify us in advance if you will be arriving after 20:00.
+                        Check-in time is between 14:00 and 20:00. Please notify us in advance if you will be arriving
+                        after 20:00.
                         Check-out time is by 11:00. Late checkouts may incur additional fees.
                     </p>
                     <h5 class="sedan-regular">3. Cancellation and Refund Policy</h5>
@@ -116,12 +126,14 @@
                     </p>
                     <h5 class="sedan-regular">4. Modification of Reservations</h5>
                     <p>
-                        Reservation modifications, including changes to arrival or departure dates, are subject to availability and may incur additional charges.
+                        Reservation modifications, including changes to arrival or departure dates, are subject to
+                        availability and may incur additional charges.
                         Please contact our booking office to request changes to your reservation.
                     </p>
                     <h5 class="sedan-regular">5. Occupancy Limits</h5>
                     <p>
-                        Each accommodation type has a maximum occupancy limit. Exceeding this limit is not permitted and may result in additional charges or cancellation of the booking.
+                        Each accommodation type has a maximum occupancy limit. Exceeding this limit is not permitted and
+                        may result in additional charges or cancellation of the booking.
                     </p>
                     <h5 class="sedan-regular">6. Pet Policy</h5>
                     <p>
@@ -132,12 +144,14 @@
                     <h5 class="sedan-regular">7. Behavior and Conduct</h5>
                     <p>
                         Quiet hours are from 10:00 PM to 7:00 AM. Please respect the peace and comfort of other guests.
-                        Excessive noise, disruptive behavior, or violation of campsite rules may result in immediate eviction without refund.
+                        Excessive noise, disruptive behavior, or violation of campsite rules may result in immediate
+                        eviction without refund.
                     </p>
                     <h5 class="sedan-regular">8. Liability</h5>
                     <p>
                         Guests are responsible for any damage or loss caused to campsite property during their stay.
-                        The campsite is not liable for any personal injury, loss, or damage to personal property during your stay.
+                        The campsite is not liable for any personal injury, loss, or damage to personal property during
+                        your stay.
                     </p>
                     <h5 class="sedan-regular">9. Health and Safety</h5>
                     <p>
@@ -146,25 +160,31 @@
                     </p>
                     <h5 class="sedan-regular">10. Force Majeure</h5>
                     <p>
-                        The campsite is not liable for any cancellations or modifications due to unforeseen circumstances such as natural disasters, extreme weather conditions, or other events beyond our control.
+                        The campsite is not liable for any cancellations or modifications due to unforeseen
+                        circumstances such as natural disasters, extreme weather conditions, or other events beyond our
+                        control.
                     </p>
                     <h5 class="sedan-regular">11. Privacy Policy</h5>
                     <p>
-                        Personal information collected during the booking process will be used solely for the purpose of managing your reservation and providing services. We will not share your information with third parties without your consent.
+                        Personal information collected during the booking process will be used solely for the purpose of
+                        managing your reservation and providing services. We will not share your information with third
+                        parties without your consent.
                     </p>
                     <h5 class="sedan-regular">12. Acceptance of Terms</h5>
                     <p>
-                        By making a booking, guests agree to comply with these terms and conditions. Failure to adhere to these terms may result in cancellation of the reservation without refund.
+                        By making a booking, guests agree to comply with these terms and conditions. Failure to adhere
+                        to these terms may result in cancellation of the reservation without refund.
                     </p>
-                    <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                        aria-controls="collapseExample">
                         Hide Terms and Conditions
-                      </a>
-              </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Javascript Link -->
-<script src="{% static 'js/booking.js' %}"></script>
+    <!-- Javascript Link -->
+    <script src="{% static 'js/booking.js' %}"></script>
 
-{% endblock content %}
+    {% endblock content %}
