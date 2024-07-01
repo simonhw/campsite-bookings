@@ -429,6 +429,10 @@ A Bootstrap collapse component is utilised for the long list of Terms and Condit
 
 ![Terms and Conditons expanded](static/images/readme/tac-show.png)
 
+As the list is long, another link is provided after the last list item to hide the Terms and Conditions again. This was added to improve the user experience by avoiding them having to scroll all the way back to the first link to hide the content again.
+
+![Terms and Conditions hide link](static/images/readme/tac-hide.png)
+
 ### User Bookings
 As described above, a given logged in user who is not a staff member may navigate to the `user_bookings.html` page and view a list of campsite booking make by them.
 
