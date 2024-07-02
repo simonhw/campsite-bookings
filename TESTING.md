@@ -317,14 +317,27 @@ Password Field|When an incorrect password for the respective username is entered
 
 ### Automated Testing
 The W3C validator sites were used to validate the HTML and CSS files. JSHint was used to validate the JavaScript files.
-- index.html - local
-- about.html - local
-- booking.html - local
+- [index.html](static/images/readme/w3c-index.png) - Passed with no errors or warnings.
+- [about.html](static/images/readme/w3c-about.png) - Passed with no errors or warnings.
+- [booking.html](static/images/readme/w3c-booking.png) - Passed with no errors or warnings.
+- [user_bookings.html](static/images/readme/w3c-user-bookings.png) - Passed with no errors or warnings. Trailing slash in self-closing `<input/>` element is flagged as having no effect.
+- [manage_bookings.hmtl](static/images/readme/w3c-manage.png) - Passed with no errors or warnings. Validated by direct input.
+- [login.html](static/images/readme/w3c-login.png) - Passed with no errors or warnings. Trailing slash in self-closing `<input/>` element is flagged as having no effect.
+- [logout.html](static/images/readme/w3c-logout.png) - Passed with no errors or warnings.
+- [signup.html](static/images/readme/w3c-signup.png) - Four **false positive** errors flagged. Trailing slash in self-closing `<input/>` element is flagged as having no effect. 
 
-- manage_bookings.html - local
+    For some reason the W3C checker flagged:
+    - A `<ul>` element as being unclosed when it does have a closing tag.
+    - A `<span>` element as being unclosed and a stray closing `</span>` tag existing, when in fact these both form one complete span element.
+    - A `</p>` end tag seen without a `<p>`element in the scope, even though it is there.
+    
+        ![Image of correctly opened and closed p, ul, and span elements](static/images/readme/wc3-signup-false-errors.png)
 
-- signout.html - 
-- 404.html - Validated by direct input. 
+    Disregarding these false positives, the page has no other errors or warnings and as such is it considered "Passed".
+
+- [403.html](static/images/readme/w3c-403.png) - Passed with no errors or warnings. Validated by direct input. 
+- [404.html](static/images/readme/w3c-404.png) - Passed with no errors or warnings. Validated by direct input. 
+- [500.html](static/images/readme/w3c-500.png) - Passed with no errors or warnings. Validated by direct input. 
 
 ## Bugs
 ### Known Bugs
