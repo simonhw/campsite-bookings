@@ -6,5 +6,5 @@ def homepage_view(request):
 
 urlpatterns = [
     path('', views.index_page, name='home'),
-    path("", homepage_view),
+    path("500/", homepage_view),
 ]
