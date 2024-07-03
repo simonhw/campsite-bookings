@@ -551,6 +551,149 @@ No errors detected.
 
 ![WAVE results for 500.html](static/images/readme/wave-500.png)
 
+#### Lighthouse Testing
+##### Home Page
+Desktop and mobile tests for index.html were all satisfactory with scores ranging from 71 to 100.
+
+Desktop test:
+
+![Lighthouse test for index.html - desktop](static/images/readme/lighthouse-index-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for index.html - mobile](static/images/readme/lighthouse-index-mobile.png)
+
+##### About Page
+Desktop and mobile tests for about.html were all very good with scores ranging from 80 to 100.
+
+Desktop test:
+
+![Lighthouse test for about.html - desktop](static/images/readme/lighthouse-about-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for about.html - mobile](static/images/readme/lighthouse-about-mobile.png)
+
+##### Booking Page
+Desktop and mobile tests for booking.html were all very good with scores ranging from 84 to 100.
+
+Desktop test (logged out):
+
+![Lighthouse test for booking.html logged out - desktop](static/images/readme/lighthouse-booking-logout-desktop.png)
+
+Mobile test (logged out):
+
+![Lighthouse test for booking.html logged out - mobile](static/images/readme/lighthouse-booking-logout-mobile.png)
+
+Desktop test (logged in):
+
+![Lighthouse test for booking.html logged in - desktop](static/images/readme/lighthouse-booking-login-desktop.png)
+
+Mobile test (logged in):
+
+![Lighthouse test for booking.html logged in - mobile](static/images/readme/lighthouse-booking-login-mobile.png)
+
+##### My Bookings Page
+Desktop and mobile tests for user_bookings.html were all very good with scores ranging from 89 to 100.
+
+Desktop test:
+
+![Lighthouse test for user_bookings.html - desktop](static/images/readme/lighthouse-mybookings-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for user_bookings.html  - mobile](static/images/readme/lighthouse-mybookings-mobile.png)
+
+##### Manage Bookings Page
+Desktop and mobile tests for manage_bookings.html were all very good with scores ranging from 84 to 100.
+
+Desktop test:
+
+![Lighthouse test for manage_bookings.html - desktop](static/images/readme/lighthouse-manage-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for manage_bookings.html  - mobile](static/images/readme/lighthouse-manage-mobile.png)
+
+##### Sign Up Page
+Desktop and mobile tests for logout.html were all quite good with scores ranging from 78 to 100.
+
+Desktop test:
+
+![Lighthouse test for signup.html - desktop](static/images/readme/lighthouse-signup-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for signup.html - mobile](static/images/readme/lighthouse-signup-mobile.png)
+
+##### Sign In Page
+Desktop and mobile tests for about.html were all good with scores ranging from 74 to 100.
+
+Desktop test:
+
+![Lighthouse test for login.html - desktop](static/images/readme/lighthouse-login-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for login.html - mobile](static/images/readme/lighthouse-login-mobile.png)
+
+##### Sign Out Page
+Desktop and mobile tests for logout.html were all good with scores ranging from 75 to 100.
+
+Desktop test:
+
+![Lighthouse test for logout.html - desktop](static/images/readme/lighthouse-logout-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for logout.html - mobile](static/images/readme/lighthouse-logout-mobile.png)
+
+##### 403 Page
+Desktop and mobile tests for 403.html were all good with scores ranging from 75 to 100.
+
+Desktop test:
+
+![Lighthouse test for 403.html - desktop](static/images/readme/lighthouse-403-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for 403.html - mobile](static/images/readme/lighthouse-403-mobile.png)
+
+##### 403 Page
+Desktop and mobile tests for 403.html were all excellent with scores ranging from 91 to 100.
+
+Desktop test:
+
+![Lighthouse test for 403.html - desktop](static/images/readme/lighthouse-403-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for 403.html - mobile](static/images/readme/lighthouse-403-mobile.png)
+
+##### 404 Page
+Desktop and mobile tests for 404.html were all excellent with scores ranging from 91 to 100.
+
+Desktop test:
+
+![Lighthouse test for 404.html - desktop](static/images/readme/lighthouse-404-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for 404.html - mobile](static/images/readme/lighthouse-404-mobile.png)
+
+##### 500 Page
+Desktop and mobile tests for 500.html were all very good with scores ranging from 88 to 100.
+
+Desktop test:
+
+![Lighthouse test for 500.html - desktop](static/images/readme/lighthouse-500-desktop.png)
+
+Mobile test:
+
+![Lighthouse test for 500.html - mobile](static/images/readme/lighthouse-500-mobile.png)
+
+
+
 ## Bugs
 ### Known Bugs
 | # | Bug | Image | Plan to Solve |
