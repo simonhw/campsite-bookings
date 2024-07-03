@@ -649,17 +649,6 @@ Mobile test:
 ![Lighthouse test for logout.html - mobile](static/images/readme/lighthouse-logout-mobile.png)
 
 ##### 403 Page
-Desktop and mobile tests for 403.html were all good with scores ranging from 75 to 100.
-
-Desktop test:
-
-![Lighthouse test for 403.html - desktop](static/images/readme/lighthouse-403-desktop.png)
-
-Mobile test:
-
-![Lighthouse test for 403.html - mobile](static/images/readme/lighthouse-403-mobile.png)
-
-##### 403 Page
 Desktop and mobile tests for 403.html were all excellent with scores ranging from 91 to 100.
 
 Desktop test:
