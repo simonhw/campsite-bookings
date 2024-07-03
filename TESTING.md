@@ -345,37 +345,76 @@ The W3C validator sites were used to validate the HTML and CSS files. JSHint was
 The WAVE tool was used to assess the website for any errors or issues associated with accessibility. The results and comments for each page are as follows:
 
 ##### Index Page
-headings fixed, passed locally
+No errors were detected.
+
+![WAVE results for index.html](static/images/readme/wave-index.png)
 
 ##### About Page
-passed with one alert for redundant link but this is by design
+No errors were detected.
+
+![WAVE results for about.html](static/images/readme/wave-about.png)
+
+- One alert for a redundant link in the second "Book Now" button is shown; however, this is a design feature as described in the README [Features section](/README.md#the-about-page)
+
+    ![WAVE alert for about.html](static/images/readme/wave-alert-redundant.png)
 
 ##### Bookings Page
-logged out: passed with one alert for redundant link but this is by design
-logged in: passed with no issues.
+**Logged out:** No errors were detected.
+
+![WAVE results for booking.html logged out](static/images/readme/wave-booking-logout.png)
+
+- One alert for a redundant link due to a link to `signup.html` in the navbar and in the body of the page; however, this is a design feature as the logged out can click on a descriptive link immediately instead of navigating to the dropdown menu on smaller screens.
+
+    ![WAVE alert for about.html](static/images/readme/wave-alert-redundant.png)
+
+**Logged in:** No errors were detected. (Validated using browser extension after login)
+
+![WAVE results for booking.html logged in](static/images/readme/wave-booking-login.png)
+
 
 ##### My Bookings Page
-passed with one alert for redundant link but this is by design
+No errors detected. (Validated using browser extension after login)
+
+![WAVE results for user_bookings.html](static/images/readme/wave-mybookings.png)
+
+- One alert for a redundant link due to a link to the campsite phone number in the 48 hour modal window and in the footer; however, this is a design feature that gives the user a quick way to call the campsite from the modal instead of closing it and scrolling down to the footer.
+
+    ![WAVE alert for about.html](static/images/readme/wave-alert-redundant.png)
 
 ##### Manage Bookings Page
-passed
+No errors detected. (Validated using browser extension after login)
+
+![WAVE results for manage_bookings.html](static/images/readme/wave-manage.png)
 
 ##### Sign In Page
-passed
+No errors detected.
+
+![WAVE results for login.html](static/images/readme/wave-login.png)
 
 ##### Sign Out Page
-passed
+No errors detected. (Validated using browser extension after login)
+
+![WAVE results for logout.html](static/images/readme/wave-signout.png)
 
 ##### Sign Up Page
-passed
+No errors detected.
+
+![WAVE results for signup.html](static/images/readme/wave-signup.png)
 
 ##### 403 Page
-passed
+No errors detected. (Validated using browser extension after login)
+
+![WAVE results for 403.html](static/images/readme/wave-403.png)
 
 ##### 404 Page
-passed
+No errors detected.
+
+![WAVE results for 404.html](static/images/readme/wave-404.png)
 
 ##### 500 Page
+No errors detected.
+
+![WAVE results for 500.html](static/images/readme/wave-500.png)
 
 ## Bugs
 ### Known Bugs
