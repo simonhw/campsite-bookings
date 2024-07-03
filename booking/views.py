@@ -83,8 +83,8 @@ def booking_view(request):
             booking.booked_by = request.user
             booking.save()
             messages.add_message(
-                request, messages.SUCCESS, "Booking received! Confirmation "
-                "will follow after payment is completed."
+                request, messages.SUCCESS, "Booking received! We will be in "
+                "touch to faciliate payment and confirm your booking shortly."
                 )
         else:
             booking_form = BookingForm(data=request.POST)
