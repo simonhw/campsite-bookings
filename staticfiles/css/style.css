@@ -9,12 +9,6 @@
     font-weight: 400;
     font-style: normal;
   }
-  
-.sedan-regular-italic {
-    font-family: "Sedan", serif;
-    font-weight: 400;
-    font-style: italic;
-}
 
 .bg-green-1 {
     background-color: #6cc678;
@@ -46,6 +40,10 @@
 
 .social-link {
     text-decoration: none;
+}
+
+.details {
+    color: #0252ca;
 }
 
 .custom-mb-1 li {
