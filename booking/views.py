@@ -84,7 +84,7 @@ def booking_view(request):
             booking.save()
             messages.add_message(
                 request, messages.SUCCESS, "Booking received! We will be in "
-                "touch to faciliate payment and confirm your booking shortly."
+                "touch to facilitate payment and confirm your booking shortly."
                 )
         else:
             booking_form = BookingForm(data=request.POST)
