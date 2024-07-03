@@ -1,8 +1,10 @@
 from .models import Booking
 from django import forms
-from django.forms.widgets import DateInput, SelectDateWidget, NumberInput, RadioSelect
+from django.forms.widgets import DateInput, SelectDateWidget, NumberInput, \
+    RadioSelect
 from datetime import date, timedelta
 from django.core.exceptions import ValidationError
+
 
 class BookingForm(forms.ModelForm):
     """
@@ -14,7 +16,7 @@ class BookingForm(forms.ModelForm):
     class Meta:
         """
         Meta class for the form's metadata. Specifies the model to be used
-        with the form and the fields to use. Widget attributes are also 
+        with the form and the fields to use. Widget attributes are also
         specified in this class.
         """
 
@@ -53,7 +55,7 @@ class BookingForm(forms.ModelForm):
         If the data validates, the method returns the cleaned data.
         If invalid, it raises a validation error to inform the user.
         """
-        
+
         cleaned_data = super().clean()
         arrival = cleaned_data.get('arrival')
         departure = cleaned_data.get('departure')
@@ -65,8 +67,9 @@ class BookingForm(forms.ModelForm):
 
         if arrival == departure:
             raise ValidationError('The minimum length of stay is one night.')
-        
+
         if not booked:
-            raise ValidationError('You must accept the Terms and Conditions before booking.')
-        
+            raise ValidationError('You must accept the Terms and Conditions'
+                                  ' before booking.')
+
         return cleaned_data

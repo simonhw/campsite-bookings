@@ -25,7 +25,6 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
 
     template_name = 'booking/user_bookings.html'
 
-    
     def get_queryset(self):
         """
         Method to get a queryset of bookings.
@@ -51,7 +50,6 @@ class AllBookings(StaffCheck, generic.ListView):
 
     template_name = 'booking/manage_bookings.html'
 
-    
     def get_queryset(self):
         """
         Method to get a queryset of bookings.
@@ -114,9 +112,6 @@ def booking_edit(request, id):
 
     Method takes in the booking id and fills the form with the relevant data
     for the user to edit.
-
-    TO-DO: Method verifies that requested booking is being viewed by the user that
-    created it. 
     """
 
     booking = get_object_or_404(Booking, id=id)
@@ -124,7 +119,8 @@ def booking_edit(request, id):
     if booking.booked_by == request.user or request.user.is_staff:
         if request.method == 'GET':
             booking_form = BookingForm(instance=booking)
-            return render(request, 'booking/booking.html', {'booking_form': booking_form, 'id': id})
+            return render(request, 'booking/booking.html',
+                          {'booking_form': booking_form, 'id': id})
         elif request.method == 'POST':
             booking_form = BookingForm(request.POST, instance=booking)
             if booking_form.is_valid():
@@ -133,7 +129,7 @@ def booking_edit(request, id):
                     request, messages.SUCCESS, "Booking successfully updated!"
                 )
                 if request.user.is_staff:
-                    return redirect ('manage_bookings')
+                    return redirect('manage_bookings')
                 else:
                     return redirect('user_bookings')
             else:
@@ -146,10 +142,11 @@ def booking_edit(request, id):
                     },
                 )
                 messages.add_message(
-                    request, messages.SUCCESS, "Invalid form data. Please check your inputs."
+                    request, messages.SUCCESS, "Invalid form data."
+                                               " Please check your inputs."
                 )
         else:
-            return HttpResponseBadRequest('Unsupported request method.')    
+            return HttpResponseBadRequest('Unsupported request method.')
     else:
         raise PermissionDenied
 
@@ -159,13 +156,15 @@ def booking_delete(request, id):
     """
     Method to allow a user to delete their booking.
 
-    Method takes in the booking ID and 
+    Method takes in the booking ID and verifies the user's authorisation to
+    delete the booking and if the booking is able to be deleted.
     """
-    
+
     booking = get_object_or_404(Booking, id=id)
-    
+
     if booking.booked_by == request.user or request.user.is_staff:
-        if ( booking.booked_by == request.user and not booking.is_within_48h() ) or request.user.is_staff :
+        if (booking.booked_by == request.user and
+                not booking.is_within_48h()) or request.user.is_staff:
             booking.delete()
             messages.add_message(
                     request, messages.SUCCESS, "Booking successfully deleted!"
@@ -176,9 +175,8 @@ def booking_delete(request, id):
                 " booking."
             )
         if request.user.is_staff:
-            return redirect ('manage_bookings')
+            return redirect('manage_bookings')
         else:
             return redirect('user_bookings')
     else:
         raise PermissionDenied
-        
