@@ -339,6 +339,44 @@ The W3C validator sites were used to validate the HTML and CSS files. JSHint was
 - [404.html](static/images/readme/w3c-404.png) - Passed with no errors or warnings. Validated by direct input. 
 - [500.html](static/images/readme/w3c-500.png) - Passed with no errors or warnings. Validated by direct input. 
 
+- [style.css](static/images/readme/w3c-css.png) - No errors found.
+
+#### Accessibility Testing
+The WAVE tool was used to assess the website for any errors or issues associated with accessibility. The results and comments for each page are as follows:
+
+##### Index Page
+headings fixed, passed locally
+
+##### About Page
+passed with one alert for redundant link but this is by design
+
+##### Bookings Page
+logged out: passed with one alert for redundant link but this is by design
+logged in: passed with no issues.
+
+##### My Bookings Page
+passed with one alert for redundant link but this is by design
+
+##### Manage Bookings Page
+passed
+
+##### Sign In Page
+passed
+
+##### Sign Out Page
+passed
+
+##### Sign Up Page
+passed
+
+##### 403 Page
+passed
+
+##### 404 Page
+passed
+
+##### 500 Page
+
 ## Bugs
 ### Known Bugs
 | # | Bug | Image | Plan to Solve |
