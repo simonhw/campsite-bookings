@@ -55,7 +55,7 @@ widgets = {
 ```
 
 They are set such that the minimum value of arrival is always tomorrow from the point of view of the user, and the departure date is always at least the day after tomorrow.
-In most cases the arrival date will be selected first, so the minimum departure must be updated dynamically. this was achieved using [custom JavaScript code](static/js/booking.js). The custom code adds an event listener to the arrival input field and when the value is changed, set the new minimum departure date to be one day after the chosen arrival date.
+In most cases the arrival date will be selected first, so the minimum departure must be updated dynamically. this was achieved using [custom JavaScript code](static/js/booking.js). The custom code adds an event listener to the arrival input field and when the value is changed, set the new minimum departure date to be one day after the chosen arrival date. The new date has to be refactored before it could be applied to the form field by splitting it into its year, month, and day and setting these values into a string of the correct format, i.e. `${year}-${month}-${day}`. Additionally, due to zero-indexing of the `.getMonth()` method, the value had to incremented by 1 before being assigned to the aforementioned string.
 
 In cases where the user has selected a departure date and then updates the arrival date to be equal to or after the departure, the form is prevented from being submitted and the user is informed of their error.
 
@@ -121,7 +121,7 @@ if booking.booked_by == request.user or request.user.is_staff:
         booking.delete()
 ```
 
-If these conditions are satisfied, the booking is deleted from the database and the user is redirected to either `user_bookings.html` or `manage_booking.html` as shown below:
+If these conditions are satisfied, [custom JavaScript code](/static/js/user_bookings.js) gets the booking ID of the post and assigns it to the delete button's href attribute, e.g. `delete/23`. In this way, the correct booking is deleted from the database and the user is then redirected to either `user_bookings.html` or `manage_booking.html` as shown below:
 
 ```
 if request.user.is_staff:
@@ -316,7 +316,7 @@ Username Field|When a username is entered that is not registered on the database
 Password Field|When an incorrect password for the respective username is entered and the Sign In button is clicked, a validation message is displayed and the form is not submitted.|Incorrect password entered for a given username and Sign In button clicked.|A validation message was displayed and the form was not submitted|Pass
 
 ### Automated Testing
-The W3C validator sites were used to validate the HTML and CSS files. JSHint was used to validate the JavaScript files.
+The W3C validator sites were used to validate the [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) files. [JSHint](https://jshint.com/) was used to validate the JavaScript files.
 - [index.html](static/images/readme/w3c-index.png) - Passed with no errors or warnings.
 - [about.html](static/images/readme/w3c-about.png) - Passed with no errors or warnings.
 - [booking.html](static/images/readme/w3c-booking.png) - Passed with no errors or warnings.
@@ -340,6 +340,9 @@ The W3C validator sites were used to validate the HTML and CSS files. JSHint was
 - [500.html](static/images/readme/w3c-500.png) - Passed with no errors or warnings. Validated by direct input. 
 
 - [style.css](static/images/readme/w3c-css.png) - No errors found.
+
+- [booking.js](static/images/readme/jshint-booking.png) - No warnings found.
+- [user_booking.js](static/images/readme/jshint-userbookings.png) - No warnings found.
 
 #### Accessibility Testing
 The WAVE tool was used to assess the website for any errors or issues associated with accessibility. The results and comments for each page are as follows:
