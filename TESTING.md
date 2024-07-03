@@ -316,6 +316,7 @@ Username Field|When a username is entered that is not registered on the database
 Password Field|When an incorrect password for the respective username is entered and the Sign In button is clicked, a validation message is displayed and the form is not submitted.|Incorrect password entered for a given username and Sign In button clicked.|A validation message was displayed and the form was not submitted|Pass
 
 ### Automated Testing
+#### HTML and CSS
 The W3C validator sites were used to validate the [HTML](https://validator.w3.org/) and [CSS](https://jigsaw.w3.org/css-validator/) files. [JSHint](https://jshint.com/) was used to validate the JavaScript files.
 - [index.html](static/images/readme/w3c-index.png) - Passed with no errors or warnings.
 - [about.html](static/images/readme/w3c-about.png) - Passed with no errors or warnings.
@@ -341,8 +342,139 @@ The W3C validator sites were used to validate the [HTML](https://validator.w3.or
 
 - [style.css](static/images/readme/w3c-css.png) - No errors found.
 
+#### JavaScript
 - [booking.js](static/images/readme/jshint-booking.png) - No warnings found.
 - [user_booking.js](static/images/readme/jshint-userbookings.png) - No warnings found.
+
+#### Python
+**Lakeview App**
+<details><summary>asgi.py - No errors</summary>
+
+![Python Linter results for lakeview/asgi.py](static/images/readme/lakeview-asgi.png)
+
+</details>
+
+<details><summary>settings.py - One error for a line longer than 79 characters.</summary>
+<br>
+A string in the password validation settings causes a line to be 83 characters. This string is so long that it cannot even be assigned a shorter variable name as using more than one character for the variable makes that line itself 80 characters long. 
+
+In this case, it is necessary for the line to be longer than 79 characters as it is one continuous string with no whitespaces. PEP8 [allows for this](https://peps.python.org/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds):
+
+    "However, know when to be inconsistent – sometimes style guide recommendations just aren’t applicable. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don’t hesitate to ask! 
+    ...
+    ... 
+    Some other good reasons to ignore a particular guideline: 
+    1. When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this PEP."
+
+![Python Linter results for lakeview/settings.py](static/images/readme/lakeview-settings.png)
+
+</details>
+
+<details><summary>urls.py - No errors</summary>
+
+![Python Linter results for lakeview/urls.py](static/images/readme/lakeview-urls.png)
+
+</details>
+
+<details><summary>wsgi.py - No errors</summary>
+
+![Python Linter results for lakeview/wsgi.py](static/images/readme/lakeview-wsgi.png)
+
+</details>
+
+<br>
+
+**Home App**
+<details><summary>apps.py - No errors</summary>
+
+![Python Linter results for home/apps.py](static/images/readme/home-apps.png)
+
+</details>
+
+<details><summary>urls.py - No errors</summary>
+
+![Python Linter results for home/urls.py](static/images/readme/home-urls.png)
+
+</details>
+
+<details><summary>views.py - No errors</summary>
+
+![Python Linter results for home/views.py](static/images/readme/home-views.png)
+
+</details>
+
+<br>
+
+**Booking App**
+<details><summary>admin.py - No errors</summary>
+
+![Python Linter results for booking/admin.py](static/images/readme/booking-admin.png)
+
+</details>
+
+<details><summary>apps.py - No errors</summary>
+
+![Python Linter results for booking/apps.py](static/images/readme/booking-apps.png)
+
+</details>
+
+<details><summary>forms.py - No errors</summary>
+
+![Python Linter results for booking/forms.py](static/images/readme/booking-forms.png)
+
+</details>
+
+<details><summary>models.py - No errors</summary>
+
+![Python Linter results for booking/models.py](static/images/readme/booking-models.png)
+
+</details>
+
+<details><summary>urls.py - No errors</summary>
+
+![Python Linter results for booking/urls.py](static/images/readme/booking-urls.png)
+
+</details>
+
+<details><summary>views.py - No errors</summary>
+
+![Python Linter results for booking/views.py](static/images/readme/booking-views.png)
+
+</details>
+
+<br>
+
+**About App**
+<details><summary>apps.py - No errors</summary>
+
+![Python Linter results for about/apps.py](static/images/readme/about-apps.png)
+
+</details>
+
+<details><summary>urls.py - No errors</summary>
+
+![Python Linter results for about/urls.py](static/images/readme/about-urls.png)
+
+</details>
+
+<details><summary>views.py - No errors</summary>
+
+![Python Linter results for about/views.py](static/images/readme/about-views.png)
+
+</details>
+
+<br>
+
+**Other Files**
+
+
+<details><summary>manage.py - No errors</summary>
+
+![Python Linter results for manage.py](static/images/readme/manage.png)
+
+</details>
+
+
 
 #### Accessibility Testing
 The WAVE tool was used to assess the website for any errors or issues associated with accessibility. The results and comments for each page are as follows:
