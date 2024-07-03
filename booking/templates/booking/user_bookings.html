@@ -43,11 +43,12 @@
         {% if not booking.is_in_past %}
         <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="card mt-1 mb-1 text-center">
-                <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
+                <h2 class='fs-5 sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h2>
                 <p class="m-1">{{ booking.arrival }} </p>
                 <p>
                     <a data-bs-toggle="collapse" href="#collapse{{ booking.booking_id }}" role="button"
-                        aria-expanded="false" aria-controls="collapse{{ booking.booking_id }}">
+                        aria-expanded="false" aria-controls="collapse{{ booking.booking_id }}"
+                        class="details">
                         More Details
                     </a>
                 </p>
@@ -110,11 +111,12 @@
         {% if booking.is_in_past %}
         <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="card mt-1 mb-1 text-center bg-secondary-subtle">
-                <h5 class='sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h5>
+                <h2 class='fs-5 sedan-regular m-1'>{{ booking.string_from_tuple }} Booking</h2>
                 <p class="m-1">{{ booking.arrival }} </p>
                 <p>
                     <a data-bs-toggle="collapse" href="#collapse{{ booking.booking_id }}" role="button"
-                        aria-expanded="false" aria-controls="collapse{{ booking.booking_id }}">
+                        aria-expanded="false" aria-controls="collapse{{ booking.booking_id }}"
+                        class="details">
                         More Details
                     </a>
                 </p>
@@ -145,8 +147,8 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="within48hModalLabel">It is not possible to amend your booking.
-                </h1>
+                <h2 class="modal-title fs-5" id="within48hModalLabel">It is not possible to amend your booking.
+                </h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -167,7 +169,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete booking?</h5>
+                <h2 class="modal-title" id="deleteModalLabel">Delete booking?</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
