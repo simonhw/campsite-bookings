@@ -688,6 +688,7 @@ Mobile test:
 | # | Bug | Image | Plan to Solve |
 | --- | --- | --- | --- |
 | 1 | On some mobile screen sizes, the signup form fields are not visually consistent. Some are inline with their labels while others are on a new line. | ![Image of Unsolved Bug #1](static/images/readme/bugs/ubug-01-signup-fields.png) | Writing a custom form for the signup page will allow for more customisation and control. This will be implemented in a future version of the website. |
+| 2 | In an attempt to only show the heading "Past Bookings" when a user actually has bookings in the past, a heading was added in the loop that checks for past bookings. This resulted in the heading being repeated as many time as there are past bookings. | ![Image of Unsolved Bug #2](static/images/readme/bugs/ubug-02-past-bookings-loop.png) | The `UserBookings` class-based view can be split into two views. One for upcoming bookings and one for past bookings. In this way the two lists can be looped through separately and if either are empty, the `{% empty %}` tag can be used to show a heading or message that won't be repeated. |
 
 ### Solved Bugs
 | # | Bug | Image | Solution |
