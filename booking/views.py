@@ -30,8 +30,8 @@ class UserBookings(LoginRequiredMixin, generic.ListView):
         Method to get a queryset of bookings.
 
         The queryset is filtered so that only bookings made by the currently
-        logged in user can be seen. The bookings are ordered by arrival date
-        in descending order.
+        authenticated user can be seen. The bookings are ordered by arrival
+        date in descending order.
         """
 
         queryset = Booking.objects.all().order_by(
@@ -54,7 +54,7 @@ class AllBookings(StaffCheck, generic.ListView):
         """
         Method to get a queryset of bookings.
 
-        The queryset is filtered so that all bookings are listed ordered by
+        The queryset is filtered so that all bookings are listed in order by
         arrival date in descending order.
         """
 
@@ -69,7 +69,7 @@ def booking_view(request):
     Method processes the user-submitted data and checks if it is valid.
     If it is, the method saves the data and assigns the current user as the
     booking's creator.
-    A message is shown on the front-end to denote a successful booking.
+    A message is shown on the front end to denote a successful booking.
     If the data is invalid, the form is re-rendered and shows appropriate
     error messages.
     """
@@ -108,10 +108,10 @@ def booking_view(request):
 @login_required
 def booking_edit(request, id):
     """
-    Method to allow user edit a booking.
+    Method to allow users to edit a booking.
 
-    Method takes in the booking id and fills the form with the relevant data
-    for the user to edit.
+    Takes in the booking id and fills the form with the relevant data for the
+    user to edit.
     """
 
     booking = get_object_or_404(Booking, id=id)
@@ -156,8 +156,8 @@ def booking_delete(request, id):
     """
     Method to allow a user to delete their booking.
 
-    Method takes in the booking ID and verifies the user's authorisation to
-    delete the booking and if the booking is able to be deleted.
+    Takes in the booking ID and verifies both the user's authorisation to
+    delete the booking and if the booking can be deleted.
     """
 
     booking = get_object_or_404(Booking, id=id)

@@ -9,8 +9,8 @@ from django.core.exceptions import ValidationError
 class BookingForm(forms.ModelForm):
     """
     Form for making campsite bookings. The user can specify the type of
-    booking, the arrival and departure dates, and the number of adults and
-    children in the booking.
+    booking, the arrival and departure dates, the number of adults and
+    children in the booking, and whether they accept the terms and conditions.
     """
 
     class Meta:
@@ -47,7 +47,7 @@ class BookingForm(forms.ModelForm):
 
     def clean(self):
         """
-        Validation of form data on the back-end.
+        Validation of form data on the back end.
 
         The method ensures that the departure date can neither be on the same
         date as the arrival nor can it be before the date of arrival.

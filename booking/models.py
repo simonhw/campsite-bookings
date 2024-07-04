@@ -19,7 +19,7 @@ class Booking(models.Model):
         updated_on (DateTimeField) - The date and time the booking was last
                                      updated.
         accommodation (IntegerField) - The integer choice corresponding to the
-                                       string in the ACCOMODATION tuple.
+                                       string in the ACCOMMODATION tuple.
         arrival (DateField) - The arrival date for the booking.
         departure (DateField) - The departure date for the booking.
         adults (PositiveIntegerField) - An integer number of adults in the
@@ -27,7 +27,8 @@ class Booking(models.Model):
         children (PositiveIntegerField) - An integer number of children in the
                                           booking with a minimum value of 0.
         booked (BooleanField) - The booking status of the booking request:
-                                either booked or pending.
+                                True if user has accepted terms and
+                                conditions, otherwise False.
     """
 
     ACCOMMODATION = ((0, 'Tent'), (1, 'Van'), (2, 'Caravan'), (3, 'Yurt'))
@@ -62,8 +63,8 @@ class Booking(models.Model):
         """
         Method to return a string with relevant booking details.
 
-        Returns the arrival date, accomodation type, name of the user who made
-        the booking, the the unique booking ID.
+        Returns the arrival date, accommodation type, name of the user who made
+        the booking, and the unique booking ID.
         """
 
         return f'{self.arrival} | \
@@ -73,8 +74,8 @@ class Booking(models.Model):
 
     def string_from_tuple(self):
         """
-        Method to return the string value of the accomodation type from the
-        ACCOMODATION tuple.
+        Method to return the string value of the accommodation type from the
+        ACCOMMODATION tuple.
         """
 
         return f'{dict(self.ACCOMMODATION).get(self.accommodation)}'
