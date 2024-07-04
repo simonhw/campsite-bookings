@@ -8,7 +8,7 @@
     <!-- Hero Image -->
     <div class="row d-md-none d-lg-none d-xl-none">
         <div class="col-12 g-0">
-            <img class="img-fluid" src="{% static 'images/tent-book-sm.webp' %}" alt="A coffe cup, camera, and book on the floor of a tent.">
+            <img class="img-fluid" src="{% static 'images/tent-book-sm.webp' %}" alt="A coffee cup, camera, and book on the floor of a tent.">
         </div>
     </div>
     <div class="row d-none d-md-block d-lg-block d-xl-block d-xxl-block">
@@ -46,9 +46,9 @@
         <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="card mt-1 mb-1 text-center">
                 {% if booking.full_name %}
-                <h3 class='sedan-regular mt-2'>{{ booking.full_name }}</h3>
+                <h3 class='fs-5 sedan-regular mt-2'>{{ booking.full_name }}</h3>
                 {% else %}
-                <h3 class='sedan-regular mt-2'>{{ booking.booked_by }}</h3>
+                <h3 class='fs-5 sedan-regular mt-2'>{{ booking.booked_by }}</h3>
                 {% endif %}
                 <p class="m-1">{{ booking.string_from_tuple }} Booking</p>
                 <p class="m-1">{{ booking.arrival }} - {{ booking.departure }} </p>
@@ -83,24 +83,28 @@
             <h2 class="sedan-regular mt-3 mb-1">Past Bookings</h2>
         </div>
         {% for booking in booking_list %}
-            {% if booking.is_in_past %}
-                <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-                    <div class="card mt-1 mb-1 text-center bg-secondary-subtle">
-                        <h3 class='sedan-regular mt-2'>{{ booking.full_name }}</h3>
+        {% if booking.is_in_past %}
+        <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            <div class="card mt-1 mb-1 text-center bg-secondary-subtle">
+                {% if booking.full_name %}
+                <h3 class='fs-5 sedan-regular mt-2'>{{ booking.full_name }}</h3>
+                {% else %}
+                <h3 class='fs-5 sedan-regular mt-2'>{{ booking.booked_by }}</h3>
+                {% endif %}
                 <p class="m-1">{{ booking.string_from_tuple }} Booking</p>
                 <p class="m-1">{{ booking.arrival }} - {{ booking.departure }} </p>
                 <p class="m-1">Adults: {{ booking.adults }}
-                {% if booking.children %}
-                - Children: {{ booking.children }} </p>
+                    {% if booking.children %}
+                    - Children: {{ booking.children }} </p>
                 {% else %}
                 </p>
                 {% endif %}
-                    </div>
-                </div>
-            {% endif %}
-            {% empty %}
-                <p>There are no past bookings.</p>
-        {% endfor %} 
+            </div>
+        </div>
+        {% endif %}
+        {% empty %}
+        <p>There are no past bookings.</p>
+        {% endfor %}
     </div>
 </div>
 
