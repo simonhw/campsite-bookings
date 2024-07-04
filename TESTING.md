@@ -55,9 +55,9 @@ widgets = {
 ```
 
 They are set such that the minimum value of arrival is always tomorrow from the point of view of the user, and the departure date is always at least the day after tomorrow.
-In most cases, the arrival date will be selected first, so the minimum departure must be updated dynamically. this was achieved using [custom JavaScript code](static/js/booking.js). The custom code adds an event listener to the arrival input field and when the value is changed, set the new minimum departure date to be one day after the chosen arrival date. The new date has to be refactored before it can be applied to the form field by splitting it into its year, month, and day and setting these values into a string of the correct format, i.e. `${year}-${month}-${day}`. Additionally, due to the zero-indexing of the `.getMonth()` method, the value had to be incremented by 1 before being assigned to the aforementioned string.
+In most cases, the arrival date will be selected first, so the minimum departure must be updated dynamically. This was achieved using [custom JavaScript code](static/js/booking.js). The custom code adds an event listener to the arrival input field and when the value is changed, sets the new minimum departure date to be one day after the chosen arrival date. The new date has to be refactored before it can be applied to the form field by splitting it into its year, month, and day and setting these values into a string of the correct format, i.e. `${year}-${month}-${day}`. Additionally, due to the zero-indexing of the `.getMonth()` method, the value had to be incremented by 1 before being assigned to the aforementioned string.
 
-In cases where the user has selected a departure date and then updates the arrival date to be equal to or after the departure, the form is prevented from being submitted and the user is informed of their error.
+In cases where the user has selected an arrival and departure date and then updates the arrival date to be equal to or after the departure date, the form is prevented from being submitted and the user is informed of their error.
 
 ![Same date validation](static/images/readme/same-date.png)
 ![Future arrival validation](static/images/readme/future-date.png)
@@ -92,7 +92,7 @@ if request.method == 'POST':
 Passing these checks, the data is saved to the database. If the data is found to be invalid, the page is re-rendered with the data pre-filled in the form, and any error or validation messages are displayed to the user.
 
 ### Viewing Bookings
-When a user clicks the "My Bookings" nav bar link, they are brought to the `user_bookings.html` page. This page calls a view that is dependent on the user viewing the page. The queryset of bookings displayed is filtered based on the model's `booked_by` field matching the requesting user.
+When a user clicks the "My Bookings" nav bar link, they are brought to the `user_bookings.html` page. This page calls a view that is dependent on which user is viewing the page. The queryset of bookings displayed is filtered based on the model's `booked_by` field matching the requesting user.
 
 ```
 queryset = Booking.objects.all().order_by('-arrival').filter(booked_by=self.request.user)
@@ -101,19 +101,19 @@ queryset = Booking.objects.all().order_by('-arrival').filter(booked_by=self.requ
 In this way, one user can't access another user's booking details even though the page URL is the same.
 
 ### Changing Bookings
-The Edit button is rendered differently on the front end based on whether the booking is within the next 48 hours. If it is, the button displayed links to a modal on the page instead of the `edit/` URL. The Manage button does not have this limitation. In either case, when a user clicks the Edit or Manage button for a given booking, their identity is verified in the `booking_edit` view. The login_required decorator redirects them to the login URL if they are not signed in. This is a backup security check as the user should only be able to view this page after they have logged in.
+The Edit button is rendered differently on the front end based on whether the booking is within the next 48 hours. If it is, the button displayed opens a modal on the page with information for the user and if it is not, it links to the `edit/` URL. The Manage button does not have this limitation. In either case, when a user clicks the Edit or Manage button for a given booking, their identity is verified in the `booking_edit` view. The `@login_required` decorator redirects them to the login URL if they are not signed in. This is a backup security check as the user should only be able to view this page after they have logged in anyway.
 
 ```
 if booking.booked_by == request.user or request.user.is_staff:
 ```
 
 If this check passes, another if statement checks that the requested method is GET. Validating to True, the form is filled with the booking data and the page is rendered.
-If the requested method is POST, the booking model is populated with the amended data and is verified using the `is_valid()` method before being saved to the database. If the data is invalid, a HttpsResponseBadRequest is returned and the form is not submitted.
+If the requested method is POST, the booking model is populated with the amended data and is verified using the `is_valid()` method before being saved to the database. If the data is invalid, the page is re-rendered with the form pre-filled with the original booking data and error messages are displayed to the user.
 
-If the if statement above validates to False, a PermissionDenied exception is raised.
+If the initial `if` statement above validates to False, a PermissionDenied exception is raised.
 
 ### Deleting Bookings
-When a user clicks the Delete button for a given booking, their identity is verified in the `booking_delete` view. The login_required decorator is also included before this view to carry the same purpose as described above. If the identity checks pass, a second check takes place to verify the user's identity in conjunction with the `is_within_48h()` method. This ensures that the user receives the correct permissions to edit the details, i.e. the booking owner cannot delete a booking within 48 hours of arrival but a staff user can.
+When a user clicks the Delete button for a given booking, their identity is verified in the `booking_delete` view. The `@login_required` decorator is also included before this view to carry the same purpose as described above. If the identity checks pass, a second check takes place to verify the user's identity in conjunction with the `is_within_48h()` method. This ensures that the user receives the correct permissions to edit the details, i.e. the booking owner cannot delete a booking within 48 hours of arrival but a staff user can.
 
 ```
 if booking.booked_by == request.user or request.user.is_staff:
@@ -130,8 +130,10 @@ else:
     return redirect('user_bookings')
 ```
 
+If the initial identity checks fail, a PermissionDenied exception is raised.
+
 ### Accounts Pages
-The Sign In, Sign Out, and Sign Up pages already come with form validation in the Django package. Full testing of these pages is detailed below in [Manual Testing](#manual-testing).
+The Sign In, Sign Out, and Sign Up pages already come with form validation in the Django package. Full testing of these pages is detailed below in the [Full Testing](#full-testing) section.
 
 ## Testing
 
@@ -140,7 +142,7 @@ The Sign In, Sign Out, and Sign Up pages already come with form validation in th
 --- | --- | ---
 **Initial Project Setup** | | 
 Set Up Django Files | Installing the correct version of Django in the IDE. Creating a project named "lakeview". Creating an app called "home" and writing a basic view to display "Hello World!" on the homepage. | [Closed Issue on kanban board](static/images/readme/kanban-setup.png)
-Create PostgreSQL Database | Creating an ElephantSQL account and generating a new database instance. Adding the correct values to the settings file and creating the env.py file. Installing the relevant packages to faciliate database connection and running migrations. |  [Closed Issue on kanban board](static/images/readme/kanban-create.png)
+Create PostgreSQL Database | Creating an ElephantSQL account and generating a new database instance. Adding the correct values to the settings file and creating the env.py file. Installing the relevant packages to facilitate database connection and running migrations. |  [Closed Issue on kanban board](static/images/readme/kanban-create.png)
 Deploy Project to Heroku | Creating a new Heroku app and updating the code with gunicorn before deploying the branch. |  [Closed Issue on kanban board](static/images/readme/kanban-deploy-heroku.png)
 Deploy Heroku App with Static Files | Setting up the WhiteNoise module and updating the settings file with the relevant information. Creating a staticfiles directory and running the `collectstatic` command. Deploying a new branch on Heroku and verifying all styling is applied. |  [Closed Issue on kanban board](static/images/readme/kanban-deploy-static.png)
 **Create Models** | | 
@@ -170,7 +172,6 @@ The site was tested on Google Chrome, Mozilla Firefox, and Edge on desktop, Duck
 -----|-----|-----|-----|-----
 **All Pages**| | | | 
 Navbar Title Link|When clicked, the user is redirected to the homepage.|Link clicked|User redirected to homepage|Pass
-Navbar Menu|When clicked, the navbar menu is displayed with its links.|Menu clicked|The navbar menu was displayed|Pass
 Navbar About Link|When clicked, the user is redirected to the About page.|Link clicked|User redirected to About page|Pass
 Navbar Book Now Link|When clicked, the user is redirected to the Booking page.|Link clicked|User redirected to Booking page|Pass
 Navbar Log In Link|When clicked, the user is redirected to the Sign In page.|Link clicked|User redirected to Sign In page|Pass
@@ -178,9 +179,17 @@ Navbar Sign Up Link|When clicked, the user is redirected to the Sign Up page.|Li
 Navbar Sign Out Link|When clicked, the user is redirected to the Sign Out page.|Link clicked|User redirected to Sign Out page|Pass
 Navbar My Bookings Link|When clicked, the user is redirected to the My Bookings page.|Link clicked|User redirected to My Bookings page|Pass
 Navbar Manage Bookings Link|When clicked, the user is redirected to the Manage Bookings page.|Link clicked|User redirected to Manage Bookings page|Pass
+Navbar Menu|When clicked, the navbar menu is displayed with its links.|Menu clicked|The navbar menu was displayed|Pass
+Navbar Menu About Link|When clicked, the user is redirected to the About page.|Link clicked|User redirected to About page|Pass
+Navbar Menu Book Now Link|When clicked, the user is redirected to the Booking page.|Link clicked|User redirected to Booking page|Pass
+Navbar Menu Log In Link|When clicked, the user is redirected to the Sign In page.|Link clicked|User redirected to Sign In page|Pass
+Navbar Menu Sign Up Link|When clicked, the user is redirected to the Sign Up page.|Link clicked|User redirected to Sign Up page|Pass
+Navbar Menu Sign Out Link|When clicked, the user is redirected to the Sign Out page.|Link clicked|User redirected to Sign Out page|Pass
+Navbar Menu My Bookings Link|When clicked, the user is redirected to the My Bookings page.|Link clicked|User redirected to My Bookings page|Pass
+Navbar Menu Manage Bookings Link|When clicked, the user is redirected to the Manage Bookings page.|Link clicked|User redirected to Manage Bookings page|Pass
 **Home Page**| | | | 
 Book Now Button|When clicked, the user is redirected to the Bookings page.|Link clicked|User redirected to My Bookings page|Pass
-Learn More Button|When clicked, the user is redirected to the About page.|Link clicked|User redirected to homepage|Pass
+Learn More Button|When clicked, the user is redirected to the About page.|Link clicked|User redirected to About page|Pass
 Footer Phone Number Link|When clicked, the device asks to confirm opening in another app. App opens prefilled with the phone number.|Link clicked and confirmation given.|App opened with phone number prefilled|Pass
 Footer Email Link|When clicked, the device asks to confirm opening in another app. App opens with email address prefilled in To field.|Link clicked and confirmation given.|App opened with email address prefilled in To field|Pass
 Footer Facebook Link|When clicked, the linked webpage is opened in a new tab.|Link clicked|Webpage was opened in a new tab.|Pass
@@ -189,7 +198,7 @@ Footer X Link|When clicked, the linked webpage is opened in a new tab.|Link clic
 Signed Out Message|When the X is clicked on the confirmation message, the message is dismissed.|The X was clicked|The message was dismissed.|Pass
 **About Page**| | | | 
 Book Now Button 1|When clicked, the user is redirected to the Booking page.|Link clicked|User redirected to Booking page|Pass
-Carousel Left Chevron|When clicked, the previous image in the carousel is shown.|Left chevron clicked|Prevous image was shown|Pass
+Carousel Left Chevron|When clicked, the previous image in the carousel is shown.|Left chevron clicked|Previous image was shown|Pass
 Carousel Right Chevron|When clicked, the next image in the carousel is shown.|Right chevron clicked|Next image was shown|Pass
 Book Now Button 2|When clicked, the user is redirected to the Booking page.|Link clicked|User redirected to Booking page|Pass
 **Bookings Page**| | | | 
@@ -224,7 +233,7 @@ Children Field|When a `-` is entered into the field, the form cannot be submitte
 Children Field|When an `e` is entered into the field, the form cannot be submitted and a validation message is shown|An `e` is entered in the field nd the Submit button clicked.|The form did not submit and a validation message was displayed|Pass
 Children Field|When a number less than 0 or greater than 10 is entered, the form cannot be submitted and a validation message is shown.|Numbers less than 0 and greater than 10 were entered in turn.|The form did not submit and a validation message was displayed|Pass
 Terms and Conditions Field|When the radio button is clicked, the field is marked as selected.|Radio button clicked|The field was marked as selected.|Pass
-Terms and Conditions Field|When the radio button is clicked again, the field is unmarked as selected.|Radio button clicked|The field was unmarked as selected.|Pass
+Terms and Conditions Field|When the radio button is clicked again, the field is unmarked as selected.|Radio button clicked again|The field was unmarked as selected.|Pass
 Submit Button|When the button is clicked with invalid or empty data in any of the fields, the form does not submit and validation messages are shown.|Submit button clicked with empty fields and/or invalid data entered into fields.|The form did not submit and a validation message was displayed|Pass
 Submit Button|When the button is clicked with valid data in all fields, the form submits and a confirmation message is displayed.|Submit button clicked with valid data in form fields.|The form submits and a confirmation message is displayed to the user.|Pass
 Booking Confirmation Message|When the X is clicked on the confirmation message, the message is dismissed.|The X was clicked|The message was dismissed.|Pass
@@ -273,7 +282,7 @@ Children Field|When a `-` is entered into the field, the form cannot be submitte
 Children Field|When `e` is entered into the field, the form cannot be submitted and a validation message is shown|A  `e` is entered in the field nd the Submit button clicked.|The form did not submit and a validation message was displayed|Pass
 Children Field|When a number less than 0 or greater than 10 is entered, the form cannot be submitted and a validation message is shown.|Numbers less than 0 and greater than 10 were entered in turn.|The form did not submit and a validation message was displayed|Pass
 Terms and Conditions Field|When the radio button is clicked, the field is marked as selected.|Radio button clicked|The field was marked as selected.|Pass
-Terms and Conditions Field|When the radio button is clicked again, the field is unmarked as selected.|Radio button clicked|The field was unmarked as selected.|Pass
+Terms and Conditions Field|When the radio button is clicked again, the field is unmarked as selected.|Radio button clicked again|The field was unmarked as selected.|Pass
 Update Button|When the button is clicked with invalid or empty data in any of the fields, the form does not submit and validation messages are shown.|Update button clicked with empty fields and/or invalid data entered into fields.|The form did not submit and a validation message was displayed|Pass
 Update Button|When the button is clicked with valid data in all fields, the form submits and a confirmation message is displayed.|Update button clicked with valid data in form fields.|The form submits and a confirmation message is displayed to the user.|Pass
 View Terms and Conditions Link|When the "View Terms and Conditions" link is clicked, the list of terms is displayed.|Link clicked|The full list of terms was displayed|Pass
@@ -291,7 +300,7 @@ Sign In Link|When clicked, the user is redirected to the Sign In page.|Link clic
 Username Field|When the field is left blank and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Username field left blank and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
 Username Field|When only whitespace is entered in the field and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Whitespace entered in the username field and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
 Username Field|When characters other than letters, numbers and `@`, `.`, `+`, `-`, or `_` are entered in the field and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Characters other than letters, numbers and `@`, `.`, `+`, `-`, or `_` were entered in the username field and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
-Username Field|When any ASCII characters are entered to make up a username and the Sign Up button is clicked, the input is accepted, the form is submitted, and a confirmation message is displayed.|Usernames made up of any ASCII characters were entered and Sign Up button clicked|The input was accepted, the form was submitted, and a confirmation message was displayed.|Pass
+Username Field|When letters, numbers and `@`, `.`, `+`, `-`, or `_` are entered to make up a username and the Sign Up button is clicked, the input is accepted, the form is submitted, and a confirmation message is displayed.|Usernames made up of these characters were entered and Sign Up button clicked|The input was accepted, the form was submitted, and a confirmation message was displayed.|Pass
 Email Field|When the field is left blank and the Sign Up button is clicked, the form is submitted.|Field left blank and Sign Up button clicked|The form was submitted.|Pass
 Email Field|When text is entered that does not match the accepted email format and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Text entered that did not match the accepted email format and Sign up button clicked.|A validation message was displayed and the form was not submitted|Pass
 Email Field|When text is entered that matches the accepted email format and the Sign Up button is clicked, the form is submitted and a confirmation message is displayed.|Text entered that matched the accepted email format and Sign up button clicked.|The input was accepted, the form was submitted, and a confirmation message was displayed.|Pass
@@ -301,8 +310,8 @@ Password Fields|When the two fields contain different passwords and the Sign Up 
 Password Fields|When a password similar to the username is entered and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Password similar to the username entered into the field and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
 Password Fields|When a password less than eight characters in length is entered and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Password less than eight characters entered into the field and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
 Password Fields|When a password made up of numbers is entered and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Password made entirely of numbers entered into the field and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
-Password Fields|When a simple password is entered, e.g. "password" and "pass1234" and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Common passwords were entered into the field and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
-Password Fields|When a password that satisfies the stated requirement on the page is entered and the Sign Up button is clicked, the form is submitted and a confirmation message is displayed.|Password that satisfied the stated requirements was entered into the field and Sign Up button clicked.|The input was accepted, the form was submitted, and a confirmation message was displayed.|Pass
+Password Fields|When a simple password is entered, e.g. "password" or "pass1234" and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Common passwords were entered into the field and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
+Password Fields|When a password that satisfies the stated requirements on the page is entered and the Sign Up button is clicked, the form is submitted and a confirmation message is displayed.|Password that satisfied the stated requirements was entered into the field and Sign Up button clicked.|The input was accepted, the form was submitted, and a confirmation message was displayed.|Pass
 Sign Up Button|When any fields contain invalid data and the Sign Up button is clicked, a validation message is displayed and the form is not submitted.|Invalid data entered into form fields and Sign Up button clicked.|A validation message was displayed and the form was not submitted|Pass
 Sign Up Button|When all fields contain valid data and the Sign Up button is clicked, the form is submitted and a confirmation message is displayed.|Valid data entered into all form fields and Sign Up button clicked.|The input was accepted, the form was submitted, and a confirmation message was displayed.|Pass
 Signed In Message|When the X is clicked on the confirmation message, the message is dismissed.|The X was clicked|The message was dismissed.|Pass
@@ -314,6 +323,8 @@ Sign Up Link|When clicked, the user is redirected to the Sign Up page.|Link clic
 Username Field|When the field is left blank and the Sign In button is clicked, a validation message is displayed and the form is not submitted.|Username field left blank and Sign In button clicked.|A validation message was displayed and the form was not submitted|Pass
 Username Field|When a username is entered that is not registered on the database and the Sign In button is clicked, a validation message is displayed and the form is not submitted.|Username and password entered that do not exist on the database and Sign In button clicked.|A validation message was displayed and the form was not submitted|Pass
 Password Field|When an incorrect password for the respective username is entered and the Sign In button is clicked, a validation message is displayed and the form is not submitted.|Incorrect password entered for a given username and Sign In button clicked.|A validation message was displayed and the form was not submitted|Pass
+| Remember Me | When the remember me checkbox is ticked, the user remains logged in when the browser is closed. | User logged in with remember me ticked and browser closed and reopened after a few minutes. | The user remained logged in | Pass
+Sign In Button | When the button is clicked with valid credentials entered, the user is logged in. | Valid credential entered and sign in button clicked. | The user logged in successfully | Pass
 
 ### Automated Testing
 #### HTML and CSS
@@ -356,15 +367,15 @@ The W3C validator sites were used to validate the [HTML](https://validator.w3.or
 
 <details><summary>settings.py - One error for a line longer than 79 characters.</summary>
 <br>
-A string in the password validation settings causes a line to be 83 characters. This string is so long that it cannot even be assigned a shorter variable name as using more than one character for the variable makes that line itself 80 characters long. 
+A long string in the password validation settings causes the line to be 83 characters. This string is so long that it cannot even be assigned a shorter variable name as using more than one character for the variable makes that line itself 80 characters long. 
 
 In this case, the line must be be longer than 79 characters as it is one continuous string with no whitespaces. PEP8 [allows for this](https://peps.python.org/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds):
 
-    "However, know when to be inconsistent – sometimes style guide recommendations just aren’t applicable. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don’t hesitate to ask! 
-    ...
-    ... 
-    Some other good reasons to ignore a particular guideline: 
-    1. When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this PEP."
+"*However, know when to be inconsistent – sometimes style guide recommendations just aren’t applicable. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don’t hesitate to ask! 
+...
+... 
+Some other good reasons to ignore a particular guideline: 
+1. When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this PEP.*"
 
 ![Python Linter results for lakeview/settings.py](static/images/readme/lakeview-settings.png)
 
@@ -688,7 +699,7 @@ Mobile test:
 | # | Bug | Image | Plan to Solve |
 | --- | --- | --- | --- |
 | 1 | On some mobile screen sizes, the signup form fields are not visually consistent. Some are inline with their labels while others are on a new line. | ![Image of Unsolved Bug #1](static/images/readme/bugs/ubug-01-signup-fields.png) | Writing a custom form for the signup page will allow for more customisation and control. This will be implemented in a future version of the website. |
-| 2 | In an attempt to only show the heading "Past Bookings" when a user actually has bookings in the past, a heading was added in the loop that checks for past bookings. This resulted in the heading being repeated as many time as there are past bookings. | ![Image of Unsolved Bug #2](static/images/readme/bugs/ubug-02-past-bookings-loop.png) | The `UserBookings` class-based view can be split into two views. One for upcoming bookings and one for past bookings. In this way the two lists can be looped through separately and if either are empty, the `{% empty %}` tag can be used to show a heading or message that won't be repeated. |
+| 2 | In an attempt to only show the heading "Past Bookings" when a user actually has bookings in the past, a heading was added in the loop that checks for past bookings. This resulted in the heading being repeated as many times as there are past bookings. | ![Image of Unsolved Bug #2](static/images/readme/bugs/ubug-02-past-bookings-loop.png) | The `UserBookings` class-based view can be split into two views. One for upcoming bookings and one for past bookings. In this way the two lists can be looped through separately and if either are empty, the `{% empty %}` tag can be used to show a heading or message that won't be repeated. |
 
 ### Solved Bugs
 | # | Bug | Image | Solution |
@@ -701,18 +712,18 @@ Mobile test:
 | 6 | After adding code to show a success message after a booking is made, no toast appeared on the webpage. | | The necessary HTML code to show a div containing the messages was omitted. After including this code, the messages began displaying correctly. |
 | 7 | When declaring `clean` methods inside the form class, the user can submit forms regardless of data validation. The method does not seem to be called when `is_valid()` is run. | | The `if` statements were not testing for the right conditions. Using `print` statements, the developer better understood the `POST` process and how the data was handled. The `clean` method was updated to properly validate the data and it then worked as expected. |
 | 8 | After logging in or logging out, the user is redirected to the home page instead of the previous page they were viewing. | ![Gif of Bug #8](static/images/readme/bugs/bug-08.gif) | The code `?next={{request.path}}` was appended to each href in the relevant anchor tags throughout the website. |
-| 9 | The integer value in the accommodation tuple was displayed in HTML instead of the desired string value. | ![Image of Bug #9](static/images/readme/bugs/bug-09.png) | A new method `string_from_tuple` which uses `dict` and `get` was written to return the string value from the accommodation tuple given a certain integer.  |
-| 10 | The base code for the collapse component taken from the Bootstrap documentation did not work when the link or button were clicked. | ![Gif of Bug #10](static/images/readme/bugs/bug-10.gif) | This post on [StackOverflow](https://stackoverflow.com/questions/22955916/bootstrap-collapse-not-collapsing) highlighted a change in the attributes names. For example, `data-toggle` is now `data-bs-toggle` and `data-target` is `data-bs-target` etc. |
+| 9 | The integer value in the accommodation tuple was being displayed instead of the desired string value when called in HTML. | ![Image of Bug #9](static/images/readme/bugs/bug-09.png) | A new method `string_from_tuple` which uses `dict` and `get` was written to return the string value from the accommodation tuple.  |
+| 10 | The base code for the collapse component taken from the Bootstrap documentation did not work when the link or button were clicked. | ![Gif of Bug #10](static/images/readme/bugs/bug-10.gif) | This post on [StackOverflow](https://stackoverflow.com/questions/22955916/bootstrap-collapse-not-collapsing) highlighted a change in the attribute names. For example, `data-toggle` is now `data-bs-toggle` and `data-target` is `data-bs-target` etc. |
 | 11 | When the user viewing their bookings clicked on the collapse component for one particular booking, all bookings expanded. | ![Gif of Bug #11](static/images/readme/bugs/bug-11.gif) | The use of `{{ booking.booking_id }}` as the unique collapse ID was correct however it needed to be prepended by the word "collapse" for it to work properly, i.e. `id="collapse{{ booking.booking_id }}"` |
-| 12a | When using the DateInput field in the form, the departure date was not limited as expected and could be assigned a value earlier than the arrival date. | ![Image of Bug #12a](static/images/readme/bugs/bug-12.png) | Using print statements, it was discovered that the date values were being manipulated in a format not acceptable to the DateInput field. It was necessary to refactor the date back into the expected format by getting the year month and day separately. |
+| 12a | When using the DateInput field in the form, the departure date was not limited as expected and could be assigned a value earlier than the arrival date. | ![Image of Bug #12a](static/images/readme/bugs/bug-12.png) | Using print statements, it was discovered that the date values were being manipulated in a format not acceptable to the DateInput field. It was necessary to refactor the date back into the expected format by getting the year, month, and day separately before combining into a string of the correct format `${year}-${month}-${day}`. |
 | 12b | After solving Bug #12a, the departure date was still not limited to the correct month. | |  The `getMonth()` method is 0-indexed so the month value needed to be incremented by 1 for the date to be properly restricted, i.e. 0 corresponded to January, 1 to February etc. |
 | 13 | The departure date was not always restricted to at least one day after the selected arrival date. | | The new Date variable needed to be instantiated with the arrival date value otherwise it returned erroneous values. The use of `console.log()` statements showing the erroneous values allowed this error to be discovered. |
-| 14 | When logged in as a non-superuser, adding any booking ID to the end of .../booking/my-bookings/edit/ allowed the user to view the details and amend the bookings. | ![Image of Bug #14 Solution](static/images/readme/bugs/bug-14.png) | The highlighted code in the image was added to the booking_edit view. This ensured only the authorised user was able to view the details and additionally, a PermissionDenied exception was explicitly raised otherwise. |
-| 15 | When logging out from the user bookings page, the user is returned to a now empty webpage. | ![Image of Bug #15](static/images/readme/bugs/bug-15.png) | This issue was initially indirectly solved by the addition of backend code that requires a user to be logged in to view this particular page. When a user signed out on this page, they were redirected to the Sign In page by default; however, this was not a very nice user experience, so the sign-out links were updated to redirect directly to the home page in all cases. |
+| 14 | When logged in as a non-superuser, adding any booking ID to the end of `.../booking/my-bookings/edit/` allowed that user to view the details and amend the bookings. | ![Image of Bug #14 Solution](static/images/readme/bugs/bug-14.png) | The highlighted code in the image was added to the booking_edit view. This ensured only the authorised user was able to view the details and additionally, a PermissionDenied exception was explicitly raised otherwise. |
+| 15 | When logging out from the user bookings page, the user is returned to a now empty webpage. | ![Image of Bug #15](static/images/readme/bugs/bug-15.png) | This issue was initially indirectly solved by the addition of back end code that requires a user to be logged in to view this particular page. When a user signed out on this page, they were redirected to the Sign In page by default; however, this was not a very nice user experience, so the sign-out links were updated to redirect directly to the home page in all cases. |
 | 16 | When attempting to delete a booking from the Manage Booking page, the staff user was shown a 404 error page, whereas the user who owned the booking was able to delete it without issue. | ![Image of Bug #16](static/images/readme/bugs/bug-16.png) | A new URL path needed to be defined for the Manage Bookings page. The issue was resolved after updating the app's urls.py file. |
-| 17 | On one occasion, while testing if a user could view a different user's bookings, the 500 error page was displayed. In this instance, the site menu nav links displayed as if the user was not logged in. | | This bug could not be replicated again. It appears to have been solved indirectly since it was first noticed or at the very least it occurs intermittently. |
+| 17 | On one occasion, while testing if one user could view another user's bookings, the 500 error page was displayed and nav bar menu links displayed as if the user was not logged in. | | This bug could not be replicated again. It appears to have been solved indirectly since it was first noticed or at the very least it occurs intermittently. |
 | 18 | Upon attempting to edit a user booking and update the new data as the booking owner, no toast messages were displayed. The page simply refreshed with the old booking data pre-filled in the form. The staff user was able to edit the booking successfully. | ![Image of Bug #18](static/images/readme/bugs/bug-18.png) | An invalid if statement structure was discovered in the `booking_edit` view. Parentheses were added around the two `request.user` checks so that they worked correctly with the `request.method` check.
-| 19 | When editing a booking that was added to the database before Sprint 4, the Terms and Conditions field was unchecked when the form was filled with data from the database. Clicking the Update button resulted in a 500 internal server error. | ![Image of Bug #19](static/images/readme/bugs/bug-19.png) | Setting debug to True highlighted a flaw in the `booking_delete` view where invalid data could sometimes not be handled correctly when editing a booking. The code shown in the image was added to the view and runs when the booking data is found to be invalid. The form validation then worked as expected and no errors were seen by the user. |
+| 19 | When editing a booking that was added to the database before Sprint 4, the Terms and Conditions field was unchecked when the form was filled with data from the database. Clicking the Update button without ticking the Terms and Conditions checkbox resulted in a 500 internal server error. | ![Image of Bug #19](static/images/readme/bugs/bug-19.png) | Setting debug to True highlighted a flaw in the `booking_delete` view where invalid data could sometimes not be handled correctly when editing a booking. The code shown in the image was added to the view and runs when the booking data is found to be invalid. The form validation then worked as expected and no errors were seen by the user. |
 
 <br>
 
