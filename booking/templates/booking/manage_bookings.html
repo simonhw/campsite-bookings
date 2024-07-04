@@ -36,6 +36,9 @@
     <div class="row mt-3">
         <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <h1 class="sedan-regular">Manage Bookings</h1>
+            {% if user.is_authenticated %}
+            <p>You are logged in as: {{ user }}</p>
+            {% endif %}
         </div>
         <div class="col-10 offset-1 col-sm-6 offset-sm-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <h2 class="sedan-regular">Upcoming Bookings</h2>
