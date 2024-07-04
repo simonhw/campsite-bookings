@@ -188,7 +188,7 @@ The GitHub Projects tool was used to manage development progress for this websit
 - Done
 - Future Features
 
-The Epics and labels discussed above were used in conjunction with the board and allowed the developer to manage their time well during development. Below is a screenshot of the final state of the kanban board.
+The Epics and labels discussed above were used in conjunction with the board and allowed the developer to manage their time well during development. Below is a screenshot of the final state of the kanban board. The project can be viewed on the [GitHub Projects](https://github.com/users/simonhw/projects/3/) page.
 
 ![Image of Kanban Board](static/images/readme/kanban-final.png)
 
