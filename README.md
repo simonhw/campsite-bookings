@@ -190,7 +190,7 @@ The GitHub Projects tool was used to manage development progress for this websit
 
 The Epics and labels discussed above were used in conjunction with the board and allowed the developer to manage their time well during development. Below is a screenshot of the final state of the kanban board.
 
-![Image of Kanban Board]()
+![Image of Kanban Board](static/images/readme/kanban-final.png)
 
 ## Design
 ### Colour Scheme
@@ -615,37 +615,53 @@ This project has many possible features that are beyond the scope of the current
 Relational database: PostgreSQL.
 
 ### Frameworks, Libraries, and Programs
+[Am I Responsive?](https://ui.dev/amiresponsive) - To showcase the website on different screen sizes for this README.
+
+Adobe Photoshop 2020 - To resize and crop images.
+
+[Balsamiq](https://balsamiq.com/) - To create the website wireframes.
+
+[Bootstrap](https://getbootstrap.com/) - To build and style content on the website.
+
+[CI Python Linter](https://pep8ci.herokuapp.com/#) - To ensure code meets minimum PEP8 standards.
+
+Chrome Developer Tools - To visualise and test changes to the website code.
+
+[Coolors](https://coolors.co/) - To showcase the colour palette of the website.
+
 [Django](https://www.djangoproject.com/) - A Python framework used to design the website.
 
-Visual Studio Code and [Gitpod](https://www.gitpod.io/) - The IDEs used to write my code.
+[ElephantSQL](https://www.elephantsql.com/) - To create and store the database.
+
+[Favicon.io](https://favicon.io/) - To source the favicon used.
 
 [Git](https://git-scm.com/) - For version control.
 
 [GitHub](https://github.com/) - To save and store files online.
 
-[ElephantSQL](https://www.elephantsql.com/) - To create and store the database.
+[Gitpod](https://www.gitpod.io/) - The IDE used to write my code.
 
-[LucidChart](https://lucid.app/) - To create Entity Relationship Diagrams
-
-[Bootstrap](https://getbootstrap.com/) - To build and style content on the website.
-
-[W3Schools.com](https://www.w3schools.com/) and [The Python Library](https://docs.python.org/3/library/) - For researching and learning about Python methods and syntax.
-
-[ScreenToGif](https://www.screentogif.com/) - To create gif files for this README.
-
-Adobe Photoshop 2020 - To pixellate and crop some README images.
+[Google Fonts](https://fonts.google.com/) - For imported fonts used on the website.
 
 [Heroku](https://www.heroku.com/) - To host the deployed version of the program.
 
+[JSHint](https://jshint.com/) - To validate the JavaScript code.
+
+[LucidChart](https://lucid.app/) - To create Entity Relationship Diagrams
+
+[Pexels.com](https://www.pexels.com/) - To source images used on the website.
+
+[ScreenToGif](https://www.screentogif.com/) - To create gif files for this README.
+
 [Shields.io](https://shields.io/) - To add badges to this README.
 
-[CI Python Linter](https://pep8ci.herokuapp.com/#) - To ensure code meets minimum PEP8 standards.
+[Shutter Encoder](https://www.shutterencoder.com/) - To convert images to .webp format.
 
-???????????????? more ????????????????????
+[TinyPNG](https://tinypng.com/) - To compress images.
 
-### Dependencies
+[W3C Markup Validation Service](https://validator.w3.org/) - To validate the HTML and CSS files.
 
-???????????????????????????
+[W3Schools.com](https://www.w3schools.com/) and [The Python Library](https://docs.python.org/3/library/) - For researching and learning about Python methods and syntax.
 
 ## Deployment
 The live version of this website was deployed on Heroku.
