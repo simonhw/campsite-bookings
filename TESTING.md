@@ -7,7 +7,7 @@ Deployed program on Heroku: [Campsite Bookings](https://lakeview-campsite-8b683b
 
 ## Contents
 - [Form Validation](#form-validation)
-    - [Accomodation Type](#accommodation-type)
+    - [Accommodation Type](#accommodation-type)
     - [Booking Dates](#booking-dates)
     - [Guest Numbers](#guest-numbers)
     - [Terms and Conditions](#terms-and-conditions)
