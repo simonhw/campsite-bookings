@@ -371,11 +371,11 @@ A long string in the password validation settings causes the line to be 83 chara
 
 In this case, the line must be be longer than 79 characters as it is one continuous string with no whitespaces. PEP8 [allows for this](https://peps.python.org/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds):
 
-"*However, know when to be inconsistent – sometimes style guide recommendations just aren’t applicable. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don’t hesitate to ask! 
+"However, know when to be inconsistent – sometimes style guide recommendations just aren’t applicable. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don’t hesitate to ask! 
 ...
 ... 
 Some other good reasons to ignore a particular guideline: 
-1. When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this PEP.*"
+1. When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this PEP."
 
 ![Python Linter results for lakeview/settings.py](static/images/readme/lakeview-settings.png)
 
