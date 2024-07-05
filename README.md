@@ -39,7 +39,6 @@ Deployed program on Heroku: [Lakeview Campsite](https://lakeview-campsite-8b683b
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
     - [Frameworks, Libraries, and Programs](#frameworks-libraries-and-programs)
-    - [Dependencies](#dependencies)
 - [Deployment](#deployment)
     - [Local Deployment](#local-deployment)
     - [Live Deployment](#live-deployment)
@@ -53,7 +52,7 @@ Deployed program on Heroku: [Lakeview Campsite](https://lakeview-campsite-8b683b
 
 ## User Experience
 ### Initial Discussion
-The Lakeview Campsite website facilitates bookings for small and large groups for one night or more of camping. The goal of the site is to encourage business by showcasing the campsite information and offering a user-friendly booking system to users. The website allows staff users to manage all bookings.
+The Lakeview Campsite website facilitates bookings for small and large groups for one night or more of camping. The goal of the site is to encourage business by showcasing the campsite information and offering a user-friendly booking system to users. The website allows users to manage their bookings and staff users to manage all bookings.
 
 ### Project Planning with the Agile Approach
 The Lakeview Campsite project was built using the Agile method. This involves breaking projects down into smaller manageable sections which allows teams to deliver continuous working releases to the client and end users. These release periods are known as sprints and this project had four sprints over nine weeks.
@@ -70,10 +69,10 @@ User Stories were generated and grouped under different Epics to effectively str
 Each user story was assigned a number of labels to aid in the project workflow. These include:
 
 - `Sprint 1/2/3/4` - To denote in which sprint the user story will be worked on.
-- `Story Points: 1/2/3/5/8` - To denote how much effort each user story requires.
+- `Story Points: 1/2/3` - To denote how much effort each user story requires.
 - `Must-Have` - A user story relating to a feature without which the website will not function correctly.
 - `Should-Have` - A user story relating to a feature that will complement the core website features and enhance the user experience.
-- `Could-Have` - A user story relating to a feature that be of benefit to the user but without which the site will still achieve all its design goals.
+- `Could-Have` - A user story relating to a feature that could be of benefit to the user but without which the site will still achieve all its design goals.
 - `Site User` - A user story from the perspective of a regular site user.
 - `Site Admin` - A user story from the perspective of a site administrator.
 - `documentation` - A task related to writing the README or TESTING documents.
@@ -84,20 +83,20 @@ Using the Agile method allowed this project to be managed well in small chunks. 
 
 ### User Stories
 #### Epic: Initial Project Setup
-- **Set Up Django Files**: As a **Developer** I can **set up the Django template files** so that **I can begin to write code for the project**.
+- **Set Up Django Files**: As a **Developer** I can **set up the Django template files** so that I can **begin to write code for the project**.
     - I can install the correct version of Django.
     - I can create a project called **lakeview**.
     - I can create an app called **home**.
     - I can display a "Hello world!" string on the webpage.
 
-- **Create PostgreSQL Database**: As a **Developer** I can **create a could-based database** so that **store and retrieve data for my website**.
+- **Create PostgreSQL Database**: As a **Developer** I can **create a could-based database** so that I can **store and retrieve data for my website**.
     - I can create a new PostgreSQL instance
     - I can copy the URL in the Details section
     - I can create the env.py file and set DATABASE_URL constant.
     - I can install the relevant packages for database connection.
     - I can run migrations.
 
-- **Deploy Project to Heroku**: As a **Developer** I can **deploy the project to Heroku** so that **I can see that the website displays properly**.
+- **Deploy Project to Heroku**: As a **Developer** I can **deploy the project to Heroku** so that I can **see that the website displays properly**.
     - I can create a Heroku app with a unique name.
     - I can update the code for deployment with gunicorn.
     - I can deploy the app on Heroku.
@@ -115,14 +114,14 @@ Using the Agile method allowed this project to be managed well in small chunks. 
     - I can declare the necessary imports.
     - I can create a model with the appropriate fields required.
 
-- **Move Booking Model to the Correct App**: As a **Developer** I can **successfully migrate a model from one app to another** so that I can **have all the relevant code for a desired action contained in one app**.
+- **Move Booking Model to the Correct App**: As a **Developer** I can **successfully migrate a model from one app to another** so that I can **have all the relevant code for a desired site function contained in one app**.
     - I can create the new model in the correct app.
-    - I can change all the references from old model to the new model in other files.
+    - I can change all the references from the old model to the new model in other files.
     - I can run migrations and check for any errors.
     - I can delete the old model once the Heroku app is verified to be working properly.
 
 #### Epic: User Accounts
-- **Create an Account**: As a **Site User** I can **create an account** so that **I can make bookings and leave reviews**.
+- **Create an Account**: As a **Site User** I can **create an account** so that I can **make bookings and leave reviews**.
     - When I click the sign-in button, I am prompted to make an account.
     - After registering my details, I can log in and view, create, update, or delete a booking.
     - I can log out and log back in using the password I created.
@@ -135,7 +134,7 @@ Using the Agile method allowed this project to be managed well in small chunks. 
     - I can create a header and nav bar for larger screens.
     - I can create a footer for larger screens.
 
-- **View Campsite Information**: As a **Site User** I can **view information about the campsite** so that **I can make an informed decision about making a booking**.
+- **View Campsite Information**: As a **Site User** I can **view information about the campsite** so that I can **make an informed decision about making a booking**.
     - When I visit the About page, I can read the campsite information.
     - I can view the location of the campsite.
     - I can view the size of the campsite.
@@ -164,13 +163,13 @@ Using the Agile method allowed this project to be managed well in small chunks. 
     - When editing booking details, I can change any details they wish and save the changes.
     - If the booking is less than 48 hours away, I cannot edit the booking and I am instead prompted to ring the campsite for further instruction.
 
-- **Delete a Booking**: As a **Site User** I can **cancel a booking** so that **I can manage my stay at the campsite**.
+- **Delete a Booking**: As a **Site User** I can **cancel a booking** so that I can **manage my stay at the campsite**.
     - I can navigate to my bookings page and cancel a booking.
     - If the booking is less than 48 hours away, I will not have the option to cancel and will be prompted to ring the campsite for further advice.
     - Otherwise, a modal prompt will ask me to confirm this irreversible action.
     - On successful deletion, a confirmation message will be displayed to me.
 
-- **View All Bookings**: As a **Site Admin** I can **view all bookings** so that **I can understand when people will use the campsite**.
+- **Manage All Bookings**: As a **Site Admin** I can **view and manage all bookings** so that I can **understand when and have control over how customers will use the campsite**.
     - I can view a list of all bookings and their details.
     - For a given booking, I can amend or delete it.
     - For a booking in the past, I cannot amend or delete it.
@@ -182,13 +181,13 @@ Using the Agile method allowed this project to be managed well in small chunks. 
 - As a **Developer** I can **write a README and TESTING file** so that **others can learn about my app and see the work that has gone into preparing it for final release**.
 
 ### Kanban Board
-The GitHub Projects tool was used to manage development progress for this website. The kanban board was used to separate tasks into four columns:
+The GitHub Projects tool was used to manage development progress for this website. A kanban board was used to separate tasks into four columns:
 - Todo
 - In Progress
 - Done
 - Future Features
 
-The Epics and labels discussed above were used in conjunction with the board and allowed the developer to manage their time well during development. Below is a screenshot of the final state of the kanban board. The project can be viewed on the [GitHub Projects](https://github.com/users/simonhw/projects/3/) page.
+The Epics and labels discussed above were used in conjunction with the board and allowed the developer to manage their time well during development. Below is a screenshot of the final state of the kanban board. The project can be viewed on its [GitHub Projects page](https://github.com/users/simonhw/projects/3/).
 
 ![Image of Kanban Board](static/images/readme/kanban-final.png)
 
@@ -207,9 +206,9 @@ The Sedan font was chosen from the Google Fonts library because it evoked feelin
 ### Imagery
 Images were chosen that show an attractive campsite and surroundings. Bright images showing tents near a lake and other forms of accommodation were selected to give a sense of an inclusive type of campsite. Images of people helping each other set up a tent were used for the "Need a Hand?" part of the About page. A beautiful drone/helicopter shot of a lake shore with a green landscape and mountains in the background was used in the index and About page to entice site users wishing to escape into nature for a relaxing holiday. 
 
-The header image for smaller screens was either a tent and chair by the lake's edge or a closeup of books, a mug, and flask, and a camera on the floor of a tent. The latter was used mainly for account pages and the Manage Bookings page to reflect their administrative nature. A wider image of the chair and tent was used for larger screens to make good use of the extra horizontal space.
+The header image for smaller screens was either a tent and/or chair by the lake's edge or a closeup of books, a mug, a flask, and a camera on the floor of a tent. The latter was used mainly for account pages and the Manage Bookings page to reflect their administrative nature. A wider image of the chair and tent was used for larger screens to make good use of the extra horizontal space.
 
-For the 404, 403, and 500 error pages, two different images were used. For the 403 page, an image of a diamond mesh fence was used to convey the sense of forbidden access. For the 404 and 500 error pages, an image of a worried man looking at his phone in the woods was used, to give the sense of being lost or something having gone wrong.
+For the 404, 403, and 500 error pages, two different images were used. For the 403 page, an image of a diamond mesh fence was used to convey the sense of forbidden access. For the 404 and 500 error pages, an image of a worried man looking at his phone in the woods was used to give the sense of being lost or something having gone wrong.
 
 ### Wireframes
 Wireframes were created in Balsamiq for the initial front-end design of the website. The mobile layout was designed first and the tablet and desktop were adapted from this.
@@ -267,7 +266,7 @@ A key requirement for this project was for users to be able to create, read, upd
 * Admin users may **delete** by cancelling user bookings.
 
 ### Responsiveness
-- On small screen sizes, namely mobiles, the website is displayed with content taking up most of the horizontal space, using a Bootstrap column width of 10 with an offset of 1. This allows for most of the screen to be utilised while still being visually appealing with a buffer of empty space on either side. Images used in the header were sized appropriately for the screen size to improve loading time. For larger screens, wider images were displayed while the smaller images were hidden. The navbar links are displayed in a dropdown menu typical of mobile websites which keeps the header looking neat and tidy on small screens.
+- On small screen sizes, namely mobiles, the website is displayed with content taking up most of the horizontal space, using a Bootstrap column width of 10 with an offset of 1. This allows for most of the screen to be utilised while still being visually appealing with a buffer of empty space on either side. Images used in the header were sized appropriately for the screen size to improve loading time. For larger screens, wider images were displayed while the smaller images were hidden. The navbar links are displayed in a dropdown menu typical of mobile websites which keeps the header looking neat on small screens.
 
     <details><summary>Comparison of nav bar on small and large screens</summary>
 
@@ -307,7 +306,7 @@ A key requirement for this project was for users to be able to create, read, upd
 
     </details><br>
 
-- On large screen sizes, content is generally displayed in Bootstrap columns of width 6 with an offset of 3 to direct the user's attention to the middle of their screen and avoid using the extreme edges of these wider displays. The booking form and booking cards are displayed more tightly in Bootstrap columns of 4 with an offset of 4, as this content is by nature more narrow. The Sign Out page content is centre-aligned for medium-sized screens and up so that it looks visually appealing on larger screens.
+- On large screen sizes, content is generally displayed in Bootstrap columns of width 6 with an offset of 3 to direct the user's attention to the middle of their screen and avoid using the extreme edges of these wider displays. The booking form and booking cards are displayed more tightly in Bootstrap columns of 4 with an offset of 4, as this content is by nature more narrow. The Sign Out page content is centre-aligned for medium-sized screens as it looked out of place when left-aligned in its parent div at these screen sizes.
 
     <details><summary>Booking cards on desktop screens</summary>
 
@@ -324,7 +323,7 @@ A key requirement for this project was for users to be able to create, read, upd
 
 ## Features
 The website was designed to be as simple as possible, with little to no distracting content. A mobile-first design process was undertaken from the start.
-The website is comprised of four main pages visible to the site user: a homepage, an about page, a booking form page, and a "my bookings" page (when logged in). An additional page is also visible to staff users once logged in where they can manage all bookings. Other pages visible to users include the signup page, login page, logout page, password reset page, 404 error page, 403 error page, and 500 error page.
+The website is comprised of four main pages visible to the site user: a homepage, an about page, a booking form page, and a "my bookings" page (when logged in). An additional page is also visible to staff users once logged in where they can manage all bookings. Other pages visible to users include the signup page, login page, logout page, 404 error page, 403 error page, and 500 error page.
 
 **All pages on the website have:**
 1. A favicon of a tent next to a tree with a cloud.
@@ -337,7 +336,7 @@ The website is comprised of four main pages visible to the site user: a homepage
 
     ![Website Header](static/images/readme/header-dd.png)
 
-    The header contains links to the main pages of the website, depending on the login status of the site user. 
+    The header contains links to the main pages of the website, depending on the authentication status of the site user. 
     - The website title "Lakeview Campsite" is a link which when clicked will return the user to the `index.html` page.
     - "About" brings the user to the `about.html` page.
     - "Book Now" brings the user to the `bookings.html` page.
@@ -403,21 +402,21 @@ New users who wish to make a booking must create an account to access this featu
 ![Signup Page](static/images/readme/signup-1.png)
 ![Signup Page](static/images/readme/signup-2.png)
 
-This is a default Django signup form that is provided with the framework; however, the template was amended to have a consistent style with the rest of the website and extend the custom `base.html` page.
+This is a default Django signup form that is provided with the framework; however, the template was amended to have a consistent style with the rest of the website and extends the custom `base.html` page.
 
 Upon successful account creation, a message is shown to the user confirming the action and they are returned to the previous page they were viewing.
 
 ![Signup toast message](static/images/readme/signup-toast.png)
 
 ### The Sign In Page
-The sign-in page similarly is a default Django form that has had its template styled to be consistent with the website. When returning users sign in successfully, they are shown a message to confirm their action and they are returned to the previous page they were viewing. There is also a reset password link on this page which is further discussed below.
+The sign-in page similarly is a default Django form that has had its template styled to be consistent with the website. When returning users sign in successfully, they are shown a message to confirm their action and they are returned to the previous page they were viewing. There are also instruction on how the user can reset their password on this page which is further discussed below in the [Features to be Implemented](#features-to-be-implemented) section.
 
 ![Signin Page](static/images/readme/signin.png)
 
 ![Signin toast message](static/images/readme/signin-toast.png)
 
 ### The Sign Out Page
-When users click the sign-out button in the nav bar they are directed to the `signout.html` page. Users must confirm the action by clicking the red "Sign Out" button after which they are redirected to the homepage. This is different from the previous two pages because the user could be signing out from a page that required specific authenticated access. Instead of showing the user a 403 error page, it was deemed a much better user experience to simply be returned to the homepage. A "Cancel" button allows the user to navigate back to the previous page without having to use their browser.
+When users click the sign-out button in the nav bar they are directed to the `signout.html` page. Users must confirm the action by clicking the red "Sign Out" button after which they are redirected to the homepage. This is different from the previous two pages because the user could be signing out from a page that required specific authenticated access. Instead of showing the user a 403 error page or being redirected immediately to the sign-in page, it was deemed a much better user experience to simply be returned to the homepage. A "Cancel" button allows the user to navigate back to the previous page without having to use their browser.
 
 ![Sign out page](static/images/readme/signout.png)
 
@@ -434,7 +433,7 @@ The authenticated user's username is displayed under the page's heading as a vis
 
 #### Form Fields
 - Accommodation
-    - A dropdown list of four types of accommodation is presented to the user for selection
+    - A dropdown list of four types of accommodation is presented to the user for selection.
         
         ![Accommodation dropdown list](static/images/readme/accom-dd.png)
         
@@ -443,17 +442,17 @@ The authenticated user's username is displayed under the page's heading as a vis
 
         ![Arrival date picker](static/images/readme/arrival-pick.gif)
     
-    - The minimum value for the departure date will always be the arrival date plus one day. This was achieved using custom JavaScript code explained further below.
+    - The minimum value for the departure date will always be the arrival date plus one day. This was achieved using custom JavaScript code explained in [TESTING.md](/TESTING.md).
 
         ![Departure date picker](static/images/readme/departure-picker.png)
         ![Departure date picker](static/images/readme/departure-picker-3.png)
         ![Departure date picker](static/images/readme/departure-picker-4.png)
 
 - Number of Guests
-    - The next form fields are those for the number of adults and children in the booking. These fields only accept non-negative integers; the adults field has a minimum value of one and the children field has a minimum value of zero. The maximum number of guests of either type is set to 10, to prevent the user from booking in impossibly large guest numbers. See [Features to be Implemented](#features-to-be-implemented) for more on this.
+    - The next form fields are those for the number of adults and children in the booking. These fields only accept non-negative integers; the adults field has a minimum value of one and the children field has a minimum value of zero. The maximum number of guests of either type is set to 10, to prevent the user from making a booking with impossibly large guest numbers. See [Features to be Implemented](#features-to-be-implemented) for future idea on this limitation.
 
 - Terms and Conditions
-    - The final form field is a radio button with which the user can indicate that they have accepted the Terms and Conditions listed below.
+    - The final form field is a radio button with which the user can indicate that they have accepted the Terms and Conditions listed below the form.
 
         ![Terms and Conditions radio button](static/images/readme/tac-radio.png)
 
@@ -471,7 +470,6 @@ After submission, the input data is cleared and the form is restored to its defa
 Below the form section, with a distinct white-on-green style to distinguish it from the booking form, the main points of information for making a booking are presented to the site user. These items are shown here to address the more frequently asked questions about bookings: check-in time, payments, and cancellations. The contact details for the campsite are listed here and the user is encouraged to get in touch regarding any special requests or specific questions.
 
 ![Booking information section](static/images/readme/booking-info.png)
-![Booking information section](static/images/readme/booking-info-2.png)
 
 #### Terms and Conditions
 A Bootstrap collapse component is utilised for the long list of Terms and Conditions to keep the booking page looking neat and avoid having to scroll too much to view the footer details. The user can choose to view the full list by clicking on the link as prompted.
@@ -485,7 +483,7 @@ As the list is long, another link is provided after the last list item to hide t
 ![Terms and Conditions hide link](static/images/readme/tac-hide.png)
 
 ### User Bookings
-As described above, a given logged-in user who is not a staff member may navigate to the `user_bookings.html` page and view a list of campsite bookings made by them.
+As described above, a given logged-in user who is not a staff member may navigate to the `user_bookings.html` page and view a list of campsite bookings made by them. The authenticated user's username is displayed under the "My Bookings" heading as a visual indication that they are logged in and to show under which account they are viewing bookings.
 
 ![User Bookings page](static/images/readme/my-bookings.png)
 
@@ -496,15 +494,15 @@ The bookings are separated into two sections: "My Bookings" and "Past Bookings".
 This content shows all the details that the user would have entered when making a booking: arrival date, departure date, and number of guests. When no children were booked in, this field is omitted entirely from the card.
 
 #### Editing Bookings
-The user can edit or delete bookings up until two days before the arrival date. When the edit button is clicked, the user is brought back to the booking form page. Through the use of template tags, the page checks if a booking id exists. In this case, it does as the user has clicked on the "Edit" button, calling the `booking_edit` view which populates the form with the correct data. The heading is thus changed to read "Edit Your Stay" and the submit button text is changed to "Update". This is a way of making sure the user is aware that they are editing an existing booking as opposed to making a new one.
+The user can edit or delete bookings up to two days before the arrival date. When the edit button is clicked, the user is brought back to the booking form page. Through the use of template tags, the page checks if a booking id exists. In this case it does, as the user has clicked on the "Edit" button, calling the `booking_edit` view which populates the form with the correct data. The heading is thus changed to read "Edit Your Stay" and the submit button text is changed to "Update". This is a way of making sure the user is aware that they are editing an existing booking as opposed to making a new one.
 
 ![Edit Your Stay page](static/images/readme/edit-booking.png)
 
-If the new data is valid, the user is shown a message confirming their action and is redirected to the `user_bookings.html` page.
+If the new data is valid, the user is shown a message confirming their action and is redirected to the `user_bookings.html` page. If it is not, the form does not submit and any validation errors are displayed to the user in a message.
 
 ![Edit booking toast message](static/images/readme/edit-booking-toast.png)
 
-If the booking arrival date is within the next 48 hours, the user is not able to amend the details and a modal message is displayed informing the user of this and prompting them to get in contact with the campsite staff. A modal was chosen for this feature as it forces the user to acknowledge the message and click a button labelled "Understood" before they can interact with the website again. The campsite contact phone number is linked here for the user's convenience.
+If the booking arrival date is within the next 48 hours, the user is not able to amend the details unless they are also a staff member. A modal message is displayed informing the user of this and prompts them to get in contact with the campsite staff. A modal was chosen for this feature as it forces the user to acknowledge the message and click a button labelled "Understood" before they can interact with the website again. The campsite contact phone number is linked here for the user's convenience. The email address was not included here as the campsite owners want to encourage the user to get in touch directly and deal with any issues as soon as possible.
 
 ![Edit booking denied modal](static/images/readme/edit-denied.png)
 
@@ -523,7 +521,7 @@ If the booking is successfully deleted, the user is shown a message confirming t
 
 ![Delete booking toast message](static/images/readme/delete-toast.png)
 
-As with the edit action described above, if the booking is in the next 48 hours another [modal](static/images/readme/delete-denied.png) is shown to the user explaining that it is not possible to delete the booking and action does not take place.
+As with the edit action described above, if the booking is in the next 48 hours another [modal](static/images/readme/delete-denied.png) is shown to the user explaining that it is not possible to delete the booking and action does not take place. Staff accounts do not have this limitation.
 
 #### Past Bookings
 A list of past bookings is also shown to the user on this page for ease of reference. When the "More Details" link is clicked, the details for the chosen past booking are displayed. The wording here is slightly different with the past tense of "Arrived" and "Departed" used. No edit or delete functionality is possible with these bookings.
@@ -536,7 +534,7 @@ If the user has no bookings associated with their account, paragraphs are displa
 ![No bookings paragraphs](static/images/readme/no-bookings.png)
 
 ### Managing Bookings
-For a staff user, all bookings can be managed by navigating to the `manage_bookings.html` page. Here a list of all bookings is displayed, with the booking card having a slightly different format to that seen in the `user_bookings.html` page. Each booking card has the user's name or username displayed at the top and all relevant booking details are listed below it. The same options of editing and deleting bookings are afforded to the staff user here, but the wording is changed from "Edit" to "Manage". There is currently no functionality implemented for a user to edit their account details and add their first and last names; when this is the case, their username is displayed on the card instead of their first and last name. The staff user is also not limited when choosing to manage or delete a booking that is within 48 hours.
+For a staff user, all bookings can be managed by navigating to the `manage_bookings.html` page. Here a list of all bookings is displayed along with the login status of the user, with the booking card having a slightly different format to that seen in the `user_bookings.html` page. Each booking card has the user's name or username displayed at the top and all relevant booking details are listed below it. The same options of editing and deleting bookings are afforded to the staff user here, but the wording is changed from "Edit" to "Manage". There is currently no functionality implemented for a user to edit their account details and add their first and last names; in these cases, their username is displayed on the card instead of their first and last name. There are no limitations on managing or deleting bookings within the next 48 hours for the staff user on this page.
 
 ![Manage bookings page](static/images/readme/manage-bookings.png)
 ![Manage bookings page](static/images/readme/manage-bookings-2.png)
@@ -566,10 +564,10 @@ This project has many possible features that are beyond the scope of the current
 - **Booking Images**
     - When a user selects an accommodation option in the booking form, an image of that type of accommodation is shown adjacent to the field. This would be achieved using JavaScript and adding an event listener that changes the image when the accommodation field is changed.
 - **Occupancy Limits**
-    - Limiting the number of guests per day and accomodation type would be a much sought-after feature for a client. Not all campsites would have the same sized facilities or staff support. Ideally, the user would be shown how many spaces are left for each accommodation type when they select their preferred booking dates. This could involve using a "Check Availability" button which calls a custom method that returns the number of open accommodation spaces available to the user. This would also require updating or creating new models that can hold the occupancy limits for various accommodations and services offered by the business.
-    - Currently, there is a maximum value of 10 guests set for the adults and children input fields. This is to prevent unreasonable booking in the website's current version. An intermediate step to improve this would be to show the user a modal window asking them to get in touch to discuss their booking if they wish to make a booking of more than 10 guests.
+    - Limiting the number of guests per day and accommodation type would be a much sought-after feature for a client. Not all campsites would have the same sized facilities or staff support. Ideally, the user would be shown how many spaces are left for each accommodation type when they select their preferred booking dates. This could involve using a "Check Availability" button which calls a custom method that returns the number of open accommodation spaces available to the user. This would also require updating or creating new models that can hold the occupancy limits for various accommodations and services offered by the business.
+    - Currently, there is a maximum value of 10 guests set for the adults and children input fields. This is to prevent unreasonabley-sized or malicious booking attempts in the website's current version. An intermediate step to improve this would be to show the user a modal window asking them to get in touch to discuss their booking if they wish to make a booking of more than 10 guests.
 - **Date Picker**
-    - Having a date field that shows a calendar indicating booking availability would improve the current user experience. A JavaScript library such as [flatpickr](https://flatpickr.js.org/) would be one way of implementing this feature. Writing custom JavaScript to pass available dates to flatpickr would allow it to configure the choices available to the user.
+    - Having a date field that shows a calendar indicating booking availability would improve the current user experience. Visually this would look like a calendar displayed one month at a time, with dates where bookings are not possible grayed out, dates where bookings are almost booked out in orange, and dates where there are plenty of booking slots available displayed in blue or green. A JavaScript library such as [flatpickr](https://flatpickr.js.org/) would be one way of implementing this feature. Writing custom JavaScript to pass available dates to flatpickr would allow it to configure the choices available to the user.
 - **Extra Products**
     - The extra services and packages described in the "Pricing Guide" section of `about.html` could be presented to the user as additional items they can purchase at the point of booking. This would involve updating the booking model with new fields and updating the booking form.
 - **Pricing**
@@ -581,6 +579,13 @@ This project has many possible features that are beyond the scope of the current
 - **Accepting T&Cs**
     - The Terms and Conditions are currently listed below the booking form, and the user is told that by making a booking they are accepting these terms; however, it would be better to have a checkbox that the user must click to indicate that they have read the Terms and Conditions before they can submit their booking.
 
+#### View Bookings Page
+- **Page Headings**
+    - The `UserBookings` class-based view can be split into two new views: one for upcoming bookings and one for past bookings. In this way the headings of "Upcoming Bookings" and "Past Bookings" on the page can be dynamically shown or hidden and messages displayed when the user has no bookings of either or both types. ([See Known Bug #2](/TESTING.md#known-bugs))
+
+- **Cancellation Period**
+    - The `.is_within_48h()` method can be updated to take in an argument from the user where the number of days or hours can be determined by the staff user from the front end. This update would also includes functions that dynamically edit any text content that refers to the cancellation period in other areas of the site.
+
 #### Manage Bookings Page
 - **Sort Bookings**
     - In this release, all bookings are listed and sorted by arrival date in descending order; however, in a real-world application, there could be hundreds of bookings available to view to the staff user. It would be preferable to have more control over how to sort the bookings list, e.g. view by month or by accommodation type. This may involve creating new classes in `booking/views.py` and having different buttons that the staff user can click to sort the bookings in different ways.
@@ -589,7 +594,7 @@ This project has many possible features that are beyond the scope of the current
 - **Email Functionality**
     - Integrating an email service with the website will allow users to reset their password, to be sent details of their bookings, and to receive other important messages, e.g. reminders before their arrival.
 - **Custom Sign Up Form**
-    - The sign-up form can be improved both in its formatting and content. It would be preferable to have the user enter their first and last name upon signup. The current labels and fields can display inconsistently (see [Bug #1](/TESTING.md#bugs)) and it would give a better user experience to have the sign-up form look consistent across all screen sizes.
+    - The sign-up form can be improved both in its formatting and content. It would be preferable to have the user enter their first and last name upon signup. The current labels and fields can display inconsistently (see [Known Bug #1](/TESTING.md#known-bugs)) and it would give a better user experience to have the sign-up form look consistent across all screen sizes.
 - **Edit Account Details**
     - An app to deal with user accounts will be created in a future release. It will be designed to allow users to update their details, change or update their payment methods, and delete their accounts.
 
@@ -651,7 +656,7 @@ Chrome Developer Tools - To visualise and test changes to the website code.
 
 [Pexels.com](https://www.pexels.com/) - To source images used on the website.
 
-[ScreenToGif](https://www.screentogif.com/) - To create gif files for this README.
+[ScreenToGif](https://www.screentogif.com/) - To create GIF files for this README.
 
 [Shields.io](https://shields.io/) - To add badges to this README.
 
@@ -676,7 +681,7 @@ To deploy this program locally on your device, please follow the steps below:
 
 #### Cloning
 1. Log in or sign up to GitHub.
-2. Navigate to the repository for [akeview Campsite](https://github.com/simonhw/campsite-bookings).
+2. Navigate to the repository for [Lakeview Campsite](https://github.com/simonhw/campsite-bookings).
 3. Click on the green Code button, select your preferred option of HTTPS, SSH, or GitHub CLI, and copy the relevant link.
 4. Open the terminal in your IDE and navigate to your directory of choice for this new clone.
 5. Type `git clone` into the terminal and paste in your copied link. Press enter.
@@ -684,7 +689,7 @@ To deploy this program locally on your device, please follow the steps below:
 #### Set Up Your Environment
 1. In your IDE, navigate to the root directory and run the command `pip3 install -r requirements.txt`. All the necessary packages should now be installed in your workspace.
 2. Run the command `python3 manage.py runserver` in your terminal and open the hosted site in your browser.
-3. Add the web address to the list of allowed hosts in the `setings.py` file and hard reload your browser. The website should display properly.
+3. Add the web address to the list of allowed hosts in the `settings.py` file and hard reload your browser. The website should display properly.
 4. If it does not, set Debug to True and check for error messages in the webpage displayed.
 
 #### Creating the Database
@@ -693,13 +698,13 @@ To deploy this program locally on your device, please follow the steps below:
 3. Create an `env.py` file in your IDE root directory and confirm that it is listed in the `.gitignore` file.
 4. Create a secret key yourself or by using a website of your choice such as [Secret Key Generator](https://secretkeygen.vercel.app/).
 5. Add the following code to your `env.py` file making sure to replace `enter-copied-url-here` with the URL you copied in step 2 and `your-secret-key` with the one you generated in step 4:
-    - ```
+    ```
       import os
 
       os.environ.setdefault(
           "DATABASE_URL", "<enter-copied-url-here>")
       os.environ.setdefault("SECRET_KEY", "<your-secret-key>")
-      ```
+    ```
 6. Run the following command in your IDE terminal to create your database tables: `python3 manage.py migrate`.
 7. Create a superuser account by running `python3 manage.py createsuperuser` and enter details as prompted.
 
@@ -741,7 +746,7 @@ Images were resized and cropped where necessary.
 
 ### Code Used
 **All code in this project was written entirely by Simon Henleywillis unless otherwise specified below.**
-Various Bootstrap classes and components were used in the styling of this website and were learned about from reading the Boostraps documentation. Chunks of code that were copied or adapted are specifically credited below.
+Various Bootstrap classes and components were used in the styling of this website and were learned about from reading the Bootstrap documentation. Chunks of code that were copied or adapted are specifically credited below.
 
 Code to validate the booking form by using the `clean` method was used from the Django documentation:
 - [Cleaning and validating fields that depend on each other](https://docs.djangoproject.com/en/5.0/ref/forms/validation/#cleaning-and-validating-fields-that-depend-on-each-other)
@@ -752,7 +757,7 @@ The code used to redirect a user to the previous page they were viewing was foun
 The UserBookings view was secured against unauthorised access by using `LoginRequiredMixin` which was found on a Stack Overflow post:
 - [Django: do not allow users to see pages when they are not logged in](https://stackoverflow.com/questions/24619629/django-do-not-allow-users-to-see-pages-when-they-are-not-logged-in)
 
-Some code used in the `booking_edit` view was taken or adapted from a post on the website "Python Tutorial":
+Some code used in the `booking_edit` view was taken and adapted from a post on the website "Python Tutorial":
 - [Django Edit Form](https://www.pythontutorial.net/django-tutorial/django-edit-form/)
 
 The code used to show a carousel of images on the About page was taken from the Bootstrap documentation:
